@@ -1,2 +1,1418 @@
-# Land of Art - Rangotsav
-Temporary readme file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Land of Art</title>
+  <style>
+    /* ========== RESET ========== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; background-image: url(bg.jpg); color: white; }
+
+    /* ========== NAVBAR ========== */
+   nav {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5rem;   
+  background:#8a2846;
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+}
+
+nav .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;              
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: #fff;
+}
+
+nav .logo img {
+  height: 100px;           
+  width: auto;
+  border-radius: 50px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;            
+}
+nav ul li a {
+  font-size: 1.1rem;      
+  padding-bottom: 6px;
+  color: #ede0d4;
+  text-decoration: none;
+}
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #ffe66d;
+      border-bottom: 2px solid #ffe66d;
+    }
+
+    /* ========== HERO ========== */
+    header.hero {
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: center/cover no-repeat;
+      color: white;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+      padding-top: 100px; /* pushes content below navbar */
+    }
+    header.hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+  /* Banner container */
+.live-banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #602437;          /* black strip */
+  color: white;            /* bright yellow text */
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 12px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  z-index: 20;
+  margin-bottom: 0;
+}
+
+#about {
+  margin-top: 0;      /* reduce top margin */
+  padding-top: 60px;  /* instead of big padding */
+}
+
+/* Scrolling text track */
+.live-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-left 15s linear infinite;
+}
+
+.live-track span {
+  margin-right: 60px;
+}
+
+/* Animation */
+@keyframes scroll-left {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+
+    .btn-primary {
+      background: #b08968;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn-primary:hover {
+      background: #eaac8b;
+    }
+/* Fullscreen overlay */
+#doorOverlay {
+  position: fixed;
+  inset: 0;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #000;
+  z-index: 9999;
+  perspective: 1200px;
+  overflow: hidden;
+  display: none;
+}
+
+/* Doors */
+.door {
+  position: absolute;
+  top: 0; width: 50%; height: 100%;
+  background-image: url("door4 bg.jpg");
+  background-color: brown; /* fallback */
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 1.5s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+/* Left door */
+.door.left {
+  left: 0;
+  background-position: left center;
+  transform-origin: left center;
+}
+
+/* Right door */
+.door.right {
+  right: 0;
+  background-position: right center;
+  transform-origin: right center;
+}
+
+/* Inward door animation */
+.open-left  { transform: rotateY(90deg); }
+.open-right { transform: rotateY(-90deg); }
+
+/* ===== Sandstorm Effect ===== */
+#sandstorm {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sand {
+  position: absolute;
+  background: rgba(194, 178, 128, 0.7);
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: drift linear forwards;
+}
+
+@keyframes drift {
+  from { transform: translateX(0) translateY(0) scale(1); opacity: 1; }
+  to { transform: translateX(200px) translateY(-100px) scale(0.5); opacity: 0; }
+}
+
+/* Sandstorm (inside overlay) */
+#sandstorm{
+  position:absolute; inset:0; pointer-events:none; z-index: 150;
+}
+.sand-particle{
+  position:absolute; width:6px; height:6px;
+  background: radial-gradient(circle, #f8e1a6 0%, #d2b48c 100%);
+  border-radius:50%; opacity:.9; filter: blur(.4px);
+  animation: blow 4s linear forwards;
+}
+@keyframes blow{
+  0%{ transform: translate(0,0) scale(1); opacity:1; }
+  100%{ transform: translate(250px,-300px) scale(.6); opacity:0; }
+}
+
+/* Welcome text (hidden at start) */
+.welcome-text {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: gold;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  text-shadow: 2px 2px 10px black;
+}
+.show-text { opacity: 1; }
+
+/* Welcome text (appears AFTER doors) */
+.welcome-text{
+  position:absolute; top:50%; left:50%; transform: translate(-50%,-50%);
+  font-size: 3rem; font-weight: 900; text-align:center; z-index: 200;
+  /* gradient "gold" text */
+  background: linear-gradient(90deg, #ffd700 0%, #ffb74a 50%, #ffd700 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  text-shadow: 0 0 0 rgba(0,0,0,0), 0 6px 18px rgba(0,0,0,.35);
+  letter-spacing:.5px; opacity:0; transition: opacity 1s ease-in-out;
+}
+.show-text{ opacity:1; }
+
+    /* Countdown Styling */
+.countdown-section {
+      text-align: center;
+      padding: 60px 20px;
+      background: #FFF8F0;
+    }
+    #timer {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffcdb2;
+      margin-top: 20px;
+    }
+    /* ========== SECTIONS ========== */
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .section-box {
+      max-width: 1000px;
+      margin: auto;
+      background: #eaac8b;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      font-size: 1.3rem;        /* bigger */
+      font-weight: 200;         /* extra bold */
+      text-transform: uppercase; /* all caps */
+      letter-spacing: 1.5px;      
+      margin-bottom: 25px;
+    }
+
+    .past-section {
+      position: relative;
+      margin-bottom: 50px;
+      padding: 20px 10px;
+      text-align: center;
+      background: #eaac8b;
+      border-radius: 12px;
+      max-width: 1000px;
+      margin: auto;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+       
+    }
+        
+
+/* Container */
+.hanging-container {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  align-items: center;    /* center align */
+  gap: 60px;              /* space between boards */
+}
+
+/* Each hanging board */
+.hanging-board {
+   position: relative;
+    width: 80%;
+    max-width: 900px;
+    margin: 5px auto 20px auto;  /* top, right, bottom, left */
+    text-align: center;
+}
+
+/* Rope */
+.hanging-board .rope {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  width: 4px;
+  height: 40px;
+  background: white;
+  transform: translateX(-50%);
+}
+
+/* Board */
+.hanging-board .board {
+   background: #602437;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+}
+
+/* Headings inside board */
+.board .event-title {
+  .board .event-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffe66d; 
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+  margin-bottom: 20px;
+  }
+}
+
+/* Image inside board */
+.hanging-board img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 250px; /* each poster size */
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Caption under image */
+.hanging-board p {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0;
+}
+/* Hanging Board Swing */
+.swingBoard {
+  display: inline-block;
+  animation: swing 3s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+@keyframes swing {
+  0%   { transform: rotate(3deg); }
+  50%  { transform: rotate(-3deg); }
+  100% { transform: rotate(3deg); }
+}
+/* Rope swing */
+@keyframes swingRope {
+  0%,100% { transform: rotate(2deg); }
+  50% { transform: rotate(-2deg); }
+}
+
+/* ==== EXPLORE BUTTON ==== */
+#exploreBtn {
+  display: inline-block;
+  padding: 14px 34px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff8dc;
+  background: linear-gradient(135deg, #a67c00, #ffd700);
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 18px rgba(166, 124, 0, 0.6);
+}
+
+/* Glow hover */
+#exploreBtn:hover {
+  background: linear-gradient(135deg, #ffd700, #ffb700);
+  color: #fff;
+  box-shadow: 0 0 25px 8px rgba(255, 215, 0, 0.8);
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* Subtle "shine" effect */
+#exploreBtn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transform: skewX(-25deg);
+}
+
+/* Slide shine on hover */
+#exploreBtn:hover::after {
+  left: 120%;
+  transition: left 0.7s ease;
+}
+
+.rang-section {
+      font-size: 1.1rem;
+      padding: 10px 10px;
+      text-align: center;
+      background: #8a2846;
+      border-radius: 12px;
+      max-width: 1000px;
+      margin: auto;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+
+    .rang-events img{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+  align-items: center;
+}
+
+.rang-events img {
+  display: block;  
+  border-radius: 10px;
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ===== IMAGE RESPONSIVE & HOVER EFFECT ===== */
+/* ===== FIX: tidy, centered grids in all rang sections ===== */
+.rang-section .board .gallery-grid {
+  display: grid !important;                    /* beat earlier flex rules */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  justify-items: center;                       /* center each tile */
+  align-items: center;
+  margin-top: 12px;
+}
+
+/* Make every tile the same height for clean rows */
+.rang-section .board .gallery-grid img {
+  width: 100%;
+  max-width: none;                              /* override .hanging-board img max-width:250px */
+  height: 220px;                                /* uniform height */
+  object-fit: cover;                            /* clean crop */
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  transition: transform .3s ease;
+}
+.rang-section .board .gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* Road Safety: single poster perfectly centered and not cropped */
+#road-safety .board .gallery-grid {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+#road-safety .board .gallery-grid img {
+  width: min(520px, 90%);
+  height: auto;                                 /* keep full poster */
+  object-fit: contain;
+}
+
+/* Optional: make 2018 images a touch larger */
+#rangotsav-2018 .board .gallery-grid img {
+  height: 240px;
+}
+
+/* ===== GALLERY GRID & RANG-EVENTS ===== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  justify-items: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  border-radius: 10px;
+  max-width: 300px; /* limit max size */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  transition: transform 0.3s;
+  object-fit: cover;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* Heading spacing */
+.rang-section h2,
+.rang-section p {
+    margin-bottom: 15px;
+}
+            
+/* ===== SECTION BOX HOVER LIFT EFFECT ===== */
+.section-box {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.section-box:hover {
+    transform: translateY(-10px);           /* lift section */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25); /* stronger shadow */
+}
+
+/* ===== OPTIONAL: LIGHTER TRANSPARENT SECTION BACKGROUND ===== */
+.section-box {
+    background: #b56576; /* same as past events*/
+    backdrop-filter: blur(15px);
+}
+#team {
+  margin-bottom: 60px; /* adjust space before founder section */
+}
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  display: none;        /* hide all slides by default */
+  padding: 20px 0;
+}
+
+.slide.active {
+  display: block;       /* show only active slide */
+}
+
+.members-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.members-row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.members-row::-webkit-scrollbar-thumb {
+  background: #b08968;
+  border-radius: 4px;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #b08968;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.prev { left: 6px; }
+.next { right: 6px; }
+
+.prev:hover, .next:hover {
+  background: #9c6644;
+}
+
+.members-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+  grid-template-rows: repeat(2, auto); /* Force 2 rows */
+  gap: 25px;
+  justify-items: center;
+  padding: 20px;
+}
+
+.member-profile {
+  min-width: 140px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.member-profile img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;    /* crop nicely */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  margin-bottom: 10px;
+}
+.member-profile:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.members-section .member-info h3 {
+    margin-bottom: 8px;
+    color: white;
+}
+
+.members-section .member-info p {
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.members-section h2 {
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: white;
+}
+
+.founders-section .founders-profiles {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 40px;
+    justify-content: center;
+    object-fit: cover;
+}
+
+.founders-section .founder-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 300px;
+    text-align: center;
+}
+
+.founders-section .founder-profile img {
+    width: 180px;   
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    margin-bottom: 15px;
+}
+
+.founders-section .founder-info h3 {
+    margin-bottom: 8px;
+    color: white;
+}
+
+.founders-section .founder-info p {
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.founders-section h2 {
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: white;
+}
+
+   .contact-section p,
+.contact-section a {
+  font-family: 'Poppins', sans-serif; 
+  font-size: 1rem;
+  color: #fcb9b2;  
+  text-decoration: none; 
+  font-weight: 500;
+}
+
+.contact-section a:hover {
+  color: #ffe66d; 
+}
+
+
+    /* ===== FOOTER ===== */
+footer {
+  background: #8a2846;
+  color: #ede0d4;
+  padding: 40px 20px 20px;
+  margin-top: 50px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.footer-about, .footer-links, .footer-social {
+  flex: 1 1 300px;
+}
+
+.footer h3, .footer h4 {
+  color: #ede0d4;
+  margin-bottom: 15px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+  color: #ddd;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links ul li a:hover {
+  color: #ffe66d;
+}
+
+.footer-social a {
+  color: #fed0bb;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-social a:hover {
+  color: #ffe66d;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 10px;
+  border-top: 1px solid #fed0bb;
+  margin-top: 30px;
+  font-size: 0.9rem;
+}
+
+    /* ========== ANIMATION ========== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate {
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
+      animation-play-state: paused; /* wait until visible */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">
+      <img src="loa logo1.jpg" alt="Club Logo">
+      <span>The Land of Art</span>
+    </div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about" class="active">About</a></li>
+      <li><a href="#rangotsav">Upcoming Events</a></li>
+      <li><a href="#past-event">Past Events</a></li>
+      <li><a href="#contributions">Gallery</a></li>
+      <li><a href="#contact-info">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+   <section id="home">
+    <div>
+  <header class="hero">
+    <h1 class="animate">The Land of Art</h1>
+    <p class="animate" style="font-size: 2rem;"><i>Where creativity finds its canvas.</i></p>
+    <br>
+    <a href="#about" class="btn-primary animate">Discover More</a>
+  </div>
+    </section>
+  </header>
+
+<!-- Straight Tagline Banner -->
+<div class="live-banner">
+  <div class="live-track">
+    <span> Rangotsav 2025 is LIVE!  Celebrating Colors & Creativity  </span>
+    <span> Rangotsav 2025 is LIVE!  Celebrating Colors & Creativity  </span>
+    <span> Rangotsav 2025 is LIVE!  Celebrating Colors & Creativity  </span>
+  </div>
+</div>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-box animate">
+      <h2>ABOUT US</h2>
+      <p><i>The Land of Art is a vibrant community of dreamers and creators,
+         inspiring everyone to explore their imagination and bring it to life.</i></p>
+    </div>
+  </section> 
+
+  <!-- RANGOTSAV -->
+  <section id="rangotsav">
+  <div class="section-box animate">
+    <h2> UPCOMING EVENTS </h2>
+    <h2> Rangotsav 2025</h2>
+    <p><i>Countdown to our biggest celebration of art & colors!</i></p>
+
+    <!-- Countdown timer (single ID only) -->
+    <div id="timer" class="countdown-timer"></div>
+
+    <br>
+    <a href="javascript:void(0)" class="btn" id="exploreBtn">Explore Rangotsav</a>
+  </div>
+</section>
+
+  <!-- Door Animation Overlay (auto visible) -->
+<div id="doorOverlay">
+  <div class="door left"></div>
+  <div class="door right"></div>
+  <div id="sandstorm"></div>
+  <!-- Welcome text to appear after door finish opening -->
+  <div class="welcome-text">🏺 Welcome to Rangotsav 2025 🏺</div>
+</div>
+
+<!-- PAST EVENTS -->
+<section id="past-event" class="past-section">
+  <div class="section-box animate">
+    <h2>🌟 PAST EVENTS</h2>
+    <p><i>Here are some glimpses of our past events.</i></p>
+  </div>
+
+  <!-- Rangotsav 2018 -->
+  <section id="rangotsav-2018" class="rang-section">
+    <div class="hanging-board swingBoard">
+      <span class="rope"></span>
+      <div class="board">
+        <h2 class="event-title">RANGOTSAV 2018</h2>
+        <div class="gallery-grid">
+          <img src="RANG1-2018.jpg" alt="Event 1">
+          <img src="RANG2-2018.jpg" alt="Event 2">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rangotsav 2022 -->
+  <section id="rangotsav-2022" class="rang-section">
+    <div class="hanging-board swingBoard">
+      <span class="rope"></span>
+      <div class="board">
+        <h2 class="event-title">RANGOTSAV 2022</h2>
+        <div class="gallery-grid">
+          <img src="RANG1-2022.jpg" alt="Event 1">
+          <img src="RANG2-2022.jpg" alt="Event 2">
+          <img src="RANG3-2022.jpg" alt="Event 3">
+          <img src="RANG4-2022.jpg" alt="Event 4">
+          <img src="RANG5-2022.jpg" alt="Event 5">
+          <img src="RANG6-2022.jpg" alt="Event 6">
+          <img src="RANG7-2022.jpg" alt="Event 7">
+          <img src="RANG8-2022.jpg" alt="Event 8">
+          <img src="RANG9-2022.jpg" alt="Event 9">
+          <img src="RANG10-2022.jpg" alt="Event 10">
+          <img src="RANG11-2022.jpg" alt="Event 11">
+          <img src="RANG12-2022.jpg" alt="Event 12">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rangotsav 2023 -->
+  <section id="rangotsav-2023" class="rang-section">
+    <div class="hanging-board swingBoard">
+      <span class="rope"></span>
+      <div class="board">
+        <h2 class="event-title">RANGOTSAV 2023</h2>
+        <div class="gallery-grid">
+          <img src="RANG1-2023.jpg" alt="Event 1">
+          <img src="RANG2-2023.jpg" alt="Event 2">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Road Safety -->
+  <section id="road-safety" class="rang-section">
+    <div class="hanging-board swingBoard">
+      <span class="rope"></span>
+      <div class="board">
+        <h2 class="event-title">ROAD SAFETY</h2>
+        <div class="gallery-grid">
+          <img src="ROAD POSTER.jpg" alt="Road Safety Poster">
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+  <!-- GALLERY -->
+  <section id="contributions" class="cont-section">
+    <div class="section-box animate">
+      <h2>CONTRIBUTIONS</h2>
+      <p><i>A glimpse into the beautiful artworks and memories created by our members.</i></p>
+      <div class="gallery-grid">
+      <img src="KOLA1-2022.jpg" alt="Event 1" class="large-image">
+      <img src="KOLA2-2022.jpg" alt="Event 2" class="large-image">
+    </div>
+  </div>
+  </section>
+
+  
+<!-- ================= TEAM MEMBERS ================= -->
+<section id="members" class="members-section">
+  <div class="section-box animate">
+    <h2>PEOPLE BEHIND THE VISION</h2>
+
+    <div class="year-group">
+      <!-- Slide: 4th Year -->
+      <div class="carousel" id="year4">
+      <div class="slide active">
+        <h3>BATCH 2022-26</h3>
+        <div class="members-row">
+          <div class="member-profile">
+            <img src=".jpg" alt="Member 1">
+            <h3>ATHARV GUPTA</h3>
+         </div>
+          <div class="member-profile">
+            <img src="rajshree-4.jpg" alt="Member 2">
+            <h3>RAJSHREE</h3>
+          </div>
+          <div class="member-profile">
+            <img src=".jpg" alt="Member 2">
+            <h3>ABHISHEK SINGH</h3>
+          </div>
+          <div class="member-profile">
+            <img src="vashika-4.jpg" alt="Member 2">
+            <h3>VASHIKA TYAGI</h3>
+          </div>
+          <div class="member-profile">
+            <img src="ujjawal-4.jpg" alt="Member 2">
+            <h3>UJJAWAL KUMAR</h3>
+          </div>
+          <div class="member-profile">
+            <img src="Saniya-4.jpg" alt="Member 2">
+            <h3>SANIYA</h3>
+          </div>
+          <div class="member-profile">
+            <img src="sunidhi-4.jpg" alt="Member 2">
+            <h3>SUNIDHI RANI</h3>
+          </div>
+          <div class="member-profile">
+            <img src="kavitra-4.jpg" alt="Member 2">
+            <h3>KAVITRA KUMARI</h3>
+          </div>
+            <div class="member-profile">
+            <img src=".jpg" alt="Member 2">
+            <h3>JANVI CHAUHAN</h3>
+          </div>
+          </div>
+        </div>
+        
+<!-- Navigation Buttons -->
+<button class="prev" onclick="scrollCarousel('year4', -1)">&#10094;</button>
+<button class="next" onclick="scrollCarousel('year4', 1)">&#10095;</button>
+
+</div>
+
+      <div class="year-group">
+      <!-- Slide: 3rd Year -->
+       <div class="carousel" id="year3">
+      <div class="slide active">
+        <h3>BATCH 2023-27</h3>
+        <div class="members-row">
+          <div class="member-profile">
+            <img src="tapan-3.jpg" alt="Member 1">
+            <h3>TAPAN MISHRA</h3>
+            </div>
+           <div class="member-profile">
+            <img src="tanisha-3.jpg" alt="Member 1">
+            <h3>TANISHA SONI</h3>
+            </div>
+          <div class="member-profile">
+            <img src="tanuraj-3.jpg" alt="Member 1">
+            <h3>TANURAJ SIROHI</h3>
+            </div>
+          <div class="member-profile">
+            <img src=".jpg" alt="Member 1">
+            <h3>ANSHIKA BHARDWAJ</h3>
+            </div>
+          <div class="member-profile">
+            <img src="anshika v-3.jpg" alt="Member 1">
+            <h3>ANSHIKA VERMA</h3>
+          </div>
+          <div class="member-profile">
+            <img src="arnav-3.jpg" alt="Member 1">
+            <h3>ARNAV CHAUDHARY</h3>
+          </div>
+          <div class="member-profile">
+            <img src="anubhav-3.jpg" alt="Member 1">
+            <h3>ANUBHAV KUMAR SINGH</h3>
+          </div>
+          <div class="member-profile">
+            <img src="suhani-3.jpg" alt="Member 1">
+            <h3>SUHANI VERMA</h3>
+            </div>
+          <div class="member-profile">
+            <img src="sonakshi-3.jpg" alt="Member 1">
+            <h3>SONAKSHI</h3>
+            </div>
+          <div class="member-profile">
+            <img src="avinash-3.jpg" alt="Member 1">
+            <h3>AVINASH KUMAR KARNAL</h3>
+            </div>
+         <div class="member-profile">
+            <img src=".jpg" alt="Member 1">
+            <h3>DEEPAK YADAV</h3>
+            </div>
+          <div class="member-profile">
+            <img src=".jpg" alt="Member 1">
+            <h3>VANSH MITTAL</h3>
+            </div>
+            </div>    
+        </div>
+<!-- Navigation Buttons -->
+<button class="prev" onclick="scrollCarousel('year3', -1)">&#10094;</button>
+<button class="next" onclick="scrollCarousel('year3', 1)">&#10095;</button>
+      </div>
+
+     <div class="year-group">
+      <!-- Slide: 2nd Year -->
+      <div class="carousel" id="year2">
+      <div class="slide active">
+        <h3>BATCH 2024-28</h3>
+        <div class="members-row">
+          <div class="member-profile">
+            <img src="vasu-2.jpg" alt="Member 1">
+            <h3>VASU UPADHYAY</h3>
+            </div>
+          <div class="member-profile">
+            <img src="shubhangi-2.jpg" alt="Member 1">
+            <h3>SHUBHANGI SINGH</h3>
+            </div>
+            <div class="member-profile">
+            <img src="aditi-2.jpg" alt="Member 1">
+            <h3>ADITI CHAUDHARY</h3>
+            </div>
+            <div class="member-profile">
+            <img src="saianshi-2.jpg" alt="Member 1">
+            <h3>SAIANSHI SAXENA</h3>
+            </div>
+            <div class="member-profile">
+            <img src="nitish-2.jpg" alt="Member 1">
+            <h3>NITISH TOMAR</h3>
+            </div>
+            <div class="member-profile">
+            <img src="aditya-2.jpg" alt="Member 1">
+            <h3>ADITYA SHARMA</h3>
+            </div>
+            <div class="member-profile">
+            <img src="anushka-2.jpg" alt="Member 1">
+            <h3>ANUSHKA AGARWAL</h3>
+            </div>
+            <div class="member-profile">
+            <img src="nikita-2.jpg" alt="Member 1">
+            <h3>NIKITA PAL</h3>
+            </div>
+            <div class="member-profile">
+            <img src="sarthak-2.jpg" alt="Member 1">
+            <h3>SARTHAK RANA</h3>
+            </div>
+            <div class="member-profile">
+            <img src="jagriti-2.jpg" alt="Member 1">
+            <h3>JAGRITI GUPTA</h3>
+            </div>
+            <div class="member-profile">
+            <img src="priyanshi-2.jpg" alt="Member 1">
+            <h3>PRIYANSHI CHAUHAN</h3>
+            </div>
+            <div class="member-profile">
+            <img src="vansh-2.jpg" alt="Member 1">
+            <h3>VANSH KUMAR</h3>
+            </div>
+            <div class="member-profile">
+            <img src="areeb-2.jpg" alt="Member 1">
+            <h3>AREEB SIDDIQUI</h3>
+            </div>
+            <div class="member-profile">
+            <img src="jpg" alt="Member 1">
+            <h3>KARTIK SHARMA</h3>
+            </div>
+            <div class="member-profile">
+            <img src="jpg" alt="Member 1">
+            <h3>SHREYA CHAUHAN</h3>
+            </div>
+           </div>
+      </div>
+<!-- Navigation Buttons -->
+<button class="prev" onclick="scrollCarousel('year2', -1)">&#10094;</button>
+<button class="next" onclick="scrollCarousel('year2', 1)">&#10095;</button>
+    </div>
+
+</section>
+
+ <!-- FOUNDER & CO-FOUNDER -->
+<section id="founders" class="founders-section">
+  <div class="section-box animate">
+    <h2>PILLARS OF THE CLUB</h2>
+    <div class="founders-profiles">
+      <!-- Founder -->
+      <div class="founder-profile">
+        <img src="founder.jpg" alt="Founder Photo">
+        <div class="founder-info">
+          <h3>MR. SHUBHAM SHUKLA</h3>
+          <p><i>Passionate about art and creativity, Shubham Shukla founded The Land of Art
+             to inspire students to explore their imagination and celebrate artistic expression.</i></p>
+        </div>
+      </div>
+      <!-- Co-Founder -->
+      <div class="founder-profile">
+        <img src="co-founder.jpg" alt="Co-Founder Photo">
+        <div class="founder-info">
+          <h3>MR. KUNAL KAPOOR</h3>
+          <p><i>Co-founder and art enthusiast, Kunal Kapoor works alongside 
+            to bring fresh ideas and organize amazing events for the club members.</i></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- CONTACT -->
+  <section id="contact-info">
+    <div class="section-box animate">
+      <h2>Contact Us</h2>
+      <p>📍 MIET, NH-58, Meerut</p>
+       <p>📧 <a href="mailto:thelandofart14@gmail.com"> thelandofart14@gmail.com </a></p>
+    </div>
+  </section>
+
+    <!-- FOOTER -->
+<footer class="animate">
+  <div class="footer-container">
+    <div class="footer-about">
+      <h3>The Land of Art</h3>
+      <p>A community where imagination turns into inspiration.  
+         Join us in celebrating colors, creativity, and culture.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#past-event">Past Events</a></li>
+        <li><a href="#contributions">Gallery</a></li>
+        <li><a href="#rangotsav">Rangotsav</a></li>
+        <li><a href="#contact-info">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-social">
+      <h4>Connect With Us</h4>
+      <p>
+        📧 <a href="mailto:thelandofart14@gmail.com"> thelandofart14@gmail.com </a></p>
+      <p>📍 MIET, NH-58, Meerut</p>
+      <p>
+        🌐 <a href="#">Website</a> |  
+        📸 <a href="https://www.instagram.com/the_land_of_art__?igsh=MXF6NW5jdmh5eDNjOQ==">Instagram</a> |  
+        </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 The Land of Art | All Rights Reserved</p>
+  </div>
+  </footer>
+  
+  <!-- SCRIPT -->
+  <script>
+   
+    /* === Smooth Scroll with Offset === */
+    document.querySelectorAll('nav ul li a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        const navHeight = document.querySelector('nav').offsetHeight;
+        const targetPos = target.offsetTop - navHeight;
+
+        window.scrollTo({
+          top: targetPos,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    /* === Highlight Active Nav Link === */
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    window.addEventListener('scroll', () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+
+  <script>
+// Set the date of Rangotsav
+const eventDate = new Date("Sep 12, 2025 00:00:00").getTime();
+
+const timer = setInterval(function() {
+  const now = new Date().getTime();
+  const distance = eventDate - now;
+
+  // Time calculations
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display result
+  document.getElementById("timer").innerHTML =
+      days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+  // If the countdown is finished
+  if (distance < 0) {
+    clearInterval(timer);
+    document.getElementById("timer").innerHTML = "🎉 Rangotsav 2025 has begun!";
+  }
+}, 1000);
+</script>
+
+// Carousel Functionality for Team Members
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const prev = document.querySelector('.prev');
+  const next = document.querySelector('.next');
+  let currentSlide = 0;
+
+  // Show the selected slide
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+  }
+
+  // Show first slide on load
+  showSlide(currentSlide);
+
+  // Prev / Next button functionality
+  if (prev && next) {
+    prev.addEventListener('click', () => {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    });
+
+    next.addEventListener('click', () => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    });
+  }
+</script>
+
+  <script>
+  // select all elements that should animate (sections + footer)
+  const animatedElements = document.querySelectorAll('.animate');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+      }
+    });
+  }, { threshold: 0.2 });
+
+  animatedElements.forEach(el => observer.observe(el));
+</script> 
+
+<script>
+
+  // Explore Button Click
+
+/* === Explore -> play doors -> redirect === */
+(function () {
+  const exploreBtn = document.getElementById('exploreBtn');
+  const overlay    = document.getElementById('doorOverlay');
+  const left       = document.querySelector('.door.left');
+  const right      = document.querySelector('.door.right');
+  const welcome    = document.querySelector('.welcome-text');
+  const sandstorm  = document.getElementById('sandstorm');
+
+  function createSandParticle() {
+    const sand = document.createElement('div');
+    sand.className = 'sand';
+    const size = Math.random() * 5 + 2;
+    sand.style.width  = size + 'px';
+    sand.style.height = size + 'px';
+    sand.style.left   = Math.random() * window.innerWidth + 'px';
+    sand.style.top    = Math.random() * window.innerHeight + 'px';
+    sand.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    sandstorm.appendChild(sand);
+    setTimeout(() => sand.remove(), 5000);
+  }
+
+  exploreBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // show overlay
+    overlay.style.display = 'block';
+
+    // kick off door animation next frame
+    requestAnimationFrame(() => {
+      left.classList.add('open-left');
+      right.classList.add('open-right');
+    });
+
+    // show welcome text slightly later
+    setTimeout(() => welcome.classList.add('show-text'), 1800);
+
+    // sandstorm while doors open
+    const sandInterval = setInterval(createSandParticle, 100);
+    setTimeout(() => clearInterval(sandInterval), 3200);
+
+    // redirect after animation (change to your real page)
+    setTimeout(() => {
+      // 🚀 mark that user came from Explore
+      sessionStorage.setItem("fromExplore", "true");
+      window.location.href = 'rangotsav.html';
+    }, 4000);
+  });
+})();
+
+// Door opening + sandstorm
+document.getElementById("doorOverlay").addEventListener("transitionend", function() {
+  setTimeout(() => {
+    document.querySelector(".door.left").classList.add("open-left");
+    document.querySelector(".door.right").classList.add("open-right");
+  }, 500);
+
+  // Welcome text
+  setTimeout(() => {
+    document.querySelector(".welcome-text").classList.add("show-text");
+  }, 2500);
+
+  // Remove overlay
+  setTimeout(() => {
+    document.getElementById("doorOverlay").style.display = "none";
+  }, 5000);
+
+  // === Sandstorm particles ===
+  const sandstorm = document.getElementById("sandstorm");
+
+  function createSandParticle() {
+    const sand = document.createElement("div");
+    sand.classList.add("sand");
+
+    // Random size and position
+    const size = Math.random() * 5 + 2; // 2px - 7px
+    sand.style.width = size + "px";
+    sand.style.height = size + "px";
+    sand.style.left = Math.random() * window.innerWidth + "px";
+    sand.style.top = Math.random() * window.innerHeight + "px";
+
+    // Random animation duration
+    const duration = Math.random() * 3 + 2; // 2s - 5s
+    sand.style.animationDuration = duration + "s";
+
+    sandstorm.appendChild(sand);
+
+    // Remove particle after animation
+    setTimeout(() => sand.remove(), duration * 1000);
+  }
+
+  // Generate particles until door disappears
+  const sandInterval = setInterval(createSandParticle, 100);
+
+  // Stop after doors fully open
+  setTimeout(() => clearInterval(sandInterval), 4000);
+});
+
+// ===== Schedule Animation (staggered reveal) =====
+const scheduleItems = document.querySelectorAll(".schedule ul.timeline li");
+
+function revealSchedule() {
+  let delay = 0;
+  scheduleItems.forEach((item) => {
+    const rect = item.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 50 && !item.classList.contains("show")) {
+      setTimeout(() => item.classList.add("show"), delay);
+      delay += 300; // stagger effect
+    }
+  });
+}
+
+window.addEventListener("scroll", revealSchedule);
+revealSchedule();
+</script>
+
+</body>
+</html>
