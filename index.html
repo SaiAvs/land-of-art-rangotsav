@@ -1090,9 +1090,22 @@ function scrollCarousel(id, direction) {
   }
 }
 </script>
+<script>
+  function scrollCarousel(carouselId, direction) {
+    const carousel = document.getElementById(carouselId);
+    const row = carousel.querySelector(".members-row");
+    const scrollAmount = 200; // how much to move per click (px)
+
+    row.scrollBy({
+      left: direction * scrollAmount,
+      behavior: "smooth"
+    });
+  }
+</script>
 
 </body>
 </html>
+
 
 
 
