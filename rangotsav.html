@@ -32,9 +32,7 @@ body { background: var(--sand); color: var(--ink); }
     position: relative;
     min-height: auto;
 }
-.bgcontainer h1{
-    font-size:5rem;
-}    
+
 .bg-overlay {
     position: absolute;
     top:0; left:0; width:100%; height:100%;
@@ -646,8 +644,10 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
 <div class="bg-container">
     <div class="bg-overlay"></div>
     <header class="fade-in">
+        <img src="rang logo.jpg" alt="Club Logo">
         <h1 class="animate-heading"> Rangotsav 2025</h1>
-        <p style="color: gold; font-weight: bold; font-size: 4rem;"><em>Celebrating Colors & Creativity</em></p>
+        
+        <p style="color: gold; font-weight: bold;">Celebrating Colors & Creativity</p>
         <div id="countdown" class="countdown" style="color: gold; font-weight: bold;"> Loading...</div>
         <br>
         <a href="#events" class="btn">Explore Events</a>
@@ -914,10 +914,30 @@ document.addEventListener('DOMContentLoaded', () => {
   revealOnScroll();
 });
 </script>
+
+  <script>
+    const doorOverlay = document.getElementById("doorOverlay");
+    const leftDoor = document.querySelector(".door.left");
+    const rightDoor = document.querySelector(".door.right");
+    const welcomeText = document.querySelector(".welcome-text");
+
+    // Always run animation when Rangotsav page loads
+    window.addEventListener("load", () => {
+      doorOverlay.style.display = "flex";
+
+      setTimeout(() => {
+        leftDoor.classList.add("open-left");
+        rightDoor.classList.add("open-right");
+      }, 50);
+
+      setTimeout(() => {
+        welcomeText.classList.add("show-text");
+      }, 1200);
+
+      setTimeout(() => {
+        doorOverlay.style.display = "none";
+      }, 3000);
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
