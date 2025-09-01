@@ -8,24 +8,6 @@
     /* ========== RESET ========== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: Arial, sans-serif; line-height: 1.6; background-image: url(bg.jpg); color: white; }
-    /* Reset body and html */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow-x: hidden; /* prevents side scroll */
-}
-
-/* Hero section full height with no gaps */
-#hero {
-  margin: 0;
-  padding: 0;
-  height: auto;              /* full viewport height */
-  display: flex;
-  align-items: center;        /* center vertically */
-  justify-content: center;    /* center horizontally */
-  box-sizing: border-box;
-}
 
     /* ========== NAVBAR ========== */
    nav {
@@ -43,8 +25,8 @@ html, body {
 
 nav .logo {
   display: flex;
-  align-items: anchor center;
-  gap: 2px;              
+  align-items: center;
+  gap: 15px;              
   font-weight: 400;
   font-size: 2rem;
   color: #fff;
@@ -76,7 +58,7 @@ nav ul li a {
 
     /* ========== HERO ========== */
     header.hero {
-  height: auto;           
+  height: auto;               /* full screen */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,17 +68,18 @@ nav ul li a {
   color: white;
   text-shadow: 0 3px 8px rgba(0,0,0,0.6);
   margin: 0;
-  padding: 0;                 
+  padding: 0;                  /* remove extra space */
   box-sizing: border-box;
-}
-header.hero {
-  padding-top: 80px;  /* adjust to match your navbar height */
 }
 
     header.hero h1 {
       font-size: 4rem;
       margin-bottom: 1rem;
     }
+    header.hero {
+  padding-top: 80px;  /* adjust to match your navbar height */
+}
+
   /* Banner container */
 .live-banner {
   position: relative;
@@ -147,7 +130,10 @@ header.hero {
     .btn-primary:hover {
       background: #eaac8b;
     }
-    
+
+/* Fullscreen overlay */
+
+
     /* Countdown Styling */
 .countdown-section {
       text-align: center;
@@ -715,7 +701,16 @@ footer {
 </a>
   </div>
 </section>
-  
+
+  <!-- Door Animation Overlay (auto visible) -->
+<div id="doorOverlay">
+  <div class="door left"></div>
+  <div class="door right"></div>
+  <div id="sandstorm"></div>
+  <!-- Welcome text to appear after door finish opening -->
+  <div class="welcome-text">🏺 Welcome to Rangotsav 2025 🏺</div>
+</div>
+
 <!-- PAST EVENTS -->
 <section id="past-event" class="past-section">
   <div class="section-box animate">
@@ -1073,6 +1068,96 @@ const timer = setInterval(function() {
 </script> 
 
 <script>
+
+  // Explore Button Click
+
+/* === Explore -> play doors -> redirect === */
+(function () {
+  const exploreBtn = document.getElementById('exploreBtn');
+  const overlay    = document.getElementById('doorOverlay');
+  const left       = document.querySelector('.door.left');
+  const right      = document.querySelector('.door.right');
+  const welcome    = document.querySelector('.welcome-text');
+  const sandstorm  = document.getElementById('sandstorm');
+
+
+
+  exploreBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // show overlay
+    overlay.style.display = 'block';
+
+    // kick off door animation next frame
+    requestAnimationFrame(() => {
+      left.classList.add('open-left');
+      right.classList.add('open-right');
+    });
+
+    // show welcome text slightly later
+    setTimeout(() => welcome.classList.add('show-text'), 1800);
+
+    // sandstorm while doors open
+    const sandInterval = setInterval(createSandParticle, 100);
+    setTimeout(() => clearInterval(sandInterval), 3200);
+
+    // redirect after animation (change to your real page)
+    setTimeout(() => {
+      // 🚀 mark that user came from Explore
+      sessionStorage.setItem("fromExplore", "true");
+      window.location.href = 'rangotsav.html';
+    }, 4000);
+  });
+})();
+
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("doorOverlay");
+  overlay.style.display = "block"; // make it visible
+
+  // Open the doors after short delay
+  setTimeout(() => {
+    document.querySelector(".door.left").classList.add("open-left");
+    document.querySelector(".door.right").classList.add("open-right");
+  }, 500);
+
+  // Show welcome text
+  setTimeout(() => {
+    document.querySelector(".welcome-text").classList.add("show-text");
+  }, 2500);
+
+  // Remove overlay
+  setTimeout(() => {
+    overlay.style.display = "none";
+  }, 5000);
+
+  // === Sandstorm particles ===
+  const sandstorm = document.getElementById("sandstorm");
+
+  function createSandParticle() {
+    const sand = document.createElement("div");
+    sand.classList.add("sand");
+
+    const size = Math.random() * 5 + 2;
+    sand.style.width = size + "px";
+    sand.style.height = size + "px";
+    sand.style.left = Math.random() * window.innerWidth + "px";
+    sand.style.top = Math.random() * window.innerHeight + "px";
+
+    const duration = Math.random() * 3 + 2;
+    sand.style.animationDuration = duration + "s";
+
+    sandstorm.appendChild(sand);
+
+    setTimeout(() => sand.remove(), duration * 1000);
+  }
+
+  const sandInterval = setInterval(createSandParticle, 100);
+
+  setTimeout(() => clearInterval(sandInterval), 4000);
+});
+
+</script>
+
 <script>
 function scrollCarousel(id, direction) {
   const carousel = document.getElementById(id);
@@ -1089,28 +1174,6 @@ function scrollCarousel(id, direction) {
   }
 }
 </script>
-<script>
-  function scrollCarousel(carouselId, direction) {
-    const carousel = document.getElementById(carouselId);
-    const row = carousel.querySelector(".members-row");
-    const scrollAmount = 200; // how much to move per click (px)
-
-    row.scrollBy({
-      left: direction * scrollAmount,
-      behavior: "smooth"
-    });
-  }
-</script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
