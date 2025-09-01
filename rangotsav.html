@@ -625,6 +625,13 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
 
 @keyframes fadeIn { to { opacity:1; } }
 @keyframes slideUp { to { opacity:1; transform: translateY(0); } }
+ @media screen and (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      header p { font-size: 1rem; }
+      .events-grid { grid-template-columns: 1fr; }
+      .bg-container h2 { font-size: 1.8rem; }
+      .section-container { padding: 15px; }
+ }
 
 </style>
 </head>
@@ -641,6 +648,7 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
 
 
 <!-- BACKGROUND -->
+ @media screen and (max-width: 768px)
 <div class="bg-container">
     <div class="bg-overlay"></div>
     <header class="fade-in">
