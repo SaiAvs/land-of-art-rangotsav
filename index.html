@@ -133,7 +133,7 @@ nav ul li a {
   z-index: 9999;
   perspective: 1200px;
   overflow: hidden;
-  display: none;
+  display: flex;
 }
 
 /* Doors */
@@ -141,7 +141,6 @@ nav ul li a {
   position: absolute;
   top: 0; width: 50%; height: 100%;
   background-image: url("door4 bg.jpg");
-  background-color: brown; /* fallback */
   background-size: cover;
   background-repeat: no-repeat;
   transition: transform 1.5s ease-in-out;
@@ -345,19 +344,7 @@ nav ul li a {
 /* Hanging Board Swing */
 .swingBoard {
   display: inline-block;
-  animation: swing 3s ease-in-out infinite;
   transform-origin: top center;
-}
-
-@keyframes swing {
-  0%   { transform: rotate(3deg); }
-  50%  { transform: rotate(-3deg); }
-  100% { transform: rotate(3deg); }
-}
-/* Rope swing */
-@keyframes swingRope {
-  0%,100% { transform: rotate(2deg); }
-  50% { transform: rotate(-2deg); }
 }
 
 /* ==== EXPLORE BUTTON ==== */
@@ -529,77 +516,70 @@ nav ul li a {
 
 .carousel {
   position: relative;
-  overflow: hidden;
-}
-
-.slide {
-  display: none;        /* hide all slides by default */
-  padding: 20px 0;
-}
-
-.slide.active {
-  display: block;       /* show only active slide */
+  margin: 20px 0;
 }
 
 .members-row {
   display: flex;
-  gap: 20px;
   overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 15px;
   padding: 10px 0;
 }
 
-.members-row::-webkit-scrollbar {
-  height: 8px;
+.members-row {
+  display: flex;
+  overflow-x: auto;             /* keep scroll functionality */
+  scroll-behavior: smooth;
+  gap: 15px;
+  padding: 10px 0;
+  -webkit-overflow-scrolling: touch; /* smooth on iOS */
+  -ms-overflow-style: none;     /* IE and old Edge */
+  scrollbar-width: none;       
 }
 
-.members-row::-webkit-scrollbar-thumb {
-  background: #b08968;
-  border-radius: 4px;
+/* Chrome/Safari/Edge (WebKit) */
+.members-row::-webkit-scrollbar {
+  height: 0;                    /* remove horizontal scrollbar height */
+  background: transparent;
+}
+.members-row::-webkit-scrollbar-track { background: transparent; }
+.members-row::-webkit-scrollbar-thumb { background: transparent; }
+
+/* Remove any stray scrollbar rules on child elements */
+.member-profile { 
+  /* keep this for layout but remove any scrollbar rules here */
+  overflow-wrap: break-word;
+}
+
+.member-profile {
+  flex: 0 0 auto;
+  width: 160px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  transition: transform 0.3s, background 0.3s;
 }
 
 .prev, .next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: #b08968;
+  background: #333;
+  color: #fff;
   border: none;
-  color: white;
-  font-size: 2rem;
-  padding: 5px 12px;
-  border-radius: 6px;
+  padding: 5px 10px;
   cursor: pointer;
-  z-index: 10;
+  z-index: 2;
 }
 
-.prev { left: 6px; }
-.next { right: 6px; }
-
-.prev:hover, .next:hover {
-  background: #9c6644;
-}
-
-.members-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
-  grid-template-rows: repeat(2, auto); /* Force 2 rows */
-  gap: 25px;
-  justify-items: center;
-  padding: 20px;
-}
-
-.member-profile {
-  min-width: 140px;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 10px;
-  border-radius: 10px;
-  flex-shrink: 0;
-  transition: transform 0.3s, background 0.3s;
-}
+.prev { left: 0; }
+.next { right: 0; }
 
 .member-profile img {
-  width: 160px;
-  height: 160px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   object-fit: cover;    /* crop nicely */
   box-shadow: 0 8px 20px rgba(0,0,0,0.25);
@@ -624,6 +604,15 @@ nav ul li a {
     margin-bottom: 30px;
     font-size: 2rem;
     color: white;
+}
+
+/* Reduce gap after batch section */
+.carousel:last-of-type {
+  margin-bottom: 20px;   /* was bigger before, now smaller */
+}
+
+#people .section-box {
+  margin-top: 10px;      /* bring heading closer */
 }
 
 .founders-section .founders-profiles {
@@ -667,20 +656,6 @@ nav ul li a {
     font-size: 2rem;
     color: white;
 }
-
-   .contact-section p,
-.contact-section a {
-  font-family: 'Poppins', sans-serif; 
-  font-size: 1rem;
-  color: #fcb9b2;  
-  text-decoration: none; 
-  font-weight: 500;
-}
-
-.contact-section a:hover {
-  color: #ffe66d; 
-}
-
 
     /* ===== FOOTER ===== */
 footer {
@@ -770,7 +745,7 @@ footer {
       <li><a href="#about" class="active">About</a></li>
       <li><a href="#rangotsav">Upcoming Events</a></li>
       <li><a href="#past-event">Past Events</a></li>
-      <li><a href="#contributions">Gallery</a></li>
+      <li><a href="#members">Team</a></li>
       <li><a href="#contact-info">Contact</a></li>
     </ul>
   </nav>
@@ -817,7 +792,9 @@ footer {
     <div id="timer" class="countdown-timer"></div>
 
     <br>
-    <a href="javascript:void(0)" class="btn" id="exploreBtn">Explore Rangotsav</a>
+    <a href="rangotsav.html" class="btn-primary animate" onclick="sessionStorage.setItem('fromExplore', 'true')">
+  Explore Rangotsav
+</a>
   </div>
 </section>
 
@@ -904,207 +881,141 @@ footer {
 </section>
 
   <!-- GALLERY -->
-  <section id="contributions" class="cont-section">
+  <section id="past-event" class="past-section">
     <div class="section-box animate">
       <h2>CONTRIBUTIONS</h2>
       <p><i>A glimpse into the beautiful artworks and memories created by our members.</i></p>
-      <div class="gallery-grid">
-      <img src="KOLA1-2022.jpg" alt="Event 1" class="large-image">
-      <img src="KOLA2-2022.jpg" alt="Event 2" class="large-image">
     </div>
-  </div>
+
+    <!--KOLHAAL 202-->
+    <section id="rangotsav-2018" class="rang-section">
+    <div class="hanging-board swingBoard">
+      <span class="rope"></span>
+      <div class="board">
+        <h2 class="event-title">KOLAAHAL 2022</h2>
+        <div class="gallery-grid">
+          <img src="KOLA1-2022.jpg" alt="Event 1">
+          <img src="KOLA2-2022.jpg" alt="Event 2">
+        </div>
+      </div>
+    </div>
   </section>
 
+  <section id="rangotsav-2022" class="rang-section">
+    <div class="hanging-board swingBoard">
+      <span class="rope"></span>
+      <div class="board">
+        <h2 class="event-title">KOLAAHAL 2024</h2>
+        <div class="gallery-grid">
+          <img src="KOLA1-2024.jpg" alt="Event 1">
+          <img src="KOLA2-2024.jpg" alt="Event 2">
+          <img src="KOLA3-2024.jpg" alt="Event 2">
+          <img src="KOLA4-2024.jpg" alt="Event 2">
+          <img src="KOLA5-2024.jpg" alt="Event 2">
+        </div>
+      </div>
+    </div>
+  </section>
+  </section>
+
+ <!-- FACULTY INCHARGE & CO-ORDINATOR -->
+<section id="founders" class="founders-section">
+  <div class="section-box animate">
+    <h2>MASTERSTROKES SQUAD</h2>
+    <div class="founders-profiles">
+      <!-- Founder -->
+      <div class="founder-profile">
+        <img src="incharge.jpg" alt="Founder Photo">
+        <div class="founder-info">
+          <h3>MRS.VISHVI KHATTRI</h3>
+          <p><i>A dedicated and inspiring mentor, whose guidance, encouragement, and unwavering support form
+             the backbone of our endeavors. With her vision and leadership, she continues 
+             to nurture creativity and discipline among students.</i></p>
+        </div>
+      </div>
+      <!-- Co-Founder -->
+      <div class="founder-profile">
+        <img src="coordinator.jpg" alt="Co-Founder Photo">
+        <div class="founder-info">
+          <h3>MRS. PRIYANKA SHARMA</h3>
+          <p><i>A committed and supportive guide, who brings both enthusiasm and responsibility to every task.
+            With her constant encouragement and thoughtful coordination, she ensures
+             the smooth functioning of our artistic journey.</i></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
   
 <!-- ================= TEAM MEMBERS ================= -->
 <section id="members" class="members-section">
   <div class="section-box animate">
     <h2>PEOPLE BEHIND THE VISION</h2>
-
-    <div class="year-group">
-      <!-- Slide: 4th Year -->
-      <div class="carousel" id="year4">
-      <div class="slide active">
-        <h3>BATCH 2022-26</h3>
-        <div class="members-row">
-          <div class="member-profile">
-            <img src=".jpg" alt="Member 1">
-            <h3>ATHARV GUPTA</h3>
-         </div>
-          <div class="member-profile">
-            <img src="rajshree-4.jpg" alt="Member 2">
-            <h3>RAJSHREE</h3>
-          </div>
-          <div class="member-profile">
-            <img src=".jpg" alt="Member 2">
-            <h3>ABHISHEK SINGH</h3>
-          </div>
-          <div class="member-profile">
-            <img src="vashika-4.jpg" alt="Member 2">
-            <h3>VASHIKA TYAGI</h3>
-          </div>
-          <div class="member-profile">
-            <img src="ujjawal-4.jpg" alt="Member 2">
-            <h3>UJJAWAL KUMAR</h3>
-          </div>
-          <div class="member-profile">
-            <img src="Saniya-4.jpg" alt="Member 2">
-            <h3>SANIYA</h3>
-          </div>
-          <div class="member-profile">
-            <img src="sunidhi-4.jpg" alt="Member 2">
-            <h3>SUNIDHI RANI</h3>
-          </div>
-          <div class="member-profile">
-            <img src="kavitra-4.jpg" alt="Member 2">
-            <h3>KAVITRA KUMARI</h3>
-          </div>
-            <div class="member-profile">
-            <img src=".jpg" alt="Member 2">
-            <h3>JANVI CHAUHAN</h3>
-          </div>
-          </div>
-        </div>
-<!-- Navigation Buttons -->
-<button class="prev" onclick="scrollCarousel('year4', -1)">&#10094;</button>
-<button class="next" onclick="scrollCarousel('year4', 1)">&#10095;</button>
-
-</div>
-
-      <div class="year-group">
-      <!-- Slide: 3rd Year -->
-       <div class="carousel" id="year3">
-      <div class="slide active">
-        <h3>BATCH 2023-27</h3>
-        <div class="members-row">
-          <div class="member-profile">
-            <img src="tapan-3.jpg" alt="Member 1">
-            <h3>TAPAN MISHRA</h3>
-            </div>
-           <div class="member-profile">
-            <img src="tanisha-3.jpg" alt="Member 1">
-            <h3>TANISHA SONI</h3>
-            </div>
-          <div class="member-profile">
-            <img src="tanuraj-3.jpg" alt="Member 1">
-            <h3>TANURAJ SIROHI</h3>
-            </div>
-          <div class="member-profile">
-            <img src=".jpg" alt="Member 1">
-            <h3>ANSHIKA BHARDWAJ</h3>
-            </div>
-          <div class="member-profile">
-            <img src="anshika v-3.jpg" alt="Member 1">
-            <h3>ANSHIKA VERMA</h3>
-          </div>
-          <div class="member-profile">
-            <img src="arnav-3.jpg" alt="Member 1">
-            <h3>ARNAV CHAUDHARY</h3>
-          </div>
-          <div class="member-profile">
-            <img src="anubhav-3.jpg" alt="Member 1">
-            <h3>ANUBHAV KUMAR SINGH</h3>
-          </div>
-          <div class="member-profile">
-            <img src="suhani-3.jpg" alt="Member 1">
-            <h3>SUHANI VERMA</h3>
-            </div>
-          <div class="member-profile">
-            <img src="sonakshi-3.jpg" alt="Member 1">
-            <h3>SONAKSHI</h3>
-            </div>
-          <div class="member-profile">
-            <img src="avinash-3.jpg" alt="Member 1">
-            <h3>AVINASH KUMAR KARNAL</h3>
-            </div>
-         <div class="member-profile">
-            <img src=".jpg" alt="Member 1">
-            <h3>DEEPAK YADAV</h3>
-            </div>
-          <div class="member-profile">
-            <img src=".jpg" alt="Member 1">
-            <h3>VANSH MITTAL</h3>
-            </div>
-          </div>    
-        </div>
-          <!-- Navigation Buttons -->
-<button class="prev" onclick="scrollCarousel('year3', -1)">&#10094;</button>
-<button class="next" onclick="scrollCarousel('year3', 1)">&#10095;</button>
-      </div>
-
-     <div class="year-group">
-      <!-- Slide: 2nd Year -->
-      <div class="carousel" id="year2">
-      <div class="slide active">
-        <h3>BATCH 2024-28</h3>
-        <div class="members-row">
-          <div class="member-profile">
-            <img src="vasu-2.jpg" alt="Member 1">
-            <h3>VASU UPADHYAY</h3>
-            </div>
-          <div class="member-profile">
-            <img src="shubhangi-2.jpg" alt="Member 1">
-            <h3>SHUBHANGI SINGH</h3>
-            </div>
-            <div class="member-profile">
-            <img src="aditi-2.jpg" alt="Member 1">
-            <h3>ADITI CHAUDHARY</h3>
-            </div>
-            <div class="member-profile">
-            <img src="saianshi-2.jpg" alt="Member 1">
-            <h3>SAIANSHI SAXENA</h3>
-            </div>
-            <div class="member-profile">
-            <img src="nitish-2.jpg" alt="Member 1">
-            <h3>NITISH TOMAR</h3>
-            </div>
-            <div class="member-profile">
-            <img src="aditya-2.jpg" alt="Member 1">
-            <h3>ADITYA SHARMA</h3>
-            </div>
-            <div class="member-profile">
-            <img src="anushka-2.jpg" alt="Member 1">
-            <h3>ANUSHKA AGARWAL</h3>
-            </div>
-            <div class="member-profile">
-            <img src="nikita-2.jpg" alt="Member 1">
-            <h3>NIKITA PAL</h3>
-            </div>
-            <div class="member-profile">
-            <img src="sarthak-2.jpg" alt="Member 1">
-            <h3>SARTHAK RANA</h3>
-            </div>
-            <div class="member-profile">
-            <img src="jagriti-2.jpg" alt="Member 1">
-            <h3>JAGRITI GUPTA</h3>
-            </div>
-            <div class="member-profile">
-            <img src="priyanshi-2.jpg" alt="Member 1">
-            <h3>PRIYANSHI CHAUHAN</h3>
-            </div>
-            <div class="member-profile">
-            <img src="vansh-2.jpg" alt="Member 1">
-            <h3>VANSH KUMAR</h3>
-            </div>
-            <div class="member-profile">
-            <img src="areeb-2.jpg" alt="Member 1">
-            <h3>AREEB SIDDIQUI</h3>
-            </div>
-            <div class="member-profile">
-            <img src="jpg" alt="Member 1">
-            <h3>KARTIK SHARMA</h3>
-            </div>
-            <div class="member-profile">
-            <img src="jpg" alt="Member 1">
-            <h3>SHREYA CHAUHAN</h3>
-            </div>
-        </div>
-      </div>
-<!-- Navigation Buttons -->
-<button class="prev" onclick="scrollCarousel('year2', -1)">&#10094;</button>
-<button class="next" onclick="scrollCarousel('year2', 1)">&#10095;</button>
+    <section id="team">
+  <!-- 4th Year -->
+  <div class="carousel" id="year4">
+    <h3>Batch 2022-26</h3>
+    <div class="members-row">
+      <div class="member-profile"><img src="atharv-4.jpg"><p>ATHARV GUPTA</p></div>
+      <div class="member-profile"><img src="rajshree-4.jpg"><p>RAJSHREE</p></div>
+      <div class="member-profile"><img src="abhishek-4.jpg"><p>ABHISHEK KUMAR SINGH</p></div>
+      <div class="member-profile"><img src="vashika-4.jpg"><p>VASHIKA TYAGI</p></div>
+      <div class="member-profile"><img src="ujjawal-4.jpg"><p>UJJAWAL KUMAR</p></div>
+      <div class="member-profile"><img src="Saniya-4.jpg"><p>SANIYA</p></div>
+      <div class="member-profile"><img src="sunidhi-4.jpg"><p>SUNIDHI RANI</p></div>
+      <div class="member-profile"><img src="kavitra-4.jpg"><p>KAVITRA KUMARI</p></div>
+      <div class="member-profile"><img src="janvi-4.jpg"><p>JANVI CHAUHAN</p></div> 
     </div>
+    <button class="prev" onclick="scrollCarousel('year4', -1)">&#10094;</button>
+    <button class="next" onclick="scrollCarousel('year4', 1)">&#10095;</button>
+  </div>
 
+  <!-- 2nd Year -->
+  <div class="carousel" id="year3">
+    <h3>Batch 2023-27</h3>
+    <div class="members-row">
+      <div class="member-profile"><img src="tapan-3.jpg"><p>TAPAN MISHRA</p></div>
+      <div class="member-profile"><img src="tanisha-3.jpg"><p>TANISHA SONI</p></div>
+      <div class="member-profile"><img src="tanuraj-3.jpg"><p>TANURAJ SIROHI</p></div>
+      <div class="member-profile"><img src="anubhav-3.jpg"><p>ANUBHAV KUMAR SINGH</p></div>
+      <div class="member-profile"><img src="anshika b-3.jpg"><p>ANSHIKA BHARDWAJ</p></div>
+      <div class="member-profile"><img src="anshika v-3.jpg"><p>ANSHIKA VERMA</p></div>
+      <div class="member-profile"><img src="arnav-3.jpg"><p>ARNAV CHAUDHARY</p></div>
+      <div class="member-profile"><img src="suhani-3.jpg"><p>SUHANI VERMA</p></div>
+      <div class="member-profile"><img src="sonakshi-3.jpg"><p>SONAKSHI</p></div>
+      <div class="member-profile"><img src="avinash-3.jpg"><p>AVINASH KUMAR KARNAL</p></div>
+      <div class="member-profile"><img src="deepak-3.jpg"><p>DEEPAK YADAV</p></div>
+      <div class="member-profile"><img src="vansh-3.jpg"><p>VANSH MITTAL</p></div>
+    </div>
+    <button class="prev" onclick="scrollCarousel('year3', -1)">&#10094;</button>
+    <button class="next" onclick="scrollCarousel('year3', 1)">&#10095;</button>
+  </div>
+
+  <!-- 4th Year -->
+  <div class="carousel" id="year2">
+    <h3>Batch 2024-28</h3>
+    <div class="members-row">
+      <div class="member-profile"><img src="vasu-2.jpg"><p>VASU UPADHYAY </p></div>
+      <div class="member-profile"><img src="shubhangi-2.jpg"><p>SHUBHANGI SINGH</p></div>
+      <div class="member-profile"><img src="saianshi-2.jpg"><p>SAIANSHI SAXENA</p></div>
+      <div class="member-profile"><img src="aditi-2.jpg"><p>ADITI CHAUDHARY</p></div>
+      <div class="member-profile"><img src="aditya-2.jpg"><p>ADITYA SHARMA</p></div>
+      <div class="member-profile"><img src="anushka-2.jpg"><p>ANUSHKA AGARWAL</p></div>
+      <div class="member-profile"><img src="nitish-2.jpg"><p>NITISH TOMAR</p></div>
+      <div class="member-profile"><img src="nikita-2.jpg"><p>NIKITA PAL</p></div>
+      <div class="member-profile"><img src="sarthak-2.jpg"><p>SARTHAK RANA</p></div>
+      <div class="member-profile"><img src="jagriti-2.jpg"><p>JAGRITI GUPTA</p></div>
+      <div class="member-profile"><img src="priyanshi-2.jpg"><p>PRIYANSHI CHAUHAN</p></div>
+      <div class="member-profile"><img src="vansh-2.jpg"><p>VANSH KUMAR</p></div>
+      <div class="member-profile"><img src="areeb-2.jpg"><p>AREEB SIDDIQUI</p></div>
+      <div class="member-profile"><img src="kartik-2.jpg"><p>KARTIK SHARMA</p></div>
+      <div class="member-profile"><img src="shreya-2.jpg"><p>SHREYA CHAUHAN</p></div>
+    </div>
+    <button class="prev" onclick="scrollCarousel('year2', -1)">&#10094;</button>
+    <button class="next" onclick="scrollCarousel('year2', 1)">&#10095;</button>
+  </div>
+</section>
+ </div>
 </section>
 
  <!-- FOUNDER & CO-FOUNDER -->
@@ -1134,18 +1045,8 @@ footer {
   </div>
 </section>
 
-
-  <!-- CONTACT -->
-  <section id="contact-info">
-    <div class="section-box animate">
-      <h2>Contact Us</h2>
-      <p>📍 MIET, NH-58, Meerut</p>
-       <p>📧 <a href="mailto:thelandofart14@gmail.com"> thelandofart14@gmail.com </a></p>
-    </div>
-  </section>
-
     <!-- FOOTER -->
-<footer class="animate">
+<footer class="animate" id="contact-info">
   <div class="footer-container">
     <div class="footer-about">
       <h3>The Land of Art</h3>
@@ -1158,7 +1059,7 @@ footer {
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#past-event">Past Events</a></li>
-        <li><a href="#contributions">Gallery</a></li>
+        <li><a href="#members">Team</a></li>
         <li><a href="#rangotsav">Rangotsav</a></li>
         <li><a href="#contact-info">Contact</a></li>
       </ul>
@@ -1247,37 +1148,6 @@ const timer = setInterval(function() {
 }, 1000);
 </script>
 
-// Carousel Functionality for Team Members
-<script>
-  const slides = document.querySelectorAll('.slide');
-  const prev = document.querySelector('.prev');
-  const next = document.querySelector('.next');
-  let currentSlide = 0;
-
-  // Show the selected slide
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
-    });
-  }
-
-  // Show first slide on load
-  showSlide(currentSlide);
-
-  // Prev / Next button functionality
-  if (prev && next) {
-    prev.addEventListener('click', () => {
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      showSlide(currentSlide);
-    });
-
-    next.addEventListener('click', () => {
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
-    });
-  }
-</script>
-
   <script>
   // select all elements that should animate (sections + footer)
   const animatedElements = document.querySelectorAll('.animate');
@@ -1306,18 +1176,7 @@ const timer = setInterval(function() {
   const welcome    = document.querySelector('.welcome-text');
   const sandstorm  = document.getElementById('sandstorm');
 
-  function createSandParticle() {
-    const sand = document.createElement('div');
-    sand.className = 'sand';
-    const size = Math.random() * 5 + 2;
-    sand.style.width  = size + 'px';
-    sand.style.height = size + 'px';
-    sand.style.left   = Math.random() * window.innerWidth + 'px';
-    sand.style.top    = Math.random() * window.innerHeight + 'px';
-    sand.style.animationDuration = (Math.random() * 3 + 2) + 's';
-    sandstorm.appendChild(sand);
-    setTimeout(() => sand.remove(), 5000);
-  }
+
 
   exploreBtn?.addEventListener('click', (e) => {
     e.preventDefault();
@@ -1347,21 +1206,24 @@ const timer = setInterval(function() {
   });
 })();
 
-// Door opening + sandstorm
-document.getElementById("doorOverlay").addEventListener("transitionend", function() {
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("doorOverlay");
+  overlay.style.display = "block"; // make it visible
+
+  // Open the doors after short delay
   setTimeout(() => {
     document.querySelector(".door.left").classList.add("open-left");
     document.querySelector(".door.right").classList.add("open-right");
   }, 500);
 
-  // Welcome text
+  // Show welcome text
   setTimeout(() => {
     document.querySelector(".welcome-text").classList.add("show-text");
   }, 2500);
 
   // Remove overlay
   setTimeout(() => {
-    document.getElementById("doorOverlay").style.display = "none";
+    overlay.style.display = "none";
   }, 5000);
 
   // === Sandstorm particles ===
@@ -1371,46 +1233,41 @@ document.getElementById("doorOverlay").addEventListener("transitionend", functio
     const sand = document.createElement("div");
     sand.classList.add("sand");
 
-    // Random size and position
-    const size = Math.random() * 5 + 2; // 2px - 7px
+    const size = Math.random() * 5 + 2;
     sand.style.width = size + "px";
     sand.style.height = size + "px";
     sand.style.left = Math.random() * window.innerWidth + "px";
     sand.style.top = Math.random() * window.innerHeight + "px";
 
-    // Random animation duration
-    const duration = Math.random() * 3 + 2; // 2s - 5s
+    const duration = Math.random() * 3 + 2;
     sand.style.animationDuration = duration + "s";
 
     sandstorm.appendChild(sand);
 
-    // Remove particle after animation
     setTimeout(() => sand.remove(), duration * 1000);
   }
 
-  // Generate particles until door disappears
   const sandInterval = setInterval(createSandParticle, 100);
 
-  // Stop after doors fully open
   setTimeout(() => clearInterval(sandInterval), 4000);
 });
 
-// ===== Schedule Animation (staggered reveal) =====
-const scheduleItems = document.querySelectorAll(".schedule ul.timeline li");
-
-function revealSchedule() {
-  let delay = 0;
-  scheduleItems.forEach((item) => {
-    const rect = item.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 50 && !item.classList.contains("show")) {
-      setTimeout(() => item.classList.add("show"), delay);
-      delay += 300; // stagger effect
-    }
-  });
+</script>
+<script>
+function scrollCarousel(id, direction) {
+  const carousel = document.getElementById(id);
+  const row = carousel.querySelector('.members-row');
+  const profile = row.querySelector('.member-profile');
+  
+  if (profile) {
+    // width of one profile + margin
+    const scrollAmount = profile.offsetWidth + 16; 
+    row.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }
 }
-
-window.addEventListener("scroll", revealSchedule);
-revealSchedule();
 </script>
 
 </body>
