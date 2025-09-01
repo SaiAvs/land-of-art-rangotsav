@@ -74,7 +74,7 @@ box-shadow: 0 10px 20px rgba(0,0,0,.3); }
   z-index: 9999;
   perspective: 1200px;
   overflow: hidden;
-  display: none;
+  display: flex;
 }
 
 /* Doors */
@@ -82,7 +82,6 @@ box-shadow: 0 10px 20px rgba(0,0,0,.3); }
   position: absolute;
   top: 0; width: 50%; height: 100%;
   background-image: url("door4 bg.jpg");
-  background-color: brown; /* fallback */
   background-size: cover;
   background-repeat: no-repeat;
   transition: transform 1.5s ease-in-out;
@@ -287,12 +286,312 @@ box-shadow: 0 10px 20px rgba(0,0,0,.3); }
     filter: brightness(1.05);
     box-shadow: 0 8px 20px rgba(0,0,0,.3);
 }
+/* ===== EVENT SCHEDULE TIMELINE ===== */
+.section-title{
+      text-align:center;
+      font-size:2.5rem;
+      margin-bottom:2rem;
+      color:#b8860b;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    /* Timeline container */
+.timeline {
+  position: relative;
+  margin: 2rem auto;
+  padding: 2rem 0;
+  width: 80%;
+  background-image: url(schedule.jpg);
+}
+
+/* vertical golden line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background: #99582a;
+  transform: translateX(-50%);
+  z-index: 0; /* line stays behind */
+}
+
+/* Scroll reveal */
+.timeline-content {
+  background: var(--sand);
+  border: 2px solid var(--gold);
+  border-radius: 10px;
+  padding: 1rem;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+  /* animation defaults */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
+}
+
+.timeline-content h3 {
+  font-size: 1.8rem;
+  color: #444;
+  margin-bottom: 0.3rem;
+}
+
+/* When card is visible */
+.timeline-content.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gentle hover effect */
+.timeline-content:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+}
+
+/* Each event */
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 1rem 2rem;
+}
+
+/* Alternate left & right */
+.timeline-item:nth-child(odd) {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+  text-align: left;
+}
+
+/* Card style */
+.timeline-content {
+  background: var(--sand);
+  border: 2px solid var(--gold);
+  border-radius: 10px;
+  padding: 1rem;
+  display: inline-block;
+  position: relative;
+  z-index: 1; /* ensures cards are above the line */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.day-title {
+  position: relative;
+  z-index: 2;
+  margin: 2rem auto 1rem;   /* auto centers it */
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: var(--sand);
+  display: block;           /* take full width */
+  text-align: center;       /* center the text */
+  width: fit-content;       /* shrink to text width */
+  padding: 0.3rem 1rem;
+  border-radius: 8px;
+}
+
+/* Animation */
+    .timeline-content.show{opacity:1;transform:translateY(0);}
+
+    .timeline-content h4{font-size:1.2rem;color:#444;margin-bottom:0.3rem;}
+    .timeline-content span{font-size:0.95rem;color:#666;}
+
+    @media(max-width:768px){
+      .timeline::before{left:8px;}
+      .timeline-item{width:100%;padding-left:2.5rem;text-align:left;}
+      .timeline-item::before{left:0;}
+    }
 
 /* ===== COUNTDOWN ===== */
 .countdown {
     font-size: 2rem;
     margin-top: 20px;
     font-weight: bold;
+}
+
+.band-performance {
+  position: relative;
+  overflow: hidden;
+  background-image: url('band.jpg'); /* your image */
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  padding: 40px;          /* ensures space for text */
+  color: #fff;            /* make text white */
+  min-height: 300px;      /* keeps section tall enough */
+}
+
+/* Dark overlay */
+.band-performance::before {
+  content: "";
+  position: absolute;
+  inset: 0;  
+  background: rgba(0, 0, 0, 0.3); 
+  border-radius: 15px;
+  z-index: 0;
+}
+
+.band-performance > * {
+  position: relative;
+  z-index: 1;
+}
+.band-performance h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+.band-performance p {
+  font-size: 1.8rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+  font-weight: bold;
+}
+
+#focus .band-performance:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
+.dance-battle {
+  position: relative;
+  overflow: hidden;
+  background-image: url('dance.jpg'); /* your image */
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  padding: 40px;          /* ensures space for text */
+  color: #fff;            /* make text white */
+  min-height: 300px;      /* keeps section tall enough */
+}
+
+/* Dark overlay */
+.dance-battle::before {
+  content: "";
+  position: absolute;
+  inset: 0;  
+  background: rgba(0, 0, 0, 0.3); 
+  border-radius: 15px;
+  z-index: 0;
+}
+
+.dance-battle > * {
+  position: relative;
+  z-index: 1;
+}
+.dance-battle h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+.dance-battle p {
+  font-size: 1.8rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+  font-weight: bold;
+}
+
+#focus .dance-battle:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
+.art-of-the-year {
+  position: relative;
+  overflow: hidden;
+  background-image: url('chitrayatra.jpg'); 
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  padding: 40px;          /* ensures space for text */
+  color: #fff;            /* make text white */
+  min-height: 300px;      /* keeps section tall enough */
+}
+
+/* Dark overlay */
+.art-of-the-year::before {
+  content: "";
+  position: absolute;
+  inset: 0;  
+  background: rgba(0, 0, 0, 0.3); 
+  border-radius: 15px;
+  z-index: 0;
+}
+
+.art-of-the-year > * {
+  position: relative;
+  z-index: 1;
+}
+.art-of-the-year h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  color: #fff;
+}
+.art-of-the-year p {
+  font-size: 1.8rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+  font-weight: bold;
+}
+
+#focus .art-of-the-year:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
+.color-hunt {
+  position: relative;
+  overflow: hidden;
+  background-image: url('color hunt.jpg'); /* your image */
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  padding: 40px;          /* ensures space for text */
+  color: #fff;            /* make text white */
+  min-height: 300px;      /* keeps section tall enough */
+}
+
+/* Dark overlay */
+.color-hunt::before {
+  content: "";
+  position: absolute;
+  inset: 0;  
+  background: rgba(0, 0, 0, 0.3); 
+  border-radius: 15px;
+  z-index: 0;
+}
+
+.color-hunt > * {
+  position: relative;
+  z-index: 1;
+}
+.color-hunt h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+.color-hunt p {
+  font-size: 1.8rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+  font-weight: bold;
+}
+
+#focus .color-hunt:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
 }
 
 /* ===== GALLERY ===== */
@@ -326,25 +625,6 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
 
 @keyframes fadeIn { to { opacity:1; } }
 @keyframes slideUp { to { opacity:1; transform: translateY(0); } }
-
-/* ===== BACK TO TOP BUTTON ===== */
-#backToTop {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: linear-gradient(135deg, var(--gold), #e6c35e);
-    color: #1a1207; 
-    padding: 10px 15px;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    cursor: pointer;
-    display: none;
-    z-index: 10;
-    box-shadow: 0 6px 16px rgba(0,0,0,.25);
-    transition: transform 0.25s ease, filter 0.25s ease;
-}
-
-#backToTop:hover { background: #7f5d1f; }
 
 </style>
 </head>
@@ -382,136 +662,152 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
         <h3>BOTTLE PAINTING</h3>
         <p class="time"> 10:00 AM </p>
         <p class="desc">Unleash creativity by turning simple glass bottles into vibrant art pieces</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0WoMyAXxU24aWjHq-yW9sgW_5Qw2VMeaGg0jzygkFCDkfjQ/viewform?usp=sharing&ouid=110576097475187750050" target="_blank" class="register-btn">Register Here</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc146G3ip3w11Kw8ug5BuSVNf2QXev67XChiOWDcWv0eVKYsg/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('chalk\ art.jpg') center/cover no-repeat; color:#fff;">
         <h3>CHALK ART</h3>
         <p class="time"> 11:00 AM</p>
         <p class="desc">ABring streets and boards alive with colorful chalk-based drawings</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0WoMyAXxU24aWjHq-yW9sgW_5Qw2VMeaGg0jzygkFCDkfjQ/viewform?usp=sharing&ouid=110576097475187750050" target="_blank" class="register-btn">Register Here</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScTuh_5rOdtru2Uuaog3IpleDUvywyfYKBXo4CkF2VoJbADKA/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('tattoo.jpg') center/cover no-repeat; color:#fff;">
         <h3>TATTOO MAKING</h3>
         <p class="time"> 12:00 NOON</p>
         <p class="desc">Express yourself with artistic temporary tattoos designed by skilled creators</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0WoMyAXxU24aWjHq-yW9sgW_5Qw2VMeaGg0jzygkFCDkfjQ/viewform?usp=sharing&ouid=110576097475187750050" target="_blank" class="register-btn">Register Here</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSenD4SR9bffO9kLpdHGUyzjayguycv8ggLzykBRyTHLM4modQ/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('calligraphy.jpg') center/cover no-repeat; color:#fff;">
         <h3>CALLIGRAPHY</h3>
         <p class="time"> 1:30 PM</p>
         <p class="desc">Discover the beauty of artistic handwriting and lettering styles</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0WoMyAXxU24aWjHq-yW9sgW_5Qw2VMeaGg0jzygkFCDkfjQ/viewform?usp=sharing&ouid=110576097475187750050" target="_blank" class="register-btn">Register Here</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfY11UJ8hCXM8-j_0YdEFmcRysGQhZzixQOuDs4rPNdpyKVGQ/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('mehendi\ art.jpg') center/cover no-repeat; color:#fff;">
         <h3>MEHENDI ART</h3>
         <p class="time"> 02:30 PM</p>
         <p class="desc">Decorate hands with intricate mehendi designs full of tradition and elegance</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0WoMyAXxU24aWjHq-yW9sgW_5Qw2VMeaGg0jzygkFCDkfjQ/viewform?usp=sharing&ouid=110576097475187750050" target="_blank" class="register-btn">Register Here</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6xv06Zvm2gph5EEve5kUrPTAeNakIwVpeqZoAwFqdEbnhOA/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('blindfold.jpg') center/cover no-repeat; color:#fff;">
         <h3>BLIND ART</h3>
         <p class="time"> 03:30 PM</p>
         <p class="desc">A fun challenge where participants create art while blindfolded</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0WoMyAXxU24aWjHq-yW9sgW_5Qw2VMeaGg0jzygkFCDkfjQ/viewform?usp=sharing&ouid=110576097475187750050" target="_blank" class="register-btn">Register Here</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfPoaZ5KoTITLK7ymB8-Vsz1CoNMioqdnVsuVbgrF_JTpy_ew/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('soap\ carv.jpg') center/cover no-repeat; color:#fff;">
         <h3>SOAP CARVING</h3>
         <p class="time"> 09:00 AM</p>
         <p class="desc">Shape delicate patterns and sculptures from soap bars using creativity.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0WoMyAXxU24aWjHq-yW9sgW_5Qw2VMeaGg0jzygkFCDkfjQ/viewform?usp=sharing&ouid=110576097475187750050" target="_blank" class="register-btn">Register Here</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJoPSR5Qzjbc-RJH1gNYpf67fkb1NWPGvQ77XBIPCLSiS_-Q/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('rangoli.jpg') center/cover no-repeat; color:#fff;">
-        <h3>RANGLOLI</h3>
+        <h3>RANGOLI</h3>
         <p class="time"> 10:00 AM</p>
         <p class="desc">Brighten the floor with colorful rangolis made from powders and flowers</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0WoMyAXxU24aWjHq-yW9sgW_5Qw2VMeaGg0jzygkFCDkfjQ/viewform?usp=sharing&ouid=110576097475187750050" target="_blank" class="register-btn">Register Here</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfxrJJ7fpYsYtnWLGGu_i6GonNL7v9sTHiftk7wtYWvBr8_Vw/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('nail.jpg') center/cover no-repeat; color:#fff;">
-  <h3>NAIL ART</h3>
-  <p class="time"> 11:00 AM</p>
-  <p class="desc">Tiny canvases, big creativity – decorate nails with unique designs</p>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0WoMyAXxU24aWjHq-yW9sgW_5Qw2VMeaGg0jzygkFCDkfjQ/viewform?usp=sharing&ouid=110576097475187750050" target="_blank" class="register-btn">Register Here</a>
-</div>
+        <h3>NAIL ART</h3>
+        <p class="time"> 11:00 AM</p>
+        <p class="desc">Tiny canvases, big creativity – decorate nails with unique designs</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeE3Grm6advRW6sG8_VdKi50eBU-QF8NCbP8f_CLJtjpC4CKw/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
+      </div>
 
-<div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('sand.jpg') center/cover no-repeat; color:#fff;">
-  <h3>SAND ART</h3>
-  <p class="time"> 12:00 NOON</p>
-  <p class="desc">Craft stunning patterns and images using layers of colored sand</p>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0WoMyAXxU24aWjHq-yW9sgW_5Qw2VMeaGg0jzygkFCDkfjQ/viewform?usp=sharing&ouid=110576097475187750050" target="_blank" class="register-btn">Register Here</a>
-</div>
+      <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('sand.jpg') center/cover no-repeat; color:#fff;">
+        <h3>SAND ART</h3>
+        <p class="time"> 12:00 NOON</p>
+        <p class="desc">Craft stunning patterns and images using layers of colored sand</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd8jQdwCYl_lGNAn-08EwFsGK_jljM6MROmOXZnmIcCdIdT_g/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
+      </div>
 
     </div>
   </div>
 </section>
 
+ <!-- EVENT SCHEDULE -->
+<section id="schedule">
+  <h2 class="section-title">Event Schedule</h2>
+  <!-- Day 1 -->
+  <h3 class="day-title">Day 1</h3>
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-content"><h4>Inauguration</h4><span>9:00 AM – 10:00 AM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Bottle Painting</h4><span>10:00 AM – 11:00 AM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Chalk Art</h4><span>11:00 AM – 12:00 PM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Tattoo Making</h4><span>12:00 PM – 1:00 PM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Calligraphy</h4><span>1:30 PM – 2:30 PM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Mehendi</h4><span>2:30 PM – 3:30 PM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Blind Art</h4><span>3:30 PM – 4:30 PM</span></div></div>
+  </div>
 
-
-
-<!-- 🎉 EVENT SCHEDULE TIMELINE -->
-
+  <!-- Day 2 -->
+  <h3 class="day-title">Day 2</h3>
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-content"><h4>Soap Carving</h4><span>9:00 AM – 10:00 AM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Rangoli</h4><span>10:00 AM – 11:00 AM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Nail Art</h4><span>11:00 AM – 12:00 PM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Sand Art</h4><span>12:00 PM – 1:00 PM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Band Performance</h4><span>2:00 PM – 3:00 PM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Mob</h4><span>3:15 PM – 3:30 PM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Dance Battle (Solo & Duo)</h4><span>3:30 PM – 4:30 PM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Closing</h4><span>5:30 PM – 6:00 PM</span></div></div>
+  </div>
+</section>
 
 <!-- ART OF THE YEAR -->
 <section id="focus" class="focus-section slide-up">
   <div class="section-container">
-    <h2> ART OF THE YEAR</h2>
-    <p></p>
+    <div class="art-of-the-year">
+    <h2> Chitrayatra (The Art Exhibition and Competition) </h2>
+    <p>A platform where you can showcase your art and be a part of the competition. 
+      Bring your best artworks to win the title "Art of the Year".
+</p>
 <br>
+</div>
+</div>
 </section>
 
 <!-- COLOR HUNT -->
 <section id="focus" class="focus-section slide-up">
   <div class="section-container">
-    <h2> COLOR HUNT</h2>
-    <p></p>
+    <div class="color-hunt">
+    <h2> Color Hunt (A Colorful Treasure Hunt)</h2>
+    <p>A treasure hunt filled with colors and vibes. 
+      Register now and participate in the college’s biggest treasure hunt!
+</p>
 <br>
+</div>
+</div>
 </section>
 
 <!-- BAND PERFORMANCE -->
 <section id="focus" class="focus-section slide-up">
   <div class="section-container">
-    <h2>BAND PERFORMANCE</h2>
-    <p></p>
+    <div class="band-performance">
+    <h2>Band Performance</h2>
+    <p>An electrifying live performance by our very own college band “Swaraang”</p>
 <br>
-</section>
-
-<!-- MOB-->
-<section id="focus" class="focus-section slide-up">
-  <div class="section-container">
-    <h2>MOB</h2>
-    <p></p>
-<br>
+</div>
+</div>
 </section>
 
 <!-- DANCE BATTLE -->
 <section id="focus" class="focus-section slide-up">
   <div class="section-container">
-    <h2>DANCE BATTLE</h2>
-    <p></p>
+    <div class="dance-battle">
+    <h2>Dance Battle (Solo and Duo)</h2>
+    <p>Not your ordinary dance performances — this battle brings something special: direct face-offs 
+      with your competitors and loads of fun!
+Register now for the auditions.
+</p>
 <br>
-</section>
-
-<!-- COMPETITIONS -->
-<section class="slide-up">
-  <div class="section-container">
-    <h2 class="animate-heading">COMPETITIONS</h2>
-    <p> WELCOME TO THE WORLD FULL OF CREATIVITY </p>
-  </div>
-</section>
-
-<!--CHITRAYATRA-->
-<section class="slide-up">
-  <div class="section-container">
-    <h2 class="animate-heading">CHITRAYATRA</h2>
-    <p> Chitrayatra – The Art Journey<br>
-Chitrayatra is the exclusive art exhibition of Rangotsav 2025, where creativity meets expression. Here, the organizers showcase their finest artworks — from paintings and sketches to modern digital creations.
- Each piece tells a story, celebrates imagination, and invites you to experience the journey of art like never before.</p>
-  </div>
+</div>
+</div>
 </section>
 
 <!-- GALLERY -->
 <section class="slide-up">
   <div class="section-container">
-    <h2 class="animate-heading">PAST EVENTS</h2>
+    <h2 class="animate-heading">RANGOTSAV FRAMES</h2>
     <div class="gallery-grid">
       <img src="img1.jpg" alt="Art 1">
       <img src="img2.jpg" alt="Art 2">
@@ -529,117 +825,105 @@ Chitrayatra is the exclusive art exhibition of Rangotsav 2025, where creativity 
   </div>
 </footer>
 
-<!-- BACK TO TOP -->
-<div id="backToTop">↑</div>
 
 <script>
-const doorOverlay = document.getElementById("doorOverlay");
-const leftDoor = document.querySelector(".door.left");
-const rightDoor = document.querySelector(".door.right");
-const welcomeText = document.querySelector(".welcome-text");
+document.addEventListener('DOMContentLoaded', () => {
+  // Elements
+  const doorOverlay = document.getElementById('doorOverlay');
+  const leftDoor = document.querySelector('.door.left');
+  const rightDoor = document.querySelector('.door.right');
+  const welcomeText = document.querySelector('.welcome-text');
+  const sandstorm = document.getElementById('sandstorm');
+  const countdownEl = document.getElementById('countdown');
+  const headings = document.querySelectorAll('.animate-heading');
+  const sections = document.querySelectorAll('.section-container');
+  const cards = document.querySelectorAll('.timeline-content');
 
-// Make sandstorm particles
-function createSandstorm(){
-  const container = document.getElementById("sandstorm");
-  for(let i=0;i<220;i++){
-    const p = document.createElement("div");
-    p.className = "sand-particle";
-    p.style.left = Math.random()*window.innerWidth + "px";
-    p.style.top  = (Math.random()*window.innerHeight + 100) + "px";
-    const size = Math.random()*4 + 3;
-    p.style.width = size + "px"; p.style.height = size + "px";
-    const dur = Math.random()*3 + 2; // 2–5s
-    p.style.animationDuration = dur + "s";
-    container.appendChild(p);
-    setTimeout(()=>p.remove(), dur*1000);
+  /* ---------- Sand particle creator ---------- */
+  function createSandParticle() {
+    if (!sandstorm) return;
+    const p = document.createElement('div');
+    p.className = 'sand-particle';
+    p.style.left = Math.random() * window.innerWidth + 'px';
+    p.style.top = (Math.random() * window.innerHeight + 100) + 'px';
+    const size = Math.random() * 4 + 3;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    const dur = Math.random() * 3 + 2; // 2s - 5s
+    p.style.animationDuration = dur + 's';
+    sandstorm.appendChild(p);
+    setTimeout(() => p.remove(), dur * 1000);
   }
-}
 
-// COUNTDOWN
-const eventDate = new Date("September 12, 2025 10:00:00").getTime();
-const countdownEl = document.getElementById("countdown");
-const timer = setInterval(() => {
-    const now = new Date().getTime();
-    const diff = eventDate - now;
-    if(diff <=0){ clearInterval(timer); countdownEl.innerHTML = "The event has started!"; return; }
-    const days = Math.floor(diff / (1000*60*60*24));
-    const hours = Math.floor((diff % (1000*60*60*24))/(1000*60*60));
-    const minutes = Math.floor((diff % (1000*60*60))/(1000*60));
-    const seconds = Math.floor((diff % (1000*60))/1000);
-    countdownEl.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s`;
-},1000);
+  /* ---------- Door overlay animation ---------- */
+  if (doorOverlay && leftDoor && rightDoor) {
+    // ensure visible
+    doorOverlay.style.display = 'flex';
+    doorOverlay.style.opacity = '1';
 
-// SCROLL ANIMATION
-const headings = document.querySelectorAll(".animate-heading");
-const sections = document.querySelectorAll(".section-container");
-const revealOnScroll = () => {
-  headings.forEach(h => { if(h.getBoundingClientRect().top < window.innerHeight - 100) h.classList.add("visible"); });
-  sections.forEach(s => { if(s.getBoundingClientRect().top < window.innerHeight - 100){ s.style.opacity="1"; s.style.transform="translateY(0)"; } });
-};
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
+    // start generating particles
+    const sandInterval = setInterval(createSandParticle, 80);
 
-// === Door Animation Control ===
-window.addEventListener("load", () => {
-  const overlay = document.getElementById("doorOverlay");
-  const left = document.querySelector(".door.left");
-  const right = document.querySelector(".door.right");
-  const welcome = document.querySelector(".welcome-text");
-  const sandstorm = document.getElementById("sandstorm");
-
-  if (sessionStorage.getItem("fromExplore")) {
-    // User clicked Explore → skip doors
-    overlay.style.display = "none";
-    sessionStorage.removeItem("fromExplore");
-  } else {
-    // Direct visit → play full animation
-    overlay.style.display = "block";
-
-    // doors open
+    // open doors after a short delay
     setTimeout(() => {
-      left.classList.add("open-left");
-      right.classList.add("open-right");
-      createSandstorm();
-    }, 100);
+      leftDoor.classList.add('open-left');
+      rightDoor.classList.add('open-right');
+    }, 500);
 
-    // welcome text fades in
+    // show welcome text
     setTimeout(() => {
-      welcome.classList.add("show-text");
-    }, 1800);
+      welcomeText?.classList.add('show-text');
+    }, 2500);
 
-    // remove overlay after sequence
+    // stop particles and gracefully fade overlay out
     setTimeout(() => {
-      overlay.style.display = "none";
-      left.classList.remove("open-left");
-      right.classList.remove("open-right");
-      welcome.classList.remove("show-text");
-      sandstorm.innerHTML = ""; // clear particles
-    }, 4000);
+      clearInterval(sandInterval);
+      doorOverlay.style.transition = 'opacity 400ms ease';
+      doorOverlay.style.opacity = '0';
+      setTimeout(() => { doorOverlay.style.display = 'none'; }, 450);
+    }, 5200);
   }
+
+  /* ---------- Countdown ---------- */
+  if (countdownEl) {
+    const eventDate = new Date('September 12, 2025 10:00:00').getTime();
+    const timer = setInterval(() => {
+      const now = Date.now();
+      const diff = eventDate - now;
+      if (diff <= 0) {
+        clearInterval(timer);
+        countdownEl.innerHTML = 'The event has started!';
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
+  }
+
+  /* ---------- Scroll reveal ---------- */
+  function revealOnScroll() {
+    const triggerBottom = window.innerHeight * 0.9;
+    headings.forEach(h => {
+      if (h.getBoundingClientRect().top < window.innerHeight - 100) h.classList.add('visible');
+    });
+    sections.forEach(s => {
+      if (s.getBoundingClientRect().top < window.innerHeight - 100) {
+        s.style.opacity = '1';
+        s.style.transform = 'translateY(0)';
+      }
+    });
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if (rect.top < triggerBottom) card.classList.add('show');
+    });
+  }
+
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll();
 });
-
-// ===== Schedule Animation (staggered reveal) =====
-const scheduleItems = document.querySelectorAll(".schedule ul.timeline li");
-
-function revealSchedule() {
-  let delay = 0;
-  scheduleItems.forEach((item) => {
-    const rect = item.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 50 && !item.classList.contains("show")) {
-      setTimeout(() => item.classList.add("show"), delay);
-      delay += 300; // stagger effect
-    }
-  });
-}
-
-
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // run initially
- 
-// BACK TO TOP
-const backBtn = document.getElementById("backToTop");
-window.addEventListener("scroll", () => { backBtn.style.display = window.scrollY > 300 ? "block" : "none"; });
-backBtn.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
 </script>
 </body>
 </html>
