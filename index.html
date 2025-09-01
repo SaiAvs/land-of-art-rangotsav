@@ -77,19 +77,23 @@ nav ul li a {
 
     /* ========== HERO ========== */
     header.hero {
-      height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: center/cover no-repeat;
-      color: white;
-      text-shadow: 0 3px 8px rgba(0,0,0,0.6);
-      padding-top: 100px; /* pushes content below navbar */
-      margin: 0:
-      padding: 0;
-    }
+  height: 100vh;           
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: center/cover no-repeat;
+  color: white;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+  margin: 0;
+  padding: 0;                 
+  box-sizing: border-box;
+}
+header.hero {
+  padding-top: 80px;  /* adjust to match your navbar height */
+}
+
     header.hero h1 {
       font-size: 4rem;
       margin-bottom: 1rem;
@@ -1091,6 +1095,7 @@ function scrollCarousel(id, direction) {
 
 </body>
 </html>
+
 
 
 
