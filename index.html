@@ -709,6 +709,49 @@ nav ul {
   header.hero p  { font-size: 0.9rem; }
   .btn-primary   { font-size: 1rem; padding: 8px 16px; }
 }
+/* =================== IMAGE SECTIONS =================== */
+
+/* General images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+/* Event/Gallery images in grids */
+.events-grid img,
+.gallery img,
+.carousel img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Team member carousel */
+.carousel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+.carousel img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+/* On smaller devices */
+@media (max-width: 768px) {
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .carousel {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+  }
+}
 
   </style>
 </head>
