@@ -634,6 +634,82 @@ footer {
       animation: fadeUp 1s ease forwards;
       animation-play-state: paused; /* wait until visible */
     }
+    /* =================== RESPONSIVE DESIGN =================== */
+
+/* Images scale */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Text scaling */
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+p  { font-size: 1rem; line-height: 1.6; }
+
+/* NAVBAR */
+nav ul {
+  display: flex;
+  gap: 2rem;
+}
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Tablet adjustments */
+@media (max-width: 992px) {
+  nav {
+    padding: 1rem 2rem;
+  }
+  nav .logo img {
+    height: 70px;
+  }
+  nav ul li a {
+    font-size: 1rem;
+  }
+  header.hero h1 { font-size: 2.8rem; }
+  header.hero p  { font-size: 1.2rem; }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .hamburger {
+    display: block;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    display: none;
+    background: #8a2846;
+    margin-top: 10px;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  nav ul.show {
+    display: flex;
+  }
+  nav .logo {
+    font-size: 1.5rem;
+  }
+  header.hero h1 { font-size: 2rem; }
+  header.hero p  { font-size: 1rem; }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  header.hero h1 { font-size: 1.6rem; }
+  header.hero p  { font-size: 0.9rem; }
+  .btn-primary   { font-size: 1rem; padding: 8px 16px; }
+}
+
   </style>
 </head>
 <body>
@@ -652,6 +728,7 @@ footer {
       <li><a href="#members">Team</a></li>
       <li><a href="#contact-info">Contact</a></li>
     </ul>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
   </nav>
 
   <!-- HERO -->
@@ -1172,6 +1249,11 @@ function scrollCarousel(id, direction) {
       behavior: 'smooth'
     });
   }
+}
+</script>
+<script>
+function toggleMenu() {
+  document.querySelector("nav ul").classList.toggle("show");
 }
 </script>
 
