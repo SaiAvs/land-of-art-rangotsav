@@ -899,6 +899,44 @@ img {
     height: auto;
   }
 }
+/* ===== Mobile Image Fix ===== */
+@media (max-width: 1024px) {
+  /* Carousel (members) */
+  .carousel {
+    height: auto; /* let content define height */
+  }
+  .carousel img {
+    width: 100%;
+    height: auto !important;
+    object-fit: contain; /* no cropping */
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr; /* 2 per row on tablets */
+    gap: 15px;
+  }
+  .gallery-grid img {
+    width: 100%;
+    height: auto !important;
+    object-fit: cover; /* fill box nicely */
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Carousel (members) */
+  .carousel img {
+    max-height: 300px; /* avoid huge vertical stretch */
+  }
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: 1fr; /* 1 per row on small phones */
+  }
+}
 
   </style>
 </head>
@@ -1449,4 +1487,5 @@ function toggleMenu() {
 
 </body>
 </html>
+
 
