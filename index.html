@@ -373,7 +373,7 @@ nav ul li a {
 /* ===== GALLERY GRID & RANG-EVENTS ===== */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 15px;
   justify-items: center;
   align-items: center;
@@ -382,8 +382,8 @@ nav ul li a {
 
 .gallery-grid img {
   width: 100%;
+  height: auto;
   border-radius: 10px;
-  max-width: 300px; /* limit max size */
   box-shadow: 0 6px 12px rgba(0,0,0,0.25);
   transition: transform 0.3s;
   object-fit: cover;
@@ -424,17 +424,11 @@ nav ul li a {
 }
 
 .members-row {
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  gap: 15px;
-  padding: 10px 0;
-}
-
-.members-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   overflow-x: auto;             /* keep scroll functionality */
   scroll-behavior: smooth;
+  justify-items: center;
   gap: 15px;
   padding: 10px 0;
   -webkit-overflow-scrolling: touch; /* smooth on iOS */
@@ -457,6 +451,7 @@ nav ul li a {
 }
 
 .member-profile {
+  width: 100%;
   flex: 0 0 auto;
   width: 160px;
   text-align: center;
@@ -520,29 +515,35 @@ nav ul li a {
 }
 
 .founders-section .founders-profiles {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     align-items: flex-start;
-    gap: 40px;
+    gap: 25px;
     justify-content: center;
+    justify-items: center;
     object-fit: cover;
 }
 
 .founders-section .founder-profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 300px;
-    text-align: center;
+  background: rgba(255,255,255,0.05);
+  padding: 15px;
+  border-radius: 12px;
+  max-width: 280px;
+  transition: transform 0.3s ease, background 0.3s ease;
+  align-items: center;
+  text-align: center;
 }
-
+.founder-profile:hover {
+  transform: scale(1.05);
+  background: rgba(255,255,255,0.1);
+}
 .founders-section .founder-profile img {
-    width: 180px;   
-    height: 180px;
+    width: 160px;   
+    height: 160px;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .founders-section .founder-info h3 {
@@ -560,6 +561,7 @@ nav ul li a {
     font-size: 2rem;
     color: white;
 }
+
 
     /* ===== FOOTER ===== */
 footer {
@@ -751,20 +753,6 @@ img {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 10px;
   }
-}
-/* ===== Responsive Image Grid ===== */
-.image-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-  padding: 10px;
-}
-
-.image-section img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
 }
 
   </style>
