@@ -1504,18 +1504,25 @@ function toggleMenu() {
 }
 </script>
 <script>
-document.querySelectorAll('.carousel').forEach(carousel => {
+document.querySelectorAll('.carousel').forEach((carousel, index) => {
   const row = carousel.querySelector('.members-row');
   const prevBtn = carousel.querySelector('.prev');
   const nextBtn = carousel.querySelector('.next');
 
-  if (prevBtn && nextBtn && row) {
+  if (row && prevBtn && nextBtn) {
     prevBtn.addEventListener('click', () => {
-      row.scrollBy({ left: -200, behavior: 'smooth' });
+      console.log("Prev clicked | Before:", row.scrollLeft);
+      row.scrollBy({ left: -row.clientWidth, behavior: 'smooth' });
+      setTimeout(() => console.log("After:", row.scrollLeft), 500);
     });
+
     nextBtn.addEventListener('click', () => {
-      row.scrollBy({ left: 200, behavior: 'smooth' });
+      console.log("Next clicked | Before:", row.scrollLeft);
+      row.scrollBy({ left: row.clientWidth, behavior: 'smooth' });
+      setTimeout(() => console.log("After:", row.scrollLeft), 500);
     });
+  } else {
+    console.log("Carousel setup issue in carousel #" + index);
   }
 });
 </script>
