@@ -471,7 +471,11 @@ nav ul li a {
   text-overflow: ellipsis; /* Adds "..." if text doesn't fit */
   text-align: center;      /* Keeps text centered */
   font-size: 14px;         /* Adjust if needed */
+  font-size: clamp(12px, 1.5vw, 16px); /* scales with screen */
+  text-align: center;
+  white-space: nowrap;
 }
+
 .prev, .next {
   position: absolute;
   top: 50%;
@@ -1537,7 +1541,6 @@ document.querySelectorAll('.carousel').forEach((carousel, index) => {
 
 </body>
 </html>
-
 
 
 
