@@ -752,6 +752,131 @@ img {
     gap: 10px;
   }
 }
+/* =======================
+   GLOBAL RESPONSIVE FIXES
+   ======================= */
+
+/* General scaling for small screens */
+@media (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+  h1, h2, h3 {
+    text-align: center;
+  }
+  section {
+    padding: 30px 15px;
+  }
+}
+
+/* Tablets (landscape & portrait) */
+@media (max-width: 768px) {
+  /* Navbar */
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Hero / Countdown */
+  .countdown {
+    flex-direction: column;
+    text-align: center;
+  }
+  .countdown div {
+    margin: 8px 0;
+  }
+
+  /* Event Cards / Boxes */
+  .event-card, .box {
+    width: 100%;
+    margin: 10px auto;
+  }
+
+  /* Timeline */
+  .timeline::after {
+    left: 20px;  /* vertical line moves left */
+  }
+  .timeline-container {
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 20px;
+  }
+  .timeline-container.left,
+  .timeline-container.right {
+    left: 0;
+  }
+  .timeline-container .content {
+    font-size: 0.9rem;
+  }
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* Team Carousel */
+  .member-profile {
+    width: 70%;
+    margin: 0 auto;
+  }
+  .member-profile img {
+    width: 120px;
+    height: 120px;
+  }
+  .members-row {
+    justify-content: center;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px;
+  }
+  .prev, .next {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    padding: 0;
+    background: rgba(0,0,0,0.6);
+    top: auto;
+    bottom: -50px;
+    transform: none;
+  }
+  .prev { left: 25%; }
+  .next { right: 25%; }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  /* Headings smaller */
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.3rem; }
+
+  /* Timeline text */
+  .timeline-container .content {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+
+  /* Gallery in 1 column */
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Team Carousel tweaks */
+  .member-profile {
+    width: 90%;
+  }
+  .member-profile img {
+    width: 100px;
+    height: 100px;
+  }
+  .prev { left: 15%; }
+  .next {right:15%;}
+}
 
   </style>
 </head>
@@ -795,6 +920,7 @@ img {
   </div>
 </div>
 
+
   <!-- ABOUT -->
   <section id="about">
     <div class="section-box animate">
@@ -813,7 +939,8 @@ img {
 
     <!-- Countdown timer (single ID only) -->
     <div id="timer" class="countdown-timer"></div>
-<br>
+
+    <br>
     <a href="rangotsav.html" class="btn-primary animate" onclick="sessionStorage.setItem('fromExplore', 'true')">
   Explore Rangotsav
 </a>
@@ -949,7 +1076,7 @@ img {
       <div class="founder-profile">
         <img src="incharge.jpg" alt="Founder Photo">
         <div class="founder-info">
-          <h3>MRS.VISHI KHATTRI</h3>
+          <h3>MRS.VISHVI KHATTRI</h3>
           <p><i>A dedicated and inspiring mentor, whose guidance, encouragement, and unwavering support form
              the backbone of our endeavors. With her vision and leadership, she continues 
              to nurture creativity and discipline among students.</i></p>
@@ -979,13 +1106,13 @@ img {
     <h3>Batch 2022-26</h3>
     <div class="members-row">
       <div class="member-profile"><img src="atharv-4.jpg"><p>ATHARV GUPTA</p></div>
-      <div class="member-profile"><img src="rajshree-4.jpg"><p>RAJSHREE MISHRA</p></div>
+      <div class="member-profile"><img src="rajshree-4.jpg"><p>RAJSHREE</p></div>
       <div class="member-profile"><img src="abhishek-4.jpg"><p>ABHISHEK KUMAR SINGH</p></div>
       <div class="member-profile"><img src="vashika-4.jpg"><p>VASHIKA TYAGI</p></div>
       <div class="member-profile"><img src="ujjawal-4.jpg"><p>UJJAWAL KUMAR</p></div>
       <div class="member-profile"><img src="Saniya-4.jpg"><p>SANIYA</p></div>
       <div class="member-profile"><img src="sunidhi-4.jpg"><p>SUNIDHI RANI</p></div>
-      <div class="member-profile"><img src="kavita-4.jpg"><p>KAVITA KUMARI</p></div>
+      <div class="member-profile"><img src="kavitra-4.jpg"><p>KAVITRA KUMARI</p></div>
       <div class="member-profile"><img src="janvi-4.jpg"><p>JANVI CHAUHAN</p></div> 
     </div>
     <button class="prev" onclick="scrollCarousel('year4', -1)">&#10094;</button>
