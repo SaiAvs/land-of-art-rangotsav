@@ -877,6 +877,28 @@ img {
   .prev { left: 15%; }
   .next {right:15%;}
 }
+    /* ===== Fix images for mobile ===== */
+@media (max-width: 768px) {
+  img {
+    max-width: 100%;
+    height: auto !important;
+    object-fit: contain; /* prevents cropping */
+  }
+
+  .gallery-grid img,
+  .carousel img {
+    height: auto !important; /* removes fixed height */
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr; /* single column on small screens */
+    gap: 15px;
+  }
+
+  .carousel {
+    height: auto;
+  }
+}
 
   </style>
 </head>
@@ -1427,3 +1449,4 @@ function toggleMenu() {
 
 </body>
 </html>
+
