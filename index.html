@@ -465,7 +465,13 @@ nav ul li a {
   border-radius: 10px;
   transition: transform 0.3s, background 0.3s;
 }
-
+.member-card p {
+  white-space: nowrap;     /* Prevents breaking into multiple lines */
+  overflow: hidden;        /* Hides overflow if text is too long */
+  text-overflow: ellipsis; /* Adds "..." if text doesn't fit */
+  text-align: center;      /* Keeps text centered */
+  font-size: 14px;         /* Adjust if needed */
+}
 .prev, .next {
   position: absolute;
   top: 50%;
@@ -1155,7 +1161,7 @@ img {
       <div class="founder-profile">
         <img src="incharge.jpg" alt="Founder Photo">
         <div class="founder-info">
-          <h3>MRS.VISHVI KHATTRI</h3>
+          <h3>MRS.VISHI KHATTRI</h3>
           <p><i>A dedicated and inspiring mentor, whose guidance, encouragement, and unwavering support form
              the backbone of our endeavors. With her vision and leadership, she continues 
              to nurture creativity and discipline among students.</i></p>
@@ -1185,13 +1191,13 @@ img {
     <h3>Batch 2022-26</h3>
     <div class="members-row">
       <div class="member-profile"><img src="atharv-4.jpg"><p>ATHARV GUPTA</p></div>
-      <div class="member-profile"><img src="rajshree-4.jpg"><p>RAJSHREE</p></div>
+      <div class="member-profile"><img src="rajshree-4.jpg"><p>RAJSHREE MISHRA</p></div>
       <div class="member-profile"><img src="abhishek-4.jpg"><p>ABHISHEK KUMAR SINGH</p></div>
       <div class="member-profile"><img src="vashika-4.jpg"><p>VASHIKA TYAGI</p></div>
       <div class="member-profile"><img src="ujjawal-4.jpg"><p>UJJAWAL KUMAR</p></div>
       <div class="member-profile"><img src="Saniya-4.jpg"><p>SANIYA</p></div>
       <div class="member-profile"><img src="sunidhi-4.jpg"><p>SUNIDHI RANI</p></div>
-      <div class="member-profile"><img src="kavitra-4.jpg"><p>KAVITRA KUMARI</p></div>
+      <div class="member-profile"><img src="kavitra-4.jpg"><p>KAVITA KUMARI</p></div>
       <div class="member-profile"><img src="janvi-4.jpg"><p>JANVI CHAUHAN</p></div> 
     </div>
     <button class="prev" onclick="scrollCarousel('year4', -1)">&#10094;</button>
@@ -1256,6 +1262,7 @@ img {
         <img src="founder.jpg" alt="Founder Photo">
         <div class="founder-info">
           <h3>MR. SHUBHAM SHUKLA</h3>
+          <h3>(Founder)</h3>
           <p><i>Passionate about art and creativity, Shubham Shukla founded The Land of Art
              to inspire students to explore their imagination and celebrate artistic expression.</i></p>
         </div>
@@ -1265,6 +1272,7 @@ img {
         <img src="co-founder.jpg" alt="Co-Founder Photo">
         <div class="founder-info">
           <h3>MR. KUNAL KAPOOR</h3>
+          <h3>(Co-Founder)</h3>
           <p><i>Co-founder and art enthusiast, Kunal Kapoor works alongside 
             to bring fresh ideas and organize amazing events for the club members.</i></p>
         </div>
