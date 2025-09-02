@@ -817,6 +817,34 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
 @keyframes fadeIn { to { opacity:1; } }
 @keyframes slideUp { to { opacity:1; transform: translateY(0); } }
 
+@media (max-width: 768px) {
+  .timeline {
+    width: 95%;         /* more flexible width on small screens */
+    padding: 1rem 0;
+  }
+
+  .timeline::before {
+    left: 10px;         /* move golden line to the left */
+  }
+
+  .timeline-item {
+    width: 100%;        /* take full width */
+    padding: 1rem 1rem 1rem 2.5rem; /* leave space for line + dot */
+    text-align: left;   /* align text properly */
+    left: 0 !important; /* override positioning */
+  }
+
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    text-align: left;   /* same for both */
+  }
+
+  .timeline-content {
+    width: 100%;
+    display: block;
+    word-wrap: break-word;   /* prevent text from overflowing */
+  }
+}
 
 </style>
 </head>
