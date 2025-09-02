@@ -814,11 +814,11 @@ img {
     height: 120px;
   }
   .members-row {
-    justify-content: center;
-    gap: 20px;
-    overflow-x: auto;
-    padding: 10px;
-  }
+  justify-content: flex-start;  
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px;
+}
   .prev, .next {
     width: 36px;
     height: 36px;
@@ -1503,9 +1503,26 @@ function toggleMenu() {
   document.querySelector("nav ul").classList.toggle("show");
 }
 </script>
+<script>
+document.querySelectorAll('.carousel').forEach(carousel => {
+  const row = carousel.querySelector('.members-row');
+  const prevBtn = carousel.querySelector('.prev');
+  const nextBtn = carousel.querySelector('.next');
+
+  if (prevBtn && nextBtn && row) {
+    prevBtn.addEventListener('click', () => {
+      row.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', () => {
+      row.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+  }
+});
+</script>
 
 </body>
 </html>
+
 
 
 
