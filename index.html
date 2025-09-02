@@ -966,6 +966,87 @@ img {
     grid-template-columns: 1fr;
  }
 }
+/* Highlight the Upcoming Events Box */
+.upcoming-box {
+  background: linear-gradient(135deg, #e63946, #f77f00); /* eye-catching gradient */
+  color: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(255, 99, 71, 0.8); /* glowing effect */
+  animation: boxGlow 3s infinite alternate;
+}
+
+/* Glow animation */
+@keyframes boxGlow {
+  from { box-shadow: 0 0 15px rgba(255, 99, 71, 0.7); }
+  to { box-shadow: 0 0 35px rgba(255, 165, 0, 0.9); }
+}
+
+/* Countdown Styling */
+.upcoming-box .countdown {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 1rem 0;
+  color: #fff;
+  text-shadow: 0 0 8px #000;
+}
+
+/* Explore Button Styling */
+.explore-btn {
+  display: inline-block;
+  background: linear-gradient(45deg, #ffd60a, #fca311);
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 15px rgba(255, 214, 10, 0.8);
+  animation: pulse 2s infinite;
+}
+/* Sticky Explore Button for Mobile */
+.explore-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+
+  background: linear-gradient(45deg, #ffd60a, #fca311);
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.9rem 2.2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 15px rgba(255, 214, 10, 0.8);
+  animation: pulse 2s infinite;
+}
+
+/* Hover effect */
+.explore-btn:hover {
+  background: linear-gradient(45deg, #ffba08, #f77f00);
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: 0 0 25px rgba(255, 165, 0, 1);
+}
+
+/* Button Hover */
+.explore-btn:hover {
+  background: linear-gradient(45deg, #ffba08, #f77f00);
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(255, 165, 0, 1);
+}
+
+/* Button Pulse Animation */
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 214, 10, 0.6); }
+  50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 214, 10, 1); }
+  100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 214, 10, 0.6); }
+}
 
   </style>
 </head>
@@ -1021,21 +1102,19 @@ img {
 
   <!-- RANGOTSAV -->
   <section id="rangotsav">
-  <div class="section-box animate">
+  <div class="upcoming-box">
     <h2> UPCOMING EVENTS </h2>
     <h2> Rangotsav 2025</h2>
     <p><i>Countdown to our biggest celebration of art & colors!</i></p>
 
     <!-- Countdown timer (single ID only) -->
-    <div id="timer" class="countdown-timer"></div>
-
-    <br>
-    <a href="rangotsav.html" class="btn-primary animate" onclick="sessionStorage.setItem('fromExplore', 'true')">
+    <div id="timer" class="countdown-timer"></div><br>
+    <a href="rangotsav.html" class="explore-btn" onclick="sessionStorage.setItem('fromExplore', 'true')">
   Explore Rangotsav
 </a>
   </div>
 </section>
-  
+
 <!-- PAST EVENTS -->
 <section id="past-event" class="past-section">
   <div class="section-box animate">
@@ -1057,12 +1136,12 @@ img {
     </div>
   </section>
 
-  <!-- Rangotsav 2022 -->
+  <!-- Rangotsav 2021 -->
   <section id="rangotsav-2022" class="rang-section">
     <div class="hanging-board swingBoard">
       <span class="rope"></span>
       <div class="board">
-        <h2 class="event-title">RANGOTSAV 2022</h2>
+        <h2 class="event-title">RANGOTSAV 2021</h2>
         <div class="gallery-grid">
           <img src="RANG1-2022.jpg" alt="Event 1">
           <img src="RANG2-2022.jpg" alt="Event 2">
@@ -1213,7 +1292,6 @@ img {
       <div class="member-profile"><img src="suhani-3.jpg"><p>SUHANI VERMA</p></div>
       <div class="member-profile"><img src="sonakshi-3.jpg"><p>SONAKSHI</p></div>
       <div class="member-profile"><img src="avinash-3.jpg"><p>AVINASH KUMAR KARNAL</p></div>
-      <div class="member-profile"><img src="deepak-3.jpg"><p>DEEPAK YADAV</p></div>
       <div class="member-profile"><img src="vansh-3.jpg"><p>VANSH MITTAL</p></div>
     </div>
     <button class="prev" onclick="scrollCarousel('year3', -1)">&#10094;</button>
@@ -1257,7 +1335,7 @@ img {
         <img src="founder.jpg" alt="Founder Photo">
         <div class="founder-info">
           <h3>MR. SHUBHAM SHUKLA</h3>
-          <h3>(Founder)</h3>
+          <h3>(Founder, 2018-22)</h3>
           <p><i>Passionate about art and creativity, Shubham Shukla founded The Land of Art
              to inspire students to explore their imagination and celebrate artistic expression.</i></p>
         </div>
@@ -1267,7 +1345,7 @@ img {
         <img src="co-founder.jpg" alt="Co-Founder Photo">
         <div class="founder-info">
           <h3>MR. KUNAL KAPOOR</h3>
-          <h3>(Co-Founder)</h3>
+          <h3>(Co-Founder,)</h3>
           <p><i>Co-founder and art enthusiast, Kunal Kapoor works alongside 
             to bring fresh ideas and organize amazing events for the club members.</i></p>
         </div>
@@ -1532,7 +1610,6 @@ document.querySelectorAll('.carousel').forEach((carousel, index) => {
 
 </body>
 </html>
-
 
 
 
