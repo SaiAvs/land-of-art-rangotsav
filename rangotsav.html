@@ -491,9 +491,31 @@ box-shadow: 0 10px 20px rgba(0,0,0,.3); }
     .timeline-content h4{font-size:1.2rem;color:#444;margin-bottom:0.3rem;}
     .timeline-content span{font-size:0.95rem;color:#666;}
 
-    @media(max-width:768px) {
-  .timeline-item { margin-bottom: 2rem; }
-  .timeline-content { width: 100%; }
+  @media (max-width: 768px) {
+  .timeline::after {
+    left: 20px; /* move center line to left side */
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+
+  .timeline-item::after {
+    left: 15px; /* marker aligned with new line */
+  }
+
+  .timeline-item.left, 
+  .timeline-item.right {
+    left: 0; /* reset side positioning */
+  }
+
+  .timeline-content {
+    width: 100%;
+    text-align: left;
+  }
 }
 
 /* ===== COUNTDOWN ===== */
@@ -1197,5 +1219,6 @@ const timer = setInterval(function() {
   </script>
 </body>
 </html>
+
 
 
