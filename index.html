@@ -833,7 +833,24 @@ img {
   .prev { left: 25%; }
   .next { right: 25%; }
 }
-
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 9999; /* 👈 keeps button on top for mobile taps */
+  touch-action: manipulation; /* 👈 makes taps more reliable */
+}
+.carousel .prev {
+  left: 10px;
+}
+.carousel .next {
+ right: 10px;
+}
 /* Mobile phones */
 @media (max-width: 480px) {
   body {
@@ -1489,7 +1506,6 @@ function toggleMenu() {
 
 </body>
 </html>
-
 
 
 
