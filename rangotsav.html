@@ -39,6 +39,27 @@ body { background: var(--sand); color: var(--ink); }
     background: linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.25), rgba(0,0,0,.35));
 }
 
+.rang-logo{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  gap: 15px;              
+  font-weight: 400;
+  font-size: 2rem;
+  color: #fff;
+}
+.rang-logo img{
+  padding: 5px;
+  margin: auto;
+  display: block;
+  height: auto;
+  max-width: 180px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+}
+
 /* ===== HEADER ===== */
 header {
     text-align: center;
@@ -271,8 +292,25 @@ box-shadow: 0 10px 20px rgba(0,0,0,.3); }
 }
 
 .register-btn {
-    margin-top: 15px;
+    margin-top: 14px;
     padding: 10px 20px;
+    background: linear-gradient(135deg, var(--gold), #e6c35e);
+    color: #1a1207;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+.register-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,.3);
+}
+
+.registeract-btn {
+    margin-top: 5px;
+    padding: 4px 5px;
     background: linear-gradient(135deg, var(--gold), #e6c35e);
     color: #1a1207;
     text-decoration: none;
@@ -281,7 +319,7 @@ box-shadow: 0 10px 20px rgba(0,0,0,.3); }
     box-shadow: 0 4px 12px rgba(0,0,0,.25);
     transition: transform 0.25s ease, filter 0.25s ease;
 }
-.register-btn:hover {
+.registeract-btn:hover {
     transform: translateY(-2px);
     filter: brightness(1.05);
     box-shadow: 0 8px 20px rgba(0,0,0,.3);
@@ -461,6 +499,50 @@ box-shadow: 0 10px 20px rgba(0,0,0,.3); }
     box-shadow: 0 12px 30px rgba(0,0,0,0.4);
 }
 
+.about {
+  position: relative;
+  overflow: hidden;
+  background-image: url('rang bg.jpg'); /* your image */
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  padding: 40px;          /* ensures space for text */
+  color: #fff;            /* make text white */
+  min-height: 300px;      /* keeps section tall enough */
+}
+
+/* Dark overlay */
+.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;  
+  background: rgba(0, 0, 0, 0.3); 
+  border-radius: 15px;
+  z-index: 0;
+}
+
+.about> * {
+  position: relative;
+  z-index: 1;
+}
+.about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+.about p {
+  font-size: 1.8rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+  font-weight: bold;
+}
+
+#focus .about:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
 .dance-battle {
   position: relative;
   overflow: hidden;
@@ -504,6 +586,18 @@ box-shadow: 0 10px 20px rgba(0,0,0,.3); }
     transform: translateY(-5px);
     box-shadow: 0 12px 30px rgba(0,0,0,0.4);
 }
+ /* Countdown Styling */
+.countdown-section {
+      text-align: center;
+      padding: 60px 20px;
+      background: #FFF8F0;
+    }
+    #timer {
+      font-size: 2rem;
+      font-weight: bold;
+      color: gold;
+      margin-top: 20px;
+    }
 
 .art-of-the-year {
   position: relative;
@@ -546,6 +640,50 @@ box-shadow: 0 10px 20px rgba(0,0,0,.3); }
 }
 
 #focus .art-of-the-year:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
+.mob {
+  position: relative;
+  overflow: hidden;
+  background-image: url('mob.jpg'); /* your image */
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  padding: 40px;          /* ensures space for text */
+  color: #fff;            /* make text white */
+  min-height: 300px;      /* keeps section tall enough */
+}
+
+/* Dark overlay */
+.mob::before {
+  content: "";
+  position: absolute;
+  inset: 0;  
+  background: rgba(0, 0, 0, 0.3); 
+  border-radius: 15px;
+  z-index: 0;
+}
+
+.mob > * {
+  position: relative;
+  z-index: 1;
+}
+.mob h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+.mob p {
+  font-size: 1.8rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+  font-weight: bold;
+}
+
+#focus .mob:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 30px rgba(0,0,0,0.4);
 }
@@ -625,13 +763,7 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
 
 @keyframes fadeIn { to { opacity:1; } }
 @keyframes slideUp { to { opacity:1; transform: translateY(0); } }
- @media screen and (max-width: 768px) {
-      header h1 { font-size: 2rem; }
-      header p { font-size: 1rem; }
-      .events-grid { grid-template-columns: 1fr; }
-      .bg-container h2 { font-size: 1.8rem; }
-      .section-container { padding: 15px; }
- }
+
 
 </style>
 </head>
@@ -648,11 +780,13 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
 
 
 <!-- BACKGROUND -->
- @media screen and (max-width: 768px)
+
 <div class="bg-container">
     <div class="bg-overlay"></div>
     <header class="fade-in">
+      <div class="rang-logo">
         <img src="rang logo.jpg" alt="Club Logo">
+        </div>
         <h1 class="animate-heading"> Rangotsav 2025</h1>
         
         <p style="color: gold; font-weight: bold;">Celebrating Colors & Creativity</p>
@@ -662,13 +796,24 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
     </header>
 </div>
 
+<!-- ABOUT RANGOTSAV -->
+<section id="focus" class="focus-section slide-up">
+  <div class="section-container">
+    <div class="about">
+    <h2>ABOUT RANGOTSAV</h2>
+    <p>Rangotsav is the 2 day flagship annual event of The Land of Art, designed to celebrate the boundless creativity, vibrant colors, and artistic spirit of our college community.
+      This festival brings together passionate artists, crafters, and creative minds to showcase their talent through painting, sketching, craft-making, and live art demonstrations</p>
+<br>
+</div>
+</div>
+</section>
+
 <!-- EVENTS -->
 <section id="events" class="events-section slide-up">
   <div class="section-container">
     <h2>EVENTS</h2>
     <div class="events-grid">
-      
-      <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bottle.jpg') center/cover no-repeat; color:#fff;">
+       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bottle.jpg') center/cover no-repeat; color:#fff;">
         <h3>BOTTLE PAINTING</h3>
         <p class="time"> 10:00 AM </p>
         <p class="desc">Unleash creativity by turning simple glass bottles into vibrant art pieces</p>
@@ -677,7 +822,7 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('chalk\ art.jpg') center/cover no-repeat; color:#fff;">
         <h3>CHALK ART</h3>
         <p class="time"> 11:00 AM</p>
-        <p class="desc">ABring streets and boards alive with colorful chalk-based drawings</p>
+        <p class="desc">Bring streets and boards alive with colorful chalk-based drawings</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScTuh_5rOdtru2Uuaog3IpleDUvywyfYKBXo4CkF2VoJbADKA/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('tattoo.jpg') center/cover no-repeat; color:#fff;">
@@ -740,13 +885,13 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
   <!-- Day 1 -->
   <h3 class="day-title">Day 1</h3>
   <div class="timeline">
-    <div class="timeline-item"><div class="timeline-content"><h4>Inauguration</h4><span>9:00 AM – 10:00 AM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Bottle Painting</h4><span>10:00 AM – 11:00 AM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Chalk Art</h4><span>11:00 AM – 12:00 PM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Tattoo Making</h4><span>12:00 PM – 1:00 PM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Calligraphy</h4><span>1:30 PM – 2:30 PM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Mehendi</h4><span>2:30 PM – 3:30 PM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Blind Art</h4><span>3:30 PM – 4:30 PM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Inauguration</h4><span>9:00 AM – 10:30 AM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Bottle Painting</h4><span>10:30 AM – 11:30 AM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Chalk Art</h4><span>11:30 AM – 12:30 PM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Tattoo Making</h4><span>12:30 PM – 1:30 PM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Calligraphy</h4><span>2:00 PM – 3:00 PM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Mehendi</h4><span>3:00 PM – 4:00 PM</span></div></div>
+    <div class="timeline-item"><div class="timeline-content"><h4>Blind Art</h4><span>4:00 PM – 5:00 PM</span></div></div>
   </div>
 
   <!-- Day 2 -->
@@ -769,7 +914,8 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
     <div class="art-of-the-year">
     <h2> Chitrayatra (The Art Exhibition and Competition) </h2>
     <p>A platform where you can showcase your art and be a part of the competition. 
-      Bring your best artworks to win the title "Art of the Year".
+      Bring your best artworks to win the title "Art of the Year".<br><br>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSczHj4Kv83e31XmIOIgasVFLmwh_hEz7HwjmXDiBGfhzVZGYA/viewform?usp=header" target="_blank" class="registeract-btn">Register Here</a>
 </p>
 <br>
 </div>
@@ -782,7 +928,7 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
     <div class="color-hunt">
     <h2> Color Hunt (A Colorful Treasure Hunt)</h2>
     <p>A treasure hunt filled with colors and vibes. 
-      Register now and participate in the college’s biggest treasure hunt!
+      Register now and participate in the college’s biggest treasure hunt!<br>
 </p>
 <br>
 </div>
@@ -800,6 +946,18 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
 </div>
 </section>
 
+<!-- MOB -->
+<section id="focus" class="focus-section slide-up">
+  <div class="section-container">
+    <div class="mob">
+    <h2>MOB</h2>
+    <p>A vibrant performance of rhythm, energy, and coordination where dancers move as one. This act celebrates teamwork and creativity, spreading joy and cultural colors across the stage. 
+      A true highlight of Rangotsav, uniting hearts through dance.</p>
+<br>
+</div>
+</div>
+</section>
+
 <!-- DANCE BATTLE -->
 <section id="focus" class="focus-section slide-up">
   <div class="section-container">
@@ -807,8 +965,13 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
     <h2>Dance Battle (Solo and Duo)</h2>
     <p>Not your ordinary dance performances — this battle brings something special: direct face-offs 
       with your competitors and loads of fun!
-Register now for the auditions.
-</p>
+Register now for the auditions.<br><br>
+ <!-- Countdown timer (single ID only) -->
+    <div id="timer" class="countdown-timer"></div>
+      <h2>!! DANCE AUDITION IS LIVE NOW !!</h2>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRqvykJTw4QERrvAz-bKtREmDtGyg6wKJzBn5ZLWNI3myJfQ/viewform?usp=header" target="_blank" class="registeract-btn">Register Here</a>
+<br><br>
+  </p>
 <br>
 </div>
 </div>
@@ -821,7 +984,6 @@ Register now for the auditions.
         igsh=MXF6NW5jdmh5eDNjOQ==">@the_land_of_art__</a></p>
   </div>
 </footer>
-
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -922,7 +1084,31 @@ document.addEventListener('DOMContentLoaded', () => {
   revealOnScroll();
 });
 </script>
+<script>
+// Set the date of Dance Audition
+const eventDate = new Date("Sep 06, 2025 00:00:00").getTime();
 
+const timer = setInterval(function() {
+  const now = new Date().getTime();
+  const distance = eventDate - now;
+
+  // Time calculations
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display result
+  document.getElementById("timer").innerHTML =
+      days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+  // If the countdown is finished
+  if (distance < 0) {
+    clearInterval(timer);
+    document.getElementById("timer").innerHTML = "🎉 Dance Battle Audition has begun!";
+  }
+}, 1000);
+</script>
   <script>
     const doorOverlay = document.getElementById("doorOverlay");
     const leftDoor = document.querySelector(".door.left");
