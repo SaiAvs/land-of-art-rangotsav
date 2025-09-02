@@ -877,6 +877,81 @@ img {
   .prev { left: 15%; }
   .next {right:15%;}
 }
+    /* ================== FINAL FIXES ================== */
+
+/* ----- TEAM CAROUSEL FIX ----- */
+.carousel {
+  position: relative;
+  margin: 20px 0;
+}
+
+.members-row {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 15px;
+  padding: 10px 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.members-row::-webkit-scrollbar { display: none; }
+
+.member-profile {
+  flex: 0 0 auto;
+  width: 160px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.member-profile img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+/* Make carousel fully responsive */
+@media (max-width: 768px) {
+  .member-profile {
+    width: 120px;
+  }
+  .member-profile img {
+    width: 100px;
+    height: 100px;
+  }
+  .prev, .next {
+    bottom: -40px; /* move buttons below */
+  }
+}
+
+/* ----- GALLERY GRID FIX ----- */
+.gallery-grid img,
+.rang-section .board .gallery-grid img {
+  width: 100%;
+  height: auto !important;  /* stop forced cropping */
+  max-width: 100%;
+  object-fit: contain;       /* keep aspect ratio */
+  border-radius: 10px;
+}
+
+/* Responsive grid: 3 on desktop, 2 on tablet, 1 on phone */
+.gallery-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -1426,6 +1501,7 @@ function toggleMenu() {
 
 </body>
 </html>
+
 
 
 
