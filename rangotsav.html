@@ -698,7 +698,7 @@ box-shadow: 0 10px 20px rgba(0,0,0,.3); }
 .mob {
   position: relative;
   overflow: hidden;
-  background-image: url('mob.jpg'); /* your image */
+  background-image: url('mobnew.jpg'); /* your image */
   background-size: cover;
   background-position: center;
   border-radius: 15px;
@@ -923,8 +923,6 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
   <div id="sandstorm"></div>
   <!-- Welcome text to appear after door finish opening -->
   <div class="welcome-text">🏺 Welcome to Rangotsav 2025 🏺</div>
-<audio id="doorMusic" src="music.mp3" preload="auto"></audio>
-
 </div>
 
 
@@ -1292,30 +1290,9 @@ const timer = setInterval(function() {
       }, 3000);
     });
   </script>
-<script>
-const doorMusic = document.getElementById("doorMusic");
-
-function openDoors() {
-  // Play music when doors open
-  if (doorMusic) {
-    doorMusic.currentTime = 0; // restart if needed
-    doorMusic.play().catch(err => console.log("Autoplay blocked:", err));
-  }
-
-  // Your existing door animation logic here
-  doorOverlay.style.display = "flex";
-  setTimeout(() => {
-    leftDoor.style.transform = "translateX(-100%)";
-    rightDoor.style.transform = "translateX(100%)";
-    welcomeText.style.opacity = "1";
-  }, 100);
-}
-
-// Call openDoors when page loads
-window.addEventListener("load", openDoors);
-</script>
 </body>
 </html>
 
 
 
+  
