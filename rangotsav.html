@@ -845,6 +845,38 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
     word-wrap: break-word;   /* prevent text from overflowing */
   }
 }
+/* Default (desktop/laptop) */
+.about, .mob, .band-performance, .dance-battle, .art-of-the-year, .color-hunt {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Tablet screens */
+@media (max-width: 768px) {
+  .about, .mob, .band-performance, .dance-battle, .art-of-the-year, .color-hunt {
+    height: 60vh;   /* smaller height */
+    padding: 15px;
+  }
+  .about p, .mob p, .band-performance p, .dance-battle p, .art-of-the-year p, .color-hunt p {
+    font-size: 1rem; /* smaller text */
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .about, .mob, .band-performance, .dance-battle, .art-of-the-year, .color-hunt {
+    height: auto;   /* let content decide height */
+    padding: 10px;
+  }
+  .about p, .mob p, .band-performance p, .dance-battle p, .art-of-the-year p, .color-hunt p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
 
 </style>
 </head>
