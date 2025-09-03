@@ -845,36 +845,70 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
     word-wrap: break-word;   /* prevent text from overflowing */
   }
 }
-/* Default (desktop/laptop) */
-.about, .mob, .band-performance, .dance-battle, .art-of-the-year, .color-hunt {
-  height: 80vh;
+/* General fix for all big event sections */
+.about,
+.mob,
+.band-performance,
+.dance-battle,
+.art-of-the-year,
+.color-hunt {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 20px;
+  background-size: cover;
+  background-position: center;
 }
 
 /* Tablet screens */
 @media (max-width: 768px) {
-  .about, .mob, .band-performance, .dance-battle, .art-of-the-year, .color-hunt {
-    height: 60vh;   /* smaller height */
+  .about,
+  .mob,
+  .band-performance,
+  .dance-battle,
+  .art-of-the-year,
+  .color-hunt {
+    height: auto;          /* remove fixed vh height */
+    min-height: 50vh;      /* at least half-screen height */
     padding: 15px;
+    flex-direction: column;
   }
-  .about p, .mob p, .band-performance p, .dance-battle p, .art-of-the-year p, .color-hunt p {
-    font-size: 1rem; /* smaller text */
+
+  .about h1, .mob h1, .band-performance h1,
+  .dance-battle h1, .art-of-the-year h1, .color-hunt h1 {
+    font-size: 1.6rem;
+  }
+
+  .about p, .mob p, .band-performance p,
+  .dance-battle p, .art-of-the-year p, .color-hunt p {
+    font-size: 1rem;
+    line-height: 1.4;
   }
 }
 
 /* Mobile phones */
 @media (max-width: 480px) {
-  .about, .mob, .band-performance, .dance-battle, .art-of-the-year, .color-hunt {
-    height: auto;   /* let content decide height */
-    padding: 10px;
+  .about,
+  .mob,
+  .band-performance,
+  .dance-battle,
+  .art-of-the-year,
+  .color-hunt {
+    height: auto;         /* let content decide height */
+    min-height: unset;    /* no forced height */
+    padding: 12px;
   }
-  .about p, .mob p, .band-performance p, .dance-battle p, .art-of-the-year p, .color-hunt p {
+
+  .about h1, .mob h1, .band-performance h1,
+  .dance-battle h1, .art-of-the-year h1, .color-hunt h1 {
+    font-size: 1.2rem;
+  }
+
+  .about p, .mob p, .band-performance p,
+  .dance-battle p, .art-of-the-year p, .color-hunt p {
     font-size: 0.9rem;
-    line-height: 1.4;
+    line-height: 1.3;
   }
 }
 
