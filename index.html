@@ -104,18 +104,17 @@ nav ul li a {
 .live-track {
   display: inline-block;
   white-space: nowrap;
-  animation: scroll-left 15s linear infinite;
-  animation-timing-function: linear;
-}
-
-.live-track span {
-  margin-right: 60px;
+  animation: scroll-left 8s linear infinite; /* shorter duration */
+  animation-delay: -4s; /* start halfway so text is already visible */
 }
 
 @keyframes scroll-left {
   0%   { transform: translateX(100%); }
-  10%  { transform: translateX(90%); }  /* tiny easing */
   100% { transform: translateX(-100%); }
+}
+
+.live-track span {
+  margin-right: 60px;
 }
 
     .btn-primary {
