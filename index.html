@@ -1,86 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rangotsav 2025</title>
-<style>
-/* ===== RESET ===== */
-* { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif;}
-body, html { scroll-behavior: smooth; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Land of Art</title>
+  <style>
+    /* ========== RESET ========== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; background-image: url(bg.jpg); color: white; }
 
-/* ===== BACKGROUND ===== */
-body { 
-    background : var(--sand);
-    color: var(--ink);
-}
-:root {
-  --sand:#f4e1a6;
-  --sand-deep:#e8cd86;
-  --ink:#3b2f2f;
-  --gold:#caa64d;
-  --gold-deep:#b8860b;
-  --card:#fff8dc;
-  --paper: rgba(255,245,200,.92);
-}
-
-html, body { scroll-behavior: smooth; }
-body { background: var(--sand); color: var(--ink); }
-
-.bg-container {
-    background: url('rang hd bg.jpg') center/cover no-repeat, radial-gradient(circle at 30% 20%, #f9e9b7, var(--sand));
-    position: relative;
-    min-height: auto;
-}
-
-.bg-overlay {
-    position: absolute;
-    top:0; left:0; width:100%; height:100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.25), rgba(0,0,0,.35));
-}
-
-.rang-logo{
+    /* ========== NAVBAR ========== */
+   nav {
+  position: relative;
+  top: 0; left: 0;
+  width: 100%;
   display: flex;
-  justify-content: center;
-  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5rem;   
+  background:#8a2846;
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+}
+
+nav .logo {
+  display: flex;
   align-items: center;
   gap: 15px;              
   font-weight: 400;
   font-size: 2rem;
   color: #fff;
 }
-.rang-logo img{
-  padding: 5px;
-  margin: auto;
-  display: block;
-  height: auto;
-  max-width: 180px;
-  border-radius: 50%;
-  border: 3px solid #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+
+nav .logo img {
+  height: 100px;           
+  width: auto;
+  border-radius: 50px;
 }
 
-/* ===== HEADER ===== */
-header {
-    text-align: center;
-    padding: 80px 20px;
-    position: relative;
-    z-index: 2;
-    padding: 80px 20px 40px; /* more space at bottom */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;            
 }
-header h1 { font-size: 3.2rem; margin-bottom: 10px; color:#ffd769 ; 
-text-shadow: 0 2px 0 #7f5d1f, 0 4px 12px rgba(0,0,0,.45);
-  letter-spacing:.5px;}
-header p { font-size: 1.3rem; margin-bottom: 20px; }
-@media(max-width:600px) {
-  header { padding: 40px 15px}
+nav ul li a {
+  font-size: 1.1rem;      
+  padding-bottom: 6px;
+  color: #ede0d4;
+  text-decoration: none;
 }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #ffe66d;
+      border-bottom: 2px solid #ffe66d;
+    }
+
+    /* ========== HERO ========== */
+    header.hero {
+  height: auto;               /* full screen */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: center/cover no-repeat;
+  color: white;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+  margin: 0;
+  padding: 0;                  /* remove extra space */
+  box-sizing: border-box;
+}
+
+    header.hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    header.hero {
+  padding-top: 80px;  /* adjust to match your navbar height */
+}
+
   /* Banner container */
 .live-banner {
   position: relative;
   width: 100%;
   overflow: hidden;
-  background: #9d0208;          /* black strip */
+  background: #602437;          /* black strip */
   color: white;            /* bright yellow text */
   font-size: 1.8rem;
   font-weight: bold;
@@ -90,554 +95,45 @@ header p { font-size: 1.3rem; margin-bottom: 20px; }
   margin-bottom: 0;
 }
 
+#about {
+  margin-top: 0;      /* reduce top margin */
+  padding-top: 60px;  /* instead of big padding */
+}
+
 /* Scrolling text track */
 .live-track {
   display: inline-block;
   white-space: nowrap;
-  animation: scroll-left 13s linear infinite;
-  animation-delay: -4s;
+  animation: scroll-left 13s linear infinite; /* shorter duration */
+  animation-delay: -4s; /* start halfway so text is already visible */
+}
+
+@keyframes scroll-left {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }
 
 .live-track span {
   margin-right: 60px;
 }
 
-/* Animation */
-@keyframes scroll-left {
-  0%   { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
-
-/* Button */
-.btn {
-    display: inline-block;
-    padding: 12px 25px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, var(--gold), #e6c35e);
-    color: #1a1207;
-    text-decoration: none;
-    box-shadow: 0 6px 16px rgba(0,0,0,.25);
-    font-weight: 700;
-    transition: transform 0.25s ease, filter 0.25s ease;
-}
-.btn:hover {  transform: translateY(-2px); filter: brightness(1.05);
-box-shadow: 0 10px 20px rgba(0,0,0,.3); }
-
-/* Fullscreen overlay */
-#doorOverlay {
-  position: fixed;
-  inset: 0;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: #000;
-  z-index: 9999;
-  perspective: 1200px;
-  overflow: hidden;
-  display: flex;
-}
-
-/* Doors */
-.door {
-  position: absolute;
-  top: 0; width: 50%; height: 100%;
-  background-image: url("door4 bg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  transition: transform 1.5s ease-in-out;
-  transform-style: preserve-3d;
-}
-
-/* Left door */
-.door.left {
-  left: 0;
-  background-position: left center;
-  transform-origin: left center;
-}
-
-/* Right door */
-.door.right {
-  right: 0;
-  background-position: right center;
-  transform-origin: right center;
-}
-
-/* Inward door animation */
-.open-left  { transform: rotateY(90deg); }
-.open-right { transform: rotateY(-90deg); }
-
-/* ===== Sandstorm Effect ===== */
-#sandstorm {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.sand {
-  position: absolute;
-  background: rgba(194, 178, 128, 0.7);
-  border-radius: 50%;
-  filter: blur(2px);
-  animation: drift linear forwards;
-}
-
-@keyframes drift {
-  from { transform: translateX(0) translateY(0) scale(1); opacity: 1; }
-  to { transform: translateX(200px) translateY(-100px) scale(0.5); opacity: 0; }
-}
-
-/* Sandstorm (inside overlay) */
-#sandstorm{
-  position:absolute; inset:0; pointer-events:none; z-index: 150;
-}
-.sand-particle{
-  position:absolute; width:6px; height:6px;
-  background: radial-gradient(circle, #f8e1a6 0%, #d2b48c 100%);
-  border-radius:50%; opacity:.9; filter: blur(.4px);
-  animation: blow 4s linear forwards;
-}
-@keyframes blow{
-  0%{ transform: translate(0,0) scale(1); opacity:1; }
-  100%{ transform: translate(250px,-300px) scale(.6); opacity:0; }
-}
-
-/* Welcome text (hidden at start) */
-.welcome-text {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  color: gold;
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  text-shadow: 2px 2px 10px black;
-}
-.show-text { opacity: 1; }
-
-/* Welcome text (appears AFTER doors) */
-.welcome-text{
-  position:absolute; top:50%; left:50%; transform: translate(-50%,-50%);
-  font-size: 3rem; font-weight: 900; text-align:center; z-index: 200;
-  /* gradient "gold" text */
-  background: linear-gradient(90deg, #ffd700 0%, #ffb74a 50%, #ffd700 100%);
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: transparent;
-  text-shadow: 0 0 0 rgba(0,0,0,0), 0 6px 18px rgba(0,0,0,.35);
-  letter-spacing:.5px; opacity:0; transition: opacity 1s ease-in-out;
-}
-.show-text{ opacity:1; }
-
-/* ===== SECTION CONTAINER ===== */
-.section-container {
-    background: var(--paper); /* lighter, more transparent */
-    backdrop-filter: blur(5px);
-    text-align: center;
-    font-size: 1.1rem;
-    padding: 40px 20px;
-    border-radius: 20px;
-    margin: 20px auto;
-    max-width: 1000px;
-    box-shadow: 0 10px 26px rgba(0,0,0,0.15);
-    transition: transform 0.5s, box-shadow 0.5s;
-    opacity: 1;
-    transform: translateY(50px);
-    color: var(--ink);
-}
-
-.section-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-}
-@media(max-width: 600px) {
-  header h1 { font-size: 2rem; }
-  header p { font-size: 1rem; }
-  .about h2, .dance-battle h2, .art-of-the-year h2 { font-size: 1.8rem; }
-  .about p, .dance-battle p, .art-of-the-year p { font-size: 1rem; }
-  .card { font-size: 1rem; padding: 15px;}
-}
-@media(max-width:600px) {
-  .about, .dance-battle, .mob, .color-hunt, .art-of-the-year {
-    min-height: 200px;
-    padding: 20px;
-  }
-}
-/* ===== EVENTS GRID ===== */
-.events-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-    gap: 20px;
-    margin-top: 20px;
-    justify-items: center;
-}
-
-.card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 16px 30px rgba(0,0,0,0.3);
-}
-
-.card {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  background: rgba(30, 20, 10, 0.8);
-  border: 2px solid gold;
-  border-radius: 15px;
-  text-decoration: none;
-  color: #fff;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.4s ease;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  min-height: 200px;
-
-  .card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: #000;
-}
-
-.card .time {
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 8px;
-}
-
-.card .desc {
-  font-size: 14px;
-  color: #222;
-}
-  
-  /* Shimmer gradient */
-  background-image: linear-gradient(
-    120deg,
-    rgba(255, 215, 0, 0.2) 0%,
-    rgba(255, 255, 255, 0.4) 20%,
-    rgba(255, 215, 0, 0.2) 40%,
-    rgba(30, 20, 10, 0.8) 100%
-  );
-  background-size: 200% 100%;
-}
-
-/* Golden glow on hover */
-.card:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 0 15px gold, 0 0 30px rgba(255, 215, 0, 0.6),
-              0 0 50px rgba(255, 215, 0, 0.4);
-  border-color: #ffdf70;
-}
-
-@keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-.register-btn {
-    margin-top: 14px;
-    padding: 10px 20px;
-    background: linear-gradient(135deg, var(--gold), #e6c35e);
-    color: #1a1207;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    box-shadow: 0 4px 12px rgba(0,0,0,.25);
-    transition: transform 0.25s ease, filter 0.25s ease;
-}
-.register-btn:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,.3);
-}
-
-.registeract-btn {
-    margin-top: 5px;
-    padding: 4px 5px;
-    background: linear-gradient(135deg, var(--gold), #e6c35e);
-    color: #1a1207;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    box-shadow: 0 4px 12px rgba(0,0,0,.25);
-    transition: transform 0.25s ease, filter 0.25s ease;
-}
-.registeract-btn:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,.3);
-}
-/* ===== EVENT SCHEDULE TIMELINE ===== */
-.section-title{
-      text-align:center;
-      font-size:2.5rem;
-      margin-bottom:2rem;
-      color:#b8860b;
-      text-transform:uppercase;
-      letter-spacing:2px;
+    .btn-primary {
+      background: #b08968;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn-primary:hover {
+      background: #eaac8b;
     }
 
-    /* Timeline container */
-.timeline {
-  position: relative;
-  margin: 2rem auto;
-  padding: 2rem 0;
-  width: 80%;
-  background-image: url(schedule.jpg);
-}
+/* Fullscreen overlay */
 
-/* vertical golden line */
-.timeline::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 4px;
-  background: #99582a;
-  transform: translateX(-50%);
-  z-index: 0; /* line stays behind */
-}
 
-/* Scroll reveal */
-.timeline-content {
-  background: var(--sand);
-  border: 2px solid var(--gold);
-  border-radius: 10px;
-  padding: 1rem;
-  display: inline-block;
-  position: relative;
-  z-index: 1;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-
-  /* animation defaults */
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.6s ease;
-}
-
-.timeline-content h3 {
-  font-size: 1.8rem;
-  color: #444;
-  margin-bottom: 0.3rem;
-}
-
-/* When card is visible */
-.timeline-content.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Gentle hover effect */
-.timeline-content:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  transition: all 0.3s ease;
-}
-
-/* Each event */
-.timeline-item {
-  position: relative;
-  width: 50%;
-  padding: 1rem 2rem;
-}
-
-/* Alternate left & right */
-.timeline-item:nth-child(odd) {
-  left: 0;
-  text-align: right;
-}
-
-.timeline-item:nth-child(even) {
-  left: 50%;
-  text-align: left;
-}
-
-/* Card style */
-.timeline-content {
-  background: var(--sand);
-  border: 2px solid var(--gold);
-  border-radius: 10px;
-  padding: 1rem;
-  display: inline-block;
-  position: relative;
-  z-index: 1; /* ensures cards are above the line */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-.day-title {
-  position: relative;
-  z-index: 2;
-  margin: 2rem auto 1rem;   /* auto centers it */
-  font-size: 1.5rem;
-  font-weight: bold;
-  background: var(--sand);
-  display: block;           /* take full width */
-  text-align: center;       /* center the text */
-  width: fit-content;       /* shrink to text width */
-  padding: 0.3rem 1rem;
-  border-radius: 8px;
-}
-
-/* Animation */
-    .timeline-content.show{opacity:1;transform:translateY(0);}
-
-    .timeline-content h4{font-size:1.2rem;color:#444;margin-bottom:0.3rem;}
-    .timeline-content span{font-size:0.95rem;color:#666;}
-
- @media(max-width:768px) {
-  .timeline-item { margin-bottom: 2rem; }
-  .timeline-content { width: 100%; }
-}
-
-/* ===== COUNTDOWN ===== */
-.countdown {
-    font-size: 2rem;
-    margin-top: 20px;
-    font-weight: bold;
-}
-
-.band-performance {
-  position: relative;
-  overflow: hidden;
-  background-image: url('band.jpg'); /* your image */
-  background-size: cover;
-  background-position: center;
-  border-radius: 15px;
-  padding: 40px;          /* ensures space for text */
-  color: #fff;            /* make text white */
-  min-height: 300px;      /* keeps section tall enough */
-}
-
-/* Dark overlay */
-.band-performance::before {
-  content: "";
-  position: absolute;
-  inset: 0;  
-  background: rgba(0, 0, 0, 0.3); 
-  border-radius: 15px;
-  z-index: 0;
-}
-
-.band-performance > * {
-  position: relative;
-  z-index: 1;
-}
-.band-performance h2 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
-  color: #ddbea9;
-}
-.band-performance p {
-  font-size: 1.8rem;
-  max-width: 600px;
-  margin: 0 auto;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
-  font-weight: bold;
-}
-
-#focus .band-performance:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-}
-
-.about {
-  position: relative;
-  overflow: hidden;
-  background-image: url('rang bg.jpg'); /* your image */
-  background-size: cover;
-  background-position: center;
-  border-radius: 15px;
-  padding: 40px;          /* ensures space for text */
-  color: #fff;            /* make text white */
-  min-height: 300px;      /* keeps section tall enough */
-}
-
-/* Dark overlay */
-.about::before {
-  content: "";
-  position: absolute;
-  inset: 0;  
-  background: rgba(0, 0, 0, 0.3); 
-  border-radius: 15px;
-  z-index: 0;
-}
-
-.about> * {
-  position: relative;
-  z-index: 1;
-}
-.about h2 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
-  color: #ffcdb2;
-}
-.about p {
-  font-size: 1.8rem;
-  max-width: 600px;
-  margin: 0 auto;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
-  font-weight: bold;
-}
-
-#focus .about:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-}
-
-.dance-battle {
-  position: relative;
-  overflow: hidden;
-  background-image: url('dance.jpg'); /* your image */
-  background-size: cover;
-  background-position: center;
-  border-radius: 15px;
-  padding: 40px;          /* ensures space for text */
-  color: #fff;            /* make text white */
-  min-height: 300px;      /* keeps section tall enough */
-}
-
-/* Dark overlay */
-.dance-battle::before {
-  content: "";
-  position: absolute;
-  inset: 0;  
-  background: rgba(0, 0, 0, 0.3); 
-  border-radius: 15px;
-  z-index: 0;
-}
-
-.dance-battle > * {
-  position: relative;
-  z-index: 1;
-}
-.dance-battle h2 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
-  color: #ade8f4;
-}
-.dance-battle p {
-  font-size: 1.8rem;
-  max-width: 600px;
-  margin: 0 auto;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
-  font-weight: bold;
-}
-
-#focus .dance-battle:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-}
- /* Countdown Styling */
+    /* Countdown Styling */
 .countdown-section {
       text-align: center;
       padding: 60px 20px;
@@ -646,604 +142,1278 @@ box-shadow: 0 10px 20px rgba(0,0,0,.3); }
     #timer {
       font-size: 2rem;
       font-weight: bold;
-      color: gold;
+      color: #ffcdb2;
       margin-top: 20px;
     }
+    /* ========== SECTIONS ========== */
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .section-box {
+      max-width: 1000px;
+      margin: auto;
+      background: #eaac8b;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      font-size: 1.3rem;        /* bigger */
+      font-weight: 200;         /* extra bold */
+      text-transform: uppercase; /* all caps */
+      letter-spacing: 1.5px;      
+      margin-bottom: 25px;
+    }
 
-.art-of-the-year {
-  position: relative;
-  overflow: hidden;
-  background-image: url('chitrayatra.jpg'); 
-  background-size: cover;
-  background-position: center;
-  border-radius: 15px;
-  padding: 40px;          /* ensures space for text */
-  color: #fff;            /* make text white */
-  min-height: 300px;      /* keeps section tall enough */
-}
+    .past-section {
+      position: relative;
+      margin-bottom: 50px;
+      padding: 20px 10px;
+      text-align: center;
+      background: #eaac8b;
+      border-radius: 12px;
+      max-width: 1000px;
+      margin: auto;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+       
+    }
+        
 
-/* Dark overlay */
-.art-of-the-year::before {
-  content: "";
-  position: absolute;
-  inset: 0;  
-  background: rgba(0, 0, 0, 0.3); 
-  border-radius: 15px;
-  z-index: 0;
-}
-
-.art-of-the-year > * {
-  position: relative;
-  z-index: 1;
-}
-.art-of-the-year h2 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
-  color: #f48c06;
-}
-.art-of-the-year p {
-  font-size: 1.8rem;
-  max-width: 600px;
-  margin: 0 auto;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
-  font-weight: bold;
-}
-
-#focus .art-of-the-year:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-}
-
-.mob {
-  position: relative;
-  overflow: hidden;
-  background-image: url('mobnew.jpg'); /* your image */
-  background-size: cover;
-  background-position: center;
-  border-radius: 15px;
-  padding: 40px;          /* ensures space for text */
-  color: #fff;            /* make text white */
-  min-height: 300px;      /* keeps section tall enough */
-}
-
-/* Dark overlay */
-.mob::before {
-  content: "";
-  position: absolute;
-  inset: 0;  
-  background: rgba(0, 0, 0, 0.3); 
-  border-radius: 15px;
-  z-index: 0;
-}
-
-.mob > * {
-  position: relative;
-  z-index: 1;
-}
-.mob h2 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
-  color: #70e000;
-}
-.mob p {
-  font-size: 1.8rem;
-  max-width: 600px;
-  margin: 0 auto;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
-  font-weight: bold;
-}
-
-#focus .mob:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-}
-
-.color-hunt {
-  position: relative;
-  overflow: hidden;
-  background-image: url('color hunt.jpg'); /* your image */
-  background-size: cover;
-  background-position: center;
-  border-radius: 15px;
-  padding: 40px;          /* ensures space for text */
-  color: #fff;            /* make text white */
-  min-height: 300px;      /* keeps section tall enough */
-}
-
-/* Dark overlay */
-.color-hunt::before {
-  content: "";
-  position: absolute;
-  inset: 0;  
-  background: rgba(0, 0, 0, 0.3); 
-  border-radius: 15px;
-  z-index: 0;
-}
-
-.color-hunt > * {
-  position: relative;
-  z-index: 1;
-}
-.color-hunt h2 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
-  color: #ffb627;
-}
-.color-hunt p {
-  font-size: 1.8rem;
-  max-width: 600px;
-  margin: 0 auto;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
-  font-weight: bold;
-}
-
-#focus .color-hunt:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-}
-
-/* ===== GALLERY ===== */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-    gap: 20px;
-}
-.gallery-grid img {
-    width: 100%; border-radius: 12px;
-    transition: transform 0.3s;
-}
-.gallery-grid img:hover { transform: scale(1.05); }
-
-/* ===== FOOTER ===== */
-footer {
-    padding: 25px 20px;
-    background: #2c1c0f;
-    color: #3b2f2f;
-    text-align: center;
-    margin-top: 40px;
-    font-weight: bold;
-}
-footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
-
-/* ===== SCROLL ANIMATION ===== */
-.fade-in { opacity: 0; animation: fadeIn 1s forwards; }
-.slide-up { opacity: 0; transform: translateY(30px); animation: slideUp 1s forwards; }
-.animate-heading { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
-.animate-heading.visible { opacity: 1; transform: translateY(0); }
-
-@keyframes fadeIn { to { opacity:1; } }
-@keyframes slideUp { to { opacity:1; transform: translateY(0); } }
-
-@media (max-width: 768px) {
-  .timeline {
-    width: 95%;         /* more flexible width on small screens */
-    padding: 1rem 0;
-  }
-
-  .timeline::before {
-    left: 10px;         /* move golden line to the left */
-  }
-
-  .timeline-item {
-    width: 100%;        /* take full width */
-    padding: 1rem 1rem 1rem 2.5rem; /* leave space for line + dot */
-    text-align: left;   /* align text properly */
-    left: 0 !important; /* override positioning */
-  }
-
-  .timeline-item:nth-child(odd),
-  .timeline-item:nth-child(even) {
-    text-align: left;   /* same for both */
-  }
-
-  .timeline-content {
-    width: 100%;
-    display: block;
-    word-wrap: break-word;   /* prevent text from overflowing */
-  }
-}
-/* General fix for all big event sections */
-.about,
-.mob,
-.band-performance,
-.dance-battle,
-.art-of-the-year,
-.color-hunt {
+/* Container */
+.hanging-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  flex-direction: column; /* stack vertically */
+  align-items: center;    /* center align */
+  gap: 60px;              /* space between boards */
+}
+
+/* Each hanging board */
+.hanging-board {
+   position: relative;
+    width: 80%;
+    max-width: 900px;
+    margin: 5px auto 20px auto;  /* top, right, bottom, left */
+    text-align: center;
+}
+
+/* Rope */
+.hanging-board .rope {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  width: 4px;
+  height: 40px;
+  background: white;
+  transform: translateX(-50%);
+}
+
+/* Board */
+.hanging-board .board {
+   background: #602437;
   padding: 20px;
-  background-size: cover;
-  background-position: center;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
 }
 
-/* Tablet screens */
-@media (max-width: 768px) {
-  .about,
-  .mob,
-  .band-performance,
-  .dance-battle,
-  .art-of-the-year,
-  .color-hunt {
-    height: auto;          /* remove fixed vh height */
-    min-height: 50vh;      /* at least half-screen height */
-    padding: 15px;
+/* Headings inside board */
+.board .event-title {
+  .board .event-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffe66d; 
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+  margin-bottom: 20px;
+  }
+}
+
+/* Image inside board */
+.hanging-board img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 250px; /* each poster size */
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Caption under image */
+.hanging-board p {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0;
+}
+/* Hanging Board Swing */
+.swingBoard {
+  display: inline-block;
+  transform-origin: top center;
+}
+
+/* ==== EXPLORE BUTTON ==== */
+#exploreBtn {
+  display: inline-block;
+  padding: 14px 34px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff8dc;
+  background: linear-gradient(135deg, #a67c00, #ffd700);
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 18px rgba(166, 124, 0, 0.6);
+}
+
+/* Glow hover */
+#exploreBtn:hover {
+  background: linear-gradient(135deg, #ffd700, #ffb700);
+  color: #fff;
+  box-shadow: 0 0 25px 8px rgba(255, 215, 0, 0.8);
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* Subtle "shine" effect */
+#exploreBtn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transform: skewX(-25deg);
+}
+
+/* Slide shine on hover */
+#exploreBtn:hover::after {
+  left: 120%;
+  transition: left 0.7s ease;
+}
+
+.rang-section {
+      font-size: 1.1rem;
+      padding: 10px 10px;
+      text-align: center;
+      background: #8a2846;
+      border-radius: 12px;
+      max-width: 1000px;
+      margin: auto;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+
+    .rang-events img{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+  align-items: center;
+}
+
+.rang-events img {
+  display: block;  
+  border-radius: 10px;
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ===== IMAGE RESPONSIVE & HOVER EFFECT ===== */
+/* ===== FIX: tidy, centered grids in all rang sections ===== */
+.rang-section .board .gallery-grid {
+  display: grid !important;                    /* beat earlier flex rules */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  justify-items: center;                       /* center each tile */
+  align-items: center;
+  margin-top: 12px;
+}
+
+/* Make every tile the same height for clean rows */
+.rang-section .board .gallery-grid img {
+  width: 100%;
+  max-width: none;                              /* override .hanging-board img max-width:250px */
+  height: 220px;                                /* uniform height */
+  object-fit: cover;                            /* clean crop */
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  transition: transform .3s ease;
+}
+.rang-section .board .gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* Road Safety: single poster perfectly centered and not cropped */
+#road-safety .board .gallery-grid {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+#road-safety .board .gallery-grid img {
+  width: min(520px, 90%);
+  height: auto;                                 /* keep full poster */
+  object-fit: contain;
+}
+
+/* Optional: make 2018 images a touch larger */
+#rangotsav-2018 .board .gallery-grid img {
+  height: 240px;
+}
+
+/* ===== GALLERY GRID & RANG-EVENTS ===== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  justify-items: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  border-radius: 10px;
+  max-width: 300px; /* limit max size */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  transition: transform 0.3s;
+  object-fit: cover;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* Heading spacing */
+.rang-section h2,
+.rang-section p {
+    margin-bottom: 15px;
+}
+            
+/* ===== SECTION BOX HOVER LIFT EFFECT ===== */
+.section-box {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.section-box:hover {
+    transform: translateY(-10px);           /* lift section */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25); /* stronger shadow */
+}
+
+/* ===== OPTIONAL: LIGHTER TRANSPARENT SECTION BACKGROUND ===== */
+.section-box {
+    background: #b56576; /* same as past events*/
+    backdrop-filter: blur(15px);
+}
+#team {
+  margin-bottom: 60px; /* adjust space before founder section */
+}
+
+.carousel {
+  position: relative;
+  margin: 20px 0;
+}
+
+.members-row {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 15px;
+  padding: 10px 0;
+}
+
+.members-row {
+  display: flex;
+  overflow-x: auto;             /* keep scroll functionality */
+  scroll-behavior: smooth;
+  gap: 15px;
+  padding: 10px 0;
+  -webkit-overflow-scrolling: touch; /* smooth on iOS */
+  -ms-overflow-style: none;     /* IE and old Edge */
+  scrollbar-width: none;       
+}
+
+/* Chrome/Safari/Edge (WebKit) */
+.members-row::-webkit-scrollbar {
+  height: 0;                    /* remove horizontal scrollbar height */
+  background: transparent;
+}
+.members-row::-webkit-scrollbar-track { background: transparent; }
+.members-row::-webkit-scrollbar-thumb { background: transparent; }
+
+/* Remove any stray scrollbar rules on child elements */
+.member-profile { 
+  /* keep this for layout but remove any scrollbar rules here */
+  overflow-wrap: break-word;
+}
+
+.member-profile {
+  flex: 0 0 auto;
+  width: 160px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  transition: transform 0.3s, background 0.3s;
+}
+.member-card p {
+  white-space: nowrap;     /* Prevents breaking into multiple lines */
+  overflow: hidden;        /* Hides overflow if text is too long */
+  text-overflow: ellipsis; /* Adds "..." if text doesn't fit */
+  text-align: center;      /* Keeps text centered */
+  font-size: 14px;         /* Adjust if needed */
+  font-size: clamp(12px, 1.5vw, 16px); /* scales with screen */
+  text-align: center;
+  white-space: nowrap;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.prev { left: 0; }
+.next { right: 0; }
+
+.member-profile img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;    /* crop nicely */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  margin-bottom: 10px;
+}
+.member-profile:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.members-section .member-info h3 {
+    margin-bottom: 8px;
+    color: white;
+}
+
+.members-section .member-info p {
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.members-section h2 {
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: white;
+}
+
+/* Reduce gap after batch section */
+.carousel:last-of-type {
+  margin-bottom: 20px;   /* was bigger before, now smaller */
+}
+
+#people .section-box {
+  margin-top: 10px;      /* bring heading closer */
+}
+
+.founders-section .founders-profiles {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 40px;
+    justify-content: center;
+    object-fit: cover;
+}
+
+.founders-section .founder-profile {
+    display: flex;
     flex-direction: column;
-  }
+    align-items: center;
+    max-width: 300px;
+    text-align: center;
+}
 
-  .about h1, .mob h1, .band-performance h1,
-  .dance-battle h1, .art-of-the-year h1, .color-hunt h1 {
-    font-size: 1.6rem;
-  }
+.founders-section .founder-profile img {
+    width: 180px;   
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    margin-bottom: 15px;
+}
 
-  .about p, .mob p, .band-performance p,
-  .dance-battle p, .art-of-the-year p, .color-hunt p {
+.founders-section .founder-info h3 {
+    margin-bottom: 8px;
+    color: white;
+}
+
+.founders-section .founder-info p {
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.founders-section h2 {
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: white;
+}
+.founders-section h3 {
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    color: white;
+}
+
+    /* ===== FOOTER ===== */
+footer {
+  background: #8a2846;
+  color: #ede0d4;
+  padding: 40px 20px 20px;
+  margin-top: 50px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.footer-about, .footer-links, .footer-social {
+  flex: 1 1 300px;
+}
+
+.footer h3, .footer h4 {
+  color: #ede0d4;
+  margin-bottom: 15px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+  color: #ddd;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links ul li a:hover {
+  color: #ffe66d;
+}
+
+.footer-social a {
+  color: #fed0bb;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-social a:hover {
+  color: #ffe66d;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 10px;
+  border-top: 1px solid #fed0bb;
+  margin-top: 30px;
+  font-size: 0.9rem;
+}
+
+    /* ========== ANIMATION ========== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate {
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
+      animation-play-state: paused; /* wait until visible */
+    }
+    /* =================== RESPONSIVE DESIGN =================== */
+
+/* Images scale */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Text scaling */
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+p  { font-size: 1rem; line-height: 1.6; }
+
+/* NAVBAR */
+nav ul {
+  display: flex;
+  gap: 2rem;
+}
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Tablet adjustments */
+@media (max-width: 992px) {
+  nav {
+    padding: 1rem 2rem;
+  }
+  nav .logo img {
+    height: 70px;
+  }
+  nav ul li a {
     font-size: 1rem;
-    line-height: 1.4;
+  }
+  header.hero h1 { font-size: 2.8rem; }
+  header.hero p  { font-size: 1.2rem; }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .hamburger {
+    display: block;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    display: none;
+    background: #8a2846;
+    margin-top: 10px;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  nav ul.show {
+    display: flex;
+  }
+  nav .logo {
+    font-size: 1.5rem;
+  }
+  header.hero h1 { font-size: 2rem; }
+  header.hero p  { font-size: 1rem; }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  header.hero h1 { font-size: 1.6rem; }
+  header.hero p  { font-size: 0.9rem; }
+  .btn-primary   { font-size: 1rem; padding: 8px 16px; }
+}
+/* =================== IMAGE SECTIONS =================== */
+
+/* General images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+/* Event/Gallery images in grids */
+.events-grid img,
+.gallery img {
+  width: 100%;
+  height: 200px;            /* uniform height */
+  object-fit: cover;       /* clean crop */
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  transition: transform .3s ease;
+}
+
+/* On smaller devices */
+@media (max-width: 768px) {
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .carousel {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+  }
+}
+/* =======================
+   GLOBAL RESPONSIVE FIXES
+   ======================= */
+
+/* General scaling for small screens */
+@media (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+  h1, h2, h3 {
+    text-align: center;
+  }
+  section {
+    padding: 30px 15px;
   }
 }
 
+/* Tablets (landscape & portrait) */
+@media (max-width: 768px) {
+  /* Navbar */
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Hero / Countdown */
+  .countdown {
+    flex-direction: column;
+    text-align: center;
+  }
+  .countdown div {
+    margin: 8px 0;
+  }
+
+  /* Event Cards / Boxes */
+  .event-card, .box {
+    width: 100%;
+    margin: 10px auto;
+  }
+
+  /* Timeline */
+  .timeline::after {
+    left: 20px;  /* vertical line moves left */
+  }
+  .timeline-container {
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 20px;
+  }
+  .timeline-container.left,
+  .timeline-container.right {
+    left: 0;
+  }
+  .timeline-container .content {
+    font-size: 0.9rem;
+  }
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* Team Carousel */
+  .member-profile {
+    width: 70%;
+    margin: 0 auto;
+  }
+  .member-profile img {
+    width: 120px;
+    height: 120px;
+  }
+  .members-row {
+  justify-content: flex-start;  
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px;
+}
+  .prev, .next {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    padding: 0;
+    background: rgba(0,0,0,0.6);
+    top: auto;
+    bottom: -50px;
+    transform: none;
+  }
+  .prev { left: 25%; }
+  .next { right: 25%; }
+}
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 9999; /* 👈 keeps button on top for mobile taps */
+  touch-action: manipulation; /* 👈 makes taps more reliable */
+}
+.carousel .prev {
+  left: 10px;
+}
+.carousel .next {
+ right: 10px;
+}
 /* Mobile phones */
 @media (max-width: 480px) {
-  .about,
-  .mob,
-  .band-performance,
-  .dance-battle,
-  .art-of-the-year,
-  .color-hunt {
-    height: auto;         /* let content decide height */
-    min-height: unset;    /* no forced height */
-    padding: 12px;
+  body {
+    font-size: 14px;
   }
 
-  .about h1, .mob h1, .band-performance h1,
-  .dance-battle h1, .art-of-the-year h1, .color-hunt h1 {
-    font-size: 1.2rem;
+  /* Headings smaller */
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.3rem; }
+
+  /* Timeline text */
+  .timeline-container .content {
+    font-size: 0.8rem;
+    padding: 10px;
   }
 
-  .about p, .mob p, .band-performance p,
-  .dance-battle p, .art-of-the-year p, .color-hunt p {
-    font-size: 0.9rem;
-    line-height: 1.3;
+  /* Gallery in 1 column */
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Team Carousel tweaks */
+  .member-profile {
+    width: 90%;
+  }
+  .member-profile img {
+    width: 100px;
+    height: 100px;
+  }
+  .prev { left: 15%; }
+  .next {right:15%;}
+}
+    /* ================== FINAL FIXES ================== */
+
+/* ----- TEAM CAROUSEL FIX ----- */
+.carousel {
+  position: relative;
+  margin: 20px 0;
+}
+
+.members-row {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 15px;
+  padding: 10px 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.members-row::-webkit-scrollbar { display: none; }
+
+.member-profile {
+  flex: 0 0 auto;
+  width: 160px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.member-profile img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+/* Make carousel fully responsive */
+@media (max-width: 768px) {
+  .member-profile {
+    width: 120px;
+  }
+  .member-profile img {
+    width: 100px;
+    height: 100px;
+  }
+  .prev, .next {
+    bottom: -40px; /* move buttons below */
   }
 }
 
-</style>
+/* ----- GALLERY GRID FIX ----- */
+.gallery-grid img,
+.rang-section .board .gallery-grid img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;       /* keep aspect ratio */
+  border-radius: 10px;
+}
+
+/* Responsive grid: 3 on desktop, 2 on tablet, 1 on phone */
+.gallery-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+ }
+}
+/* Highlight the Upcoming Events Box */
+.upcoming-box {
+  background: linear-gradient(135deg, #e63946, #f77f00); /* eye-catching gradient */
+  color: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(255, 99, 71, 0.8); /* glowing effect */
+  animation: boxGlow 3s infinite alternate;
+}
+
+/* Glow animation */
+@keyframes boxGlow {
+  from { box-shadow: 0 0 15px rgba(255, 99, 71, 0.7); }
+  to { box-shadow: 0 0 35px rgba(255, 165, 0, 0.9); }
+}
+
+/* Countdown Styling */
+.upcoming-box .countdown {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 1rem 0;
+  color: #fff;
+  text-shadow: 0 0 8px #000;
+}
+
+/* Explore Button Styling */
+.explore-btn {
+  display: inline-block;
+  background: linear-gradient(45deg, #ffd60a, #fca311);
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 15px rgba(255, 214, 10, 0.8);
+  animation: pulse 2s infinite;
+}
+
+/* Button Hover */
+.explore-btn:hover {
+  background: linear-gradient(45deg, #ffba08, #f77f00);
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(255, 165, 0, 1);
+}
+
+/* Button Pulse Animation */
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 214, 10, 0.6); }
+  50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 214, 10, 1); }
+  100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 214, 10, 0.6); }
+}
+
+  </style>
 </head>
 <body>
 
-  <!-- Door Animation Overlay (auto visible) -->
-<div id="doorOverlay">
-  <div class="door left"></div>
-  <div class="door right"></div>
-  <div id="sandstorm"></div>
-  <!-- Welcome text to appear after door finish opening -->
-  <div class="welcome-text">🏺 Welcome to Rangotsav 2025 🏺</div>
-</div>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">
+      <img src="loa logo.jpg" alt="Club Logo">
+      <span>The Land of Art</span>
+    </div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about" class="active">About</a></li>
+      <li><a href="#rangotsav">Upcoming Events</a></li>
+      <li><a href="#past-event">Past Events</a></li>
+      <li><a href="#members">Team</a></li>
+      <li><a href="#contact-info">Contact</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </nav>
 
-
-<!-- BACKGROUND -->
-
-<div class="bg-container">
-    <div class="bg-overlay"></div>
-    <header class="fade-in">
-      <div class="rang-logo">
-        <img src="rang logo.jpg" alt="Club Logo">
-        </div>
-        <h1 class="animate-heading"> Rangotsav 2025</h1>
-        
-        <p style="color: gold; font-weight: bold;">Celebrating Colors & Creativity</p>
-        <div id="countdown" class="countdown" style="color: gold; font-weight: bold;"> Loading...</div>
-        <br>
-        <a href="#events" class="btn">Explore Events</a>
-    </header>
-</div>
+  <!-- HERO -->
+   <section id="home">
+    <div>
+  <header class="hero">
+    <h1 class="animate">The Land of Art</h1>
+    <p class="animate" style="font-size: 2rem;"><i>Where creativity finds its canvas.</i></p>
+    <br>
+    <a href="#about" class="btn-primary animate">Discover More</a>
+  </div>
+    </section>
+  </header>
 
 <!-- Straight Tagline Banner -->
 <div class="live-banner">
   <div class="live-track">
-    <span> DANCE AUDITION REGISTRATION IS LIVE NOW  </span>
-    <span> DANCE AUDITION REGISTRATION IS LIVE NOW  </span>
-    <span> DANCE AUDITION REGISTRATION IS LIVE NOW </span>
+    <span> Rangotsav 2025 is LIVE!  Celebrating Colors & Creativity  </span>
+    <span> Rangotsav 2025 is LIVE!  Celebrating Colors & Creativity  </span>
+    <span> Rangotsav 2025 is LIVE!  Celebrating Colors & Creativity  </span>
   </div>
 </div>
 
-<!-- ABOUT RANGOTSAV -->
-<section id="focus" class="focus-section slide-up">
-  <div class="section-container">
-    <div class="about">
-    <h2>ABOUT RANGOTSAV</h2>
-    <p>Rangotsav is the 2-days flagship annual event of The Land of Art, designed to celebrate the boundless creativity, vibrant colors, and artistic spirit of our college community.
-      This festival brings together passionate artists, crafters, and creative minds to showcase their talents through painting, sketching, craft-making, and live art demonstrations</p>
-<br>
-</div>
-</div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-box animate">
+      <h2>ABOUT US</h2>
+      <p><i>The Land of Art is a vibrant community of dreamers and creators,
+         inspiring everyone to explore their imagination and bring it to life.</i></p>
+    </div>
+  </section> 
+
+  <!-- RANGOTSAV -->
+  <section id="rangotsav">
+  <div class="upcoming-box">
+    <h2> UPCOMING EVENTS </h2>
+    <h2> Rangotsav 2025</h2>
+    <p><i>Countdown to our biggest celebration of art & colors!</i></p>
+
+    <!-- Countdown timer (single ID only) -->
+    <div id="timer" class="countdown-timer"></div><br>
+    <a href="rangotsav.html" class="explore-btn" onclick="localStorage.setItem('playMusic','true')">
+  Explore Rangotsav
+</a>
+  </div>
 </section>
 
-<!-- EVENTS -->
-<section id="events" class="events-section slide-up">
-  <div class="section-container">
-    <h2>EVENTS</h2>
-    <div class="events-grid">
-       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bottle.jpg') center/cover no-repeat; color:#fff;">
-        <h3>BOTTLE PAINTING</h3>
-        <p class="time"> DAY 1<br>10:00 AM </p>
-        <p class="desc">Unleash creativity by turning simple glass bottles into vibrant art pieces</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc146G3ip3w11Kw8ug5BuSVNf2QXev67XChiOWDcWv0eVKYsg/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
-      </div>
-      <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('chalk\ art.jpg') center/cover no-repeat; color:#fff;">
-        <h3>CHALK ART</h3>
-        <p class="time"> DAY 1<br>11:00 AM</p>
-        <p class="desc">Bring streets and boards alive with colorful chalk-based drawings</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScTuh_5rOdtru2Uuaog3IpleDUvywyfYKBXo4CkF2VoJbADKA/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
-      </div>
-      <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('tattoo.jpg') center/cover no-repeat; color:#fff;">
-        <h3>TATTOO MAKING</h3>
-        <p class="time"> DAY 1<br>12:00 NOON</p>
-        <p class="desc">Express yourself with artistic temporary tattoos designed by skilled creators</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSenD4SR9bffO9kLpdHGUyzjayguycv8ggLzykBRyTHLM4modQ/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
-      </div>
-      <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('calligraphy.jpg') center/cover no-repeat; color:#fff; background-attachment: fixed;">
-        <h3>CALLIGRAPHY</h3>
-        <p class="time"> DAY 1<br>1:30 PM</p>
-        <p class="desc">Discover the beauty of artistic handwriting and lettering styles</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfY11UJ8hCXM8-j_0YdEFmcRysGQhZzixQOuDs4rPNdpyKVGQ/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
-      </div>
-      <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('mehendi\ art.jpg') center/cover no-repeat; color:#fff;">
-        <h3>MEHENDI ART</h3>
-        <p class="time"> DAY 1<br>02:30 PM</p>
-        <p class="desc">Decorate hands with intricate mehendi designs full of tradition and elegance</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6xv06Zvm2gph5EEve5kUrPTAeNakIwVpeqZoAwFqdEbnhOA/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
-      </div>
-      <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('blindfold.jpg') center/cover no-repeat; color:#fff;">
-        <h3>BLIND ART</h3>
-        <p class="time">DAY 1<br> 03:30 PM</p>
-        <p class="desc">A fun challenge where participants create art while blindfolded</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfPoaZ5KoTITLK7ymB8-Vsz1CoNMioqdnVsuVbgrF_JTpy_ew/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
-      </div>
-      <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('soap\ carv.jpg') center/cover no-repeat; color:#fff;">
-        <h3>SOAP CARVING</h3>
-        <p class="time"> DAY 2<br>09:00 AM</p>
-        <p class="desc">Shape delicate patterns and sculptures from soap bars using creativity.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJoPSR5Qzjbc-RJH1gNYpf67fkb1NWPGvQ77XBIPCLSiS_-Q/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
-      </div>
-      <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('rangoli.jpg') center/cover no-repeat; color:#fff;">
-        <h3>RANGOLI</h3>
-        <p class="time"> DAY 2<br>10:00 AM</p>
-        <p class="desc">Brighten the floor with colorful rangolis made from powders and flowers</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfxrJJ7fpYsYtnWLGGu_i6GonNL7v9sTHiftk7wtYWvBr8_Vw/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
-      </div>
-      <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('nail.jpg') center/cover no-repeat; color:#fff;">
-        <h3>NAIL ART</h3>
-        <p class="time"> DAY 2<br>11:00 AM</p>
-        <p class="desc">Tiny canvases, big creativity – decorate nails with unique designs</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd8jQdwCYl_lGNAn-08EwFsGK_jljM6MROmOXZnmIcCdIdT_g/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
-      </div>
+<!-- PAST EVENTS -->
+<section id="past-event" class="past-section">
+  <div class="section-box animate">
+    <h2> PAST EVENTS</h2>
+    <p><i>Here are some glimpses of our past events.</i></p>
+  </div>
 
-      <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('sand\ .jpg') center/cover no-repeat; color:#fff;">
-        <h3>SAND ART</h3>
-        <p class="time"> DAY 2<br>12:00 NOON</p>
-        <p class="desc">Craft stunning patterns and images using layers of colored sand</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeE3Grm6advRW6sG8_VdKi50eBU-QF8NCbP8f_CLJtjpC4CKw/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
+  <!-- Rangotsav 2018 -->
+  <section id="rangotsav-2018" class="rang-section">
+    <div class="hanging-board swingBoard">
+      <span class="rope"></span>
+      <div class="board">
+        <h2 class="event-title">RANGOTSAV 2018</h2>
+        <div class="gallery-grid">
+          <img src="RANG1-2018.jpg" alt="Event 1">
+          <img src="RANG2-2018.jpg" alt="Event 2">
+        </div>
       </div>
+    </div>
+  </section>
 
+  <!-- Rangotsav 2021 -->
+  <section id="rangotsav-2022" class="rang-section">
+    <div class="hanging-board swingBoard">
+      <span class="rope"></span>
+      <div class="board">
+        <h2 class="event-title">RANGOTSAV 2021</h2>
+        <div class="gallery-grid">
+          <img src="RANG1-2022.jpg" alt="Event 1">
+          <img src="RANG2-2022.jpg" alt="Event 2">
+          <img src="RANG3-2022.jpg" alt="Event 3">
+          <img src="RANG4-2022.jpg" alt="Event 4">
+          <img src="RANG5-2022.jpg" alt="Event 5">
+          <img src="RANG6-2022.jpg" alt="Event 6">
+          <img src="RANG7-2022.jpg" alt="Event 7">
+          <img src="RANG8-2022.jpg" alt="Event 8">
+          <img src="RANG9-2022.jpg" alt="Event 9">
+          <img src="RANG10-2022.jpg" alt="Event 10">
+          <img src="RANG11-2022.jpg" alt="Event 11">
+          <img src="RANG12-2022.jpg" alt="Event 12">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rangotsav 2023 -->
+  <section id="rangotsav-2023" class="rang-section">
+    <div class="hanging-board swingBoard">
+      <span class="rope"></span>
+      <div class="board">
+        <h2 class="event-title">RANGOTSAV 2023</h2>
+        <div class="gallery-grid">
+          <img src="RANG1-2023.jpg" alt="Event 1">
+          <img src="RANG2-2023.jpg" alt="Event 2">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Road Safety -->
+  <section id="road-safety" class="rang-section">
+    <div class="hanging-board swingBoard">
+      <span class="rope"></span>
+      <div class="board">
+        <h2 class="event-title">ROAD SAFETY</h2>
+        <div class="gallery-grid">
+          <img src="ROAD POSTER.jpg" alt="Road Safety Poster">
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+  <!-- GALLERY -->
+  <section id="past-event" class="past-section">
+    <div class="section-box animate">
+      <h2>CONTRIBUTIONS</h2>
+      <p><i>A glimpse into the beautiful artworks and memories created by our members.</i></p>
+    </div>
+
+    <!--KOLHAAL 2022-->
+    <section id="rangotsav-2018" class="rang-section">
+    <div class="hanging-board swingBoard">
+      <span class="rope"></span>
+      <div class="board">
+        <h2 class="event-title">KOLAAHAL 2022</h2>
+        <div class="gallery-grid">
+          <img src="KOLA1-2022.jpg" alt="Event 1">
+          <img src="KOLA2-2022.jpg" alt="Event 2">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rangotsav-2022" class="rang-section">
+    <div class="hanging-board swingBoard">
+      <span class="rope"></span>
+      <div class="board">
+        <h2 class="event-title">KOLAAHAL 2025</h2>
+        <div class="gallery-grid">
+          <img src="KOLA1-2024.jpg" alt="Event 1">
+          <img src="KOLA2-2024.jpg" alt="Event 2">
+          <img src="KOLA3-2024.jpg" alt="Event 2">
+          <img src="KOLA4-2024.jpg" alt="Event 2">
+          <img src="KOLA5-2024.jpg" alt="Event 2">
+        </div>
+      </div>
+    </div>
+  </section>
+  </section>
+
+ <!-- FACULTY INCHARGE & CO-ORDINATOR -->
+<section id="founders" class="founders-section">
+  <div class="section-box animate">
+    <h3><centre>MASTERSTROKES SQUAD</h3>
+    <div class="founders-profiles">
+      <!-- Founder -->
+      <div class="founder-profile">
+        <img src="incharge.jpg" alt="Founder Photo">
+        <div class="founder-info">
+          <h3>MRS.VISHI KHATTRI</h3>
+          <p><i>A dedicated and inspiring mentor, whose guidance, encouragement, and unwavering support form
+             the backbone of our endeavors. With her vision and leadership, she continues 
+             to nurture creativity and discipline among students.</i></p>
+        </div>
+      </div>
+      <!-- Co-Founder -->
+      <div class="founder-profile">
+        <img src="coordinator.jpg" alt="Co-Founder Photo">
+        <div class="founder-info">
+          <h3>MRS. PRIYANKA SHARMA</h3>
+          <p><i>A committed and supportive guide, who brings both enthusiasm and responsibility to every task.
+            With her constant encouragement and thoughtful coordination, she ensures
+             the smooth functioning of our artistic journey.</i></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+<!-- ================= TEAM MEMBERS ================= -->
+<section id="members" class="members-section">
+  <div class="section-box animate">
+    <h2>PEOPLE BEHIND THE VISION</h2>
+    <section id="team">
+  <!-- 4th Year -->
+  <div class="carousel" id="year4">
+    <h3>Batch 2022-26</h3>
+    <div class="members-row">
+      <div class="member-profile"><img src="atharv-4.jpg"><p>ATHARV GUPTA</p></div>
+      <div class="member-profile"><img src="rajshree-4.jpg"><p>RAJSHREE MISHRA</p></div>
+      <div class="member-profile"><img src="abhishek-4.jpg"><p>ABHISHEK KUMAR SINGH</p></div>
+      <div class="member-profile"><img src="vashika-4.jpg"><p>VASHIKA TYAGI</p></div>
+      <div class="member-profile"><img src="ujjawal-4.jpg"><p>UJJAWAL KUMAR</p></div>
+      <div class="member-profile"><img src="Saniya-4.jpg"><p>SANIYA</p></div>
+      <div class="member-profile"><img src="sunidhi-4.jpg"><p>SUNIDHI RANI</p></div>
+      <div class="member-profile"><img src="kavitra-4.jpg"><p>KAVITA KUMARI</p></div>
+      <div class="member-profile"><img src="janvi-4.jpg"><p>JANVI CHAUHAN</p></div> 
+    </div>
+    <button class="prev" onclick="scrollCarousel('year4', -1)">&#10094;</button>
+    <button class="next" onclick="scrollCarousel('year4', 1)">&#10095;</button>
+  </div>
+
+  <!-- 2nd Year -->
+  <div class="carousel" id="year3">
+    <h3>Batch 2023-27</h3>
+    <div class="members-row">
+      <div class="member-profile"><img src="tapan-3.jpg"><p>TAPAN MISHRA</p></div>
+      <div class="member-profile"><img src="tanisha-3.jpg"><p>TANISHA SONI</p></div>
+      <div class="member-profile"><img src="tanuraj-3.jpg"><p>TANURAJ SIROHI</p></div>
+      <div class="member-profile"><img src="anubhav-3.jpg"><p>ANUBHAV KUMAR SINGH</p></div>
+      <div class="member-profile"><img src="anshika b-3.jpg"><p>ANSHIKA BHARDWAJ</p></div>
+      <div class="member-profile"><img src="anshika v-3.jpg"><p>ANSHIKA VERMA</p></div>
+      <div class="member-profile"><img src="arnav-3.jpg"><p>ARNAV CHAUDHARY</p></div>
+      <div class="member-profile"><img src="suhani-3.jpg"><p>SUHANI VERMA</p></div>
+      <div class="member-profile"><img src="sonakshi-3.jpg"><p>SONAKSHI</p></div>
+      <div class="member-profile"><img src="avinash-3.jpg"><p>AVINASH KUMAR KARNAL</p></div>
+      <div class="member-profile"><img src="vansh-3.jpg"><p>VANSH MITTAL</p></div>
+    </div>
+    <button class="prev" onclick="scrollCarousel('year3', -1)">&#10094;</button>
+    <button class="next" onclick="scrollCarousel('year3', 1)">&#10095;</button>
+  </div>
+
+  <!-- 4th Year -->
+  <div class="carousel" id="year2">
+    <h3>Batch 2024-28</h3>
+    <div class="members-row">
+      <div class="member-profile"><img src="vasu-2.jpg"><p>VASU UPADHYAY </p></div>
+      <div class="member-profile"><img src="shubhangi-2.jpg"><p>SHUBHANGI SINGH</p></div>
+      <div class="member-profile"><img src="saianshi-2.jpg"><p>SAIANSHI SAXENA</p></div>
+      <div class="member-profile"><img src="aditi-2.jpg"><p>ADITI CHAUDHARY</p></div>
+      <div class="member-profile"><img src="aditya-2.jpg"><p>ADITYA SHARMA</p></div>
+      <div class="member-profile"><img src="anushka-2.jpg"><p>ANUSHKA AGARWAL</p></div>
+      <div class="member-profile"><img src="nitish-2.jpg"><p>NITISH TOMAR</p></div>
+      <div class="member-profile"><img src="nikita-2.jpg"><p>NIKITA PAL</p></div>
+      <div class="member-profile"><img src="sarthak-2.jpg"><p>SARTHAK RANA</p></div>
+      <div class="member-profile"><img src="jagriti-2.jpg"><p>JAGRATI GUPTA</p></div>
+      <div class="member-profile"><img src="priyanshi-2.jpg"><p>PRIYANSHI CHAUHAN</p></div>
+      <div class="member-profile"><img src="vanshnew-2.jpg"><p>VANSH KUMAR</p></div>
+      <div class="member-profile"><img src="areeb-2.jpg"><p>AREEB SIDDIQUI</p></div>
+      <div class="member-profile"><img src="kartik-2.jpg"><p>KARTIK SHARMA</p></div>
+      <div class="member-profile"><img src="shreya-2.jpg"><p>SHREYA CHAUHAN</p></div>
+    </div>
+    <button class="prev" onclick="scrollCarousel('year2', -1)">&#10094;</button>
+    <button class="next" onclick="scrollCarousel('year2', 1)">&#10095;</button>
+  </div>
+</section>
+ </div>
+</section>
+
+ <!-- FOUNDER & CO-FOUNDER -->
+<section id="founders" class="founders-section">
+  <div class="section-box animate">
+    <h2>PILLARS OF THE CLUB</h2>
+    <div class="founders-profiles">
+      <!-- Founder -->
+      <div class="founder-profile">
+        <img src="founder.jpg" alt="Founder Photo">
+        <div class="founder-info">
+          <h3>MR. SHUBHAM SHUKLA</h3>
+          <h3>(Founder)</h3>
+          <h3>(2018-22)</h3>
+          <p><i>Passionate about art and creativity, Shubham Shukla founded The Land of Art
+             to inspire students to explore their imagination and celebrate artistic expression.</i></p>
+        </div>
+      </div>
+      <!-- Co-Founder -->
+      <div class="founder-profile">
+        <img src="co-founder.jpg" alt="Co-Founder Photo">
+        <div class="founder-info">
+          <h3>MR. KUNAL KAPOOR</h3>
+          <h3>(Co-Founder)</h3>
+          <h3>(2017-21)</h3>
+          <p><i>Co-founder and art enthusiast, Kunal Kapoor works alongside 
+            to bring fresh ideas and organize amazing events for the club members.</i></p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
- <!-- EVENT SCHEDULE -->
-<section id="schedule">
-  <h2 class="section-title" style="font-size: 1.5rem;">Event Schedule</h2>
-  <!-- Day 1 -->
-  <h3 class="day-title">Day 1</h3>
-  <div class="timeline">
-    <div class="timeline-item"><div class="timeline-content"><h4>Inauguration</h4><span>9:00 AM – 10:30 AM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Bottle Painting</h4><span>10:30 AM – 11:30 AM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Chalk Art</h4><span>11:30 AM – 12:30 PM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Tattoo Making</h4><span>12:30 PM – 1:30 PM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Calligraphy</h4><span>2:00 PM – 3:00 PM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Mehendi</h4><span>3:00 PM – 4:00 PM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Blind Art</h4><span>4:00 PM – 5:00 PM</span></div></div>
+    <!-- FOOTER -->
+<footer class="animate" id="contact-info">
+  <div class="footer-container">
+    <div class="footer-about">
+      <h3>The Land of Art</h3>
+      <p>A community where imagination turns into inspiration.  
+         Join us in celebrating colors, creativity, and culture.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#past-event">Past Events</a></li>
+        <li><a href="#members">Team</a></li>
+        <li><a href="#rangotsav">Rangotsav</a></li>
+        <li><a href="#contact-info">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-social">
+      <h4>Connect With Us</h4>
+      <p>
+        📧 <a href="mailto:thelandofart14@gmail.com"> thelandofart14@gmail.com </a></p>
+      <p>📍 MIET, NH-58, Meerut</p>
+      <p>
+        🌐 <a href="#">Website</a> |  
+        📸 <a href="https://www.instagram.com/the_land_of_art__?igsh=MXF6NW5jdmh5eDNjOQ==">Instagram</a> |  
+        </p>
+    </div>
   </div>
-
-  <!-- Day 2 -->
-  <h3 class="day-title">Day 2</h3>
-  <div class="timeline">
-    <div class="timeline-item"><div class="timeline-content"><h4>Soap Carving</h4><span>9:00 AM-10:00 AM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Rangoli</h4><span>10:00 AM-11:00 AM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Nail Art</h4><span>11:00 AM-12:00 PM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Sand Art</h4><span>12:00 PM-1:00 PM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Band Performance</h4><span>2:00 PM-3:00 PM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Mob</h4><span>3:15 PM-3:30 PM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Dance Battle (Solo & Duo)</h4><span>3:30 PM-4:30 PM</span></div></div>
-    <div class="timeline-item"><div class="timeline-content"><h4>Closing</h4><span>5:30 PM-6:00 PM</span></div></div>
+  <div class="footer-bottom">
+    <p>© 2025 The Land of Art | All Rights Reserved</p>
   </div>
-</section>
+  </footer>
+  
+  <!-- SCRIPT -->
+  <script>
+   
+    /* === Smooth Scroll with Offset === */
+    document.querySelectorAll('nav ul li a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        const navHeight = document.querySelector('nav').offsetHeight;
+        const targetPos = target.offsetTop - navHeight;
 
-<!-- ART OF THE YEAR -->
-<section id="focus" class="focus-section slide-up">
-  <div class="section-container">
-    <div class="art-of-the-year">
-    <h2> Chitrayatra (The Art Exhibition and Competition) </h2>
-    <p>A platform where you can showcase your art and be a part of the competition. 
-      Bring your best artworks to win the title "Art of the Year".<br><br>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSczHj4Kv83e31XmIOIgasVFLmwh_hEz7HwjmXDiBGfhzVZGYA/viewform?usp=header" target="_blank" class="registeract-btn">Register Here</a>
-</p>
-<br>
-</div>
-</div>
-</section>
-
-<!-- COLOR HUNT -->
-<section id="focus" class="focus-section slide-up">
-  <div class="section-container">
-    <div class="color-hunt">
-    <h2> Color Hunt (A Colorful Treasure Hunt)</h2>
-    <p>A treasure hunt filled with colors and vibes. 
-      Register now and participate in the college’s biggest treasure hunt!<br><br>
-      <a href="https://docs.google.com/forms/d/1AaDMvskuJ4T-nVdMoyIixcqtr9SkCcSb4NmHBsEqG_I/viewform" target="_blank" class="registeract-btn">Register Here</a>
-</p>
-<br>
-</div>
-</div>
-</section>
-
-<!-- BAND PERFORMANCE -->
-<section id="focus" class="focus-section slide-up">
-  <div class="section-container">
-    <div class="band-performance">
-    <h2>Band Performance</h2>
-    <p>An electrifying live performance by our very own college band “Swaraang”</p>
-<br>
-</div>
-</div>
-</section>
-
-<!-- MOB -->
-<section id="focus" class="focus-section slide-up">
-  <div class="section-container">
-    <div class="mob">
-    <h2>MOB</h2>
-    <p>A vibrant performance of rhythm, energy, and coordination where dancers move as one. This act celebrates teamwork and creativity, spreading joy and cultural colors across the stage. 
-      A true highlight of Rangotsav, uniting hearts through dance.</p>
-<br>
-</div>
-</div>
-</section>
-
-<!-- DANCE BATTLE -->
-<section id="focus" class="focus-section slide-up">
-  <div class="section-container">
-    <div class="dance-battle">
-    <h2>Dance Battle (Solo and Duo)</h2>
-    <p>Not your ordinary dance performances — this battle brings something special: direct face-offs 
-      with your competitors and loads of fun!
-Register now for the auditions.<br><br>
- <!-- Countdown timer (single ID only) -->
-    <div id="timer" class="countdown-timer"></div>
-      <h2>!! DANCE AUDITION REGISTRATION IS LIVE NOW !!</h2>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRqvykJTw4QERrvAz-bKtREmDtGyg6wKJzBn5ZLWNI3myJfQ/viewform?usp=header" target="_blank" class="registeract-btn">Register Here</a>
-<br><br>
-  </p>
-<br>
-</div>
-</div>
-</section>
-
-<!-- FOOTER -->
-<footer class="slide-up">
-  <div class="section-container">
-    <p>📧 <a href="mailto:thelandofart14@gmail.com">thelandofart14@gmail.com</a> | 📸 Instagram: <a href="https://www.instagram.com/the_land_of_art__?
-        igsh=MXF6NW5jdmh5eDNjOQ==">@the_land_of_art__</a></p>
-  </div>
-</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Elements
-  const doorOverlay = document.getElementById('doorOverlay');
-  const leftDoor = document.querySelector('.door.left');
-  const rightDoor = document.querySelector('.door.right');
-  const welcomeText = document.querySelector('.welcome-text');
-  const sandstorm = document.getElementById('sandstorm');
-  const countdownEl = document.getElementById('countdown');
-  const headings = document.querySelectorAll('.animate-heading');
-  const sections = document.querySelectorAll('.section-container');
-  const cards = document.querySelectorAll('.timeline-content');
-
-  /* ---------- Sand particle creator ---------- */
-  function createSandParticle() {
-    if (!sandstorm) return;
-    const p = document.createElement('div');
-    p.className = 'sand-particle';
-    p.style.left = Math.random() * window.innerWidth + 'px';
-    p.style.top = (Math.random() * window.innerHeight + 100) + 'px';
-    const size = Math.random() * 4 + 3;
-    p.style.width = size + 'px';
-    p.style.height = size + 'px';
-    const dur = Math.random() * 3 + 2; // 2s - 5s
-    p.style.animationDuration = dur + 's';
-    sandstorm.appendChild(p);
-    setTimeout(() => p.remove(), dur * 1000);
-  }
-
-  /* ---------- Door overlay animation ---------- */
-  if (doorOverlay && leftDoor && rightDoor) {
-    // ensure visible
-    doorOverlay.style.display = 'flex';
-    doorOverlay.style.opacity = '1';
-
-    // start generating particles
-    const sandInterval = setInterval(createSandParticle, 80);
-
-    // open doors after a short delay
-    setTimeout(() => {
-      leftDoor.classList.add('open-left');
-      rightDoor.classList.add('open-right');
-    }, 500);
-
-    // show welcome text
-    setTimeout(() => {
-      welcomeText?.classList.add('show-text');
-    }, 2500);
-
-    // stop particles and gracefully fade overlay out
-    setTimeout(() => {
-      clearInterval(sandInterval);
-      doorOverlay.style.transition = 'opacity 400ms ease';
-      doorOverlay.style.opacity = '0';
-      setTimeout(() => { doorOverlay.style.display = 'none'; }, 450);
-    }, 5200);
-  }
-
-  /* ---------- Countdown ---------- */
-  if (countdownEl) {
-    const eventDate = new Date('September 12, 2025 10:00:00').getTime();
-    const timer = setInterval(() => {
-      const now = Date.now();
-      const diff = eventDate - now;
-      if (diff <= 0) {
-        clearInterval(timer);
-        countdownEl.innerHTML = 'The event has started!';
-        return;
-      }
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }, 1000);
-  }
-
-  /* ---------- Scroll reveal ---------- */
-  function revealOnScroll() {
-    const triggerBottom = window.innerHeight * 0.9;
-    headings.forEach(h => {
-      if (h.getBoundingClientRect().top < window.innerHeight - 100) h.classList.add('visible');
+        window.scrollTo({
+          top: targetPos,
+          behavior: 'smooth'
+        });
+      });
     });
-    sections.forEach(s => {
-      if (s.getBoundingClientRect().top < window.innerHeight - 100) {
-        s.style.opacity = '1';
-        s.style.transform = 'translateY(0)';
-      }
-    });
-    cards.forEach(card => {
-      const rect = card.getBoundingClientRect();
-      if (rect.top < triggerBottom) card.classList.add('show');
-    });
-  }
 
-  window.addEventListener('scroll', revealOnScroll);
-  revealOnScroll();
-});
-</script>
-<script>
-// Set the date of Dance Audition
-const eventDate = new Date("Sep 06, 2025 00:00:00").getTime();
+    /* === Highlight Active Nav Link === */
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    window.addEventListener('scroll', () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+
+  <script>
+// Set the date of Rangotsav
+const eventDate = new Date("Sep 12, 2025 00:00:00").getTime();
 
 const timer = setInterval(function() {
   const now = new Date().getTime();
@@ -1262,65 +1432,164 @@ const timer = setInterval(function() {
   // If the countdown is finished
   if (distance < 0) {
     clearInterval(timer);
-    document.getElementById("timer").innerHTML = "🎉 Dance Battle Audition has begun!";
+    document.getElementById("timer").innerHTML = "🎉 Rangotsav 2025 has begun!";
   }
 }, 1000);
 </script>
+
   <script>
-    const doorOverlay = document.getElementById("doorOverlay");
-    const leftDoor = document.querySelector(".door.left");
-    const rightDoor = document.querySelector(".door.right");
-    const welcomeText = document.querySelector(".welcome-text");
+  // select all elements that should animate (sections + footer)
+  const animatedElements = document.querySelectorAll('.animate');
 
-    // Always run animation when Rangotsav page loads
-    window.addEventListener("load", () => {
-      doorOverlay.style.display = "flex";
-
-      setTimeout(() => {
-        leftDoor.classList.add("open-left");
-        rightDoor.classList.add("open-right");
-      }, 50);
-
-      setTimeout(() => {
-        welcomeText.classList.add("show-text");
-      }, 1200);
-
-      setTimeout(() => {
-        doorOverlay.style.display = "none";
-      }, 3000);
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+      }
     });
-    window.addEventListener("load", () => {
-  // check if came from Explore button
-  if (localStorage.getItem("playMusic") === "true") {
-    // show door
-    doorOverlay.style.display = "flex";
+  }, { threshold: 0.2 });
 
+  animatedElements.forEach(el => observer.observe(el));
+</script> 
+
+<script>
+
+  // Explore Button Click
+
+/* === Explore -> play doors -> redirect === */
+(function () {
+  const exploreBtn = document.getElementById('exploreBtn');
+  const overlay    = document.getElementById('doorOverlay');
+  const left       = document.querySelector('.door.left');
+  const right      = document.querySelector('.door.right');
+  const welcome    = document.querySelector('.welcome-text');
+  const sandstorm  = document.getElementById('sandstorm');
+
+
+
+  exploreBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // show overlay
+    overlay.style.display = 'block';
+
+    // kick off door animation next frame
+    requestAnimationFrame(() => {
+      left.classList.add('open-left');
+      right.classList.add('open-right');
+    });
+
+    // show welcome text slightly later
+    setTimeout(() => welcome.classList.add('show-text'), 1800);
+
+    // sandstorm while doors open
+    const sandInterval = setInterval(createSandParticle, 100);
+    setTimeout(() => clearInterval(sandInterval), 3200);
+
+    // redirect after animation (change to your real page)
     setTimeout(() => {
-      leftDoor.classList.add("open-left");
-      rightDoor.classList.add("open-right");
-    }, 50);
+      // 🚀 mark that user came from Explore
+      sessionStorage.setItem("fromExplore", "true");
+      window.location.href = 'rangotsav.html';
+    }, 4000);
+  });
+})();
 
-    setTimeout(() => {
-      welcomeText.classList.add("show-text");
-    }, 1200);
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("doorOverlay");
+  overlay.style.display = "block"; // make it visible
 
-    setTimeout(() => {
-      doorOverlay.style.display = "none";
-    }, 3000);
+  // Open the doors after short delay
+  setTimeout(() => {
+    document.querySelector(".door.left").classList.add("open-left");
+    document.querySelector(".door.right").classList.add("open-right");
+  }, 500);
 
-    // play music
-    const music = document.getElementById("bg-music");
-    music.play().catch(() => console.log("Autoplay blocked"));
+  // Show welcome text
+  setTimeout(() => {
+    document.querySelector(".welcome-text").classList.add("show-text");
+  }, 2500);
 
-    // reset so it doesn’t play again on refresh
-    localStorage.removeItem("playMusic");
-  }
+  // Remove overlay
+  setTimeout(() => {
+    overlay.style.display = "none";
+  }, 5000);
+
+  // === Sandstorm particles ===
+  const sandstorm = document.getElementById("sandstorm");
+
+  function createSandParticle() {
+    const sand = document.createElement("div");
+    sand.classList.add("sand");
+
+    const size = Math.random() * 5 + 2;
+    sand.style.width = size + "px";
+    sand.style.height = size + "px";
+    sand.style.left = Math.random() * window.innerWidth + "px";
+    sand.style.top = Math.random() * window.innerHeight + "px";
+
+    const duration = Math.random() * 3 + 2;
+    sand.style.animationDuration = duration + "s";
+
+    sandstorm.appendChild(sand);
+
+    setTimeout(() => sand.remove(), duration * 1000);
+  }
+
+  const sandInterval = setInterval(createSandParticle, 100);
+
+  setTimeout(() => clearInterval(sandInterval), 4000);
 });
 
-  </script>
+</script>
+
+<script>
+function scrollCarousel(id, direction) {
+  const carousel = document.getElementById(id);
+  const row = carousel.querySelector('.members-row');
+  const profile = row.querySelector('.member-profile');
+  
+  if (profile) {
+    // width of one profile + margin
+    const scrollAmount = profile.offsetWidth + 16; 
+    row.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+}
+</script>
+<script>
+function toggleMenu() {
+  document.querySelector("nav ul").classList.toggle("show");
+}
+</script>
+<script>
+document.querySelectorAll('.carousel').forEach((carousel, index) => {
+  const row = carousel.querySelector('.members-row');
+  const prevBtn = carousel.querySelector('.prev');
+  const nextBtn = carousel.querySelector('.next');
+
+  if (row && prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      console.log("Prev clicked | Before:", row.scrollLeft);
+      row.scrollBy({ left: -row.clientWidth, behavior: 'smooth' });
+      setTimeout(() => console.log("After:", row.scrollLeft), 500);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      console.log("Next clicked | Before:", row.scrollLeft);
+      row.scrollBy({ left: row.clientWidth, behavior: 'smooth' });
+      setTimeout(() => console.log("After:", row.scrollLeft), 500);
+    });
+  } else {
+    console.log("Carousel setup issue in carousel #" + index);
+  }
+});
+</script>
+
 </body>
 </html>
 
 
 
-  
