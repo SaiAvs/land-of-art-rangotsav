@@ -1021,14 +1021,14 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
         <h3>NAIL ART</h3>
         <p class="time"> DAY 2<br>11:00 AM</p>
         <p class="desc">Tiny canvases, big creativity – decorate nails with unique designs</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeE3Grm6advRW6sG8_VdKi50eBU-QF8NCbP8f_CLJtjpC4CKw/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd8jQdwCYl_lGNAn-08EwFsGK_jljM6MROmOXZnmIcCdIdT_g/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
 
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('sand.jpg') center/cover no-repeat; color:#fff;">
         <h3>SAND ART</h3>
         <p class="time"> DAY 2<br>12:00 NOON</p>
         <p class="desc">Craft stunning patterns and images using layers of colored sand</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd8jQdwCYl_lGNAn-08EwFsGK_jljM6MROmOXZnmIcCdIdT_g/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeE3Grm6advRW6sG8_VdKi50eBU-QF8NCbP8f_CLJtjpC4CKw/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
 
     </div>
@@ -1289,6 +1289,34 @@ const timer = setInterval(function() {
         doorOverlay.style.display = "none";
       }, 3000);
     });
+    window.addEventListener("load", () => {
+  // check if came from Explore button
+  if (localStorage.getItem("playMusic") === "true") {
+    // show door
+    doorOverlay.style.display = "flex";
+
+    setTimeout(() => {
+      leftDoor.classList.add("open-left");
+      rightDoor.classList.add("open-right");
+    }, 50);
+
+    setTimeout(() => {
+      welcomeText.classList.add("show-text");
+    }, 1200);
+
+    setTimeout(() => {
+      doorOverlay.style.display = "none";
+    }, 3000);
+
+    // play music
+    const music = document.getElementById("bg-music");
+    music.play().catch(() => console.log("Autoplay blocked"));
+
+    // reset so it doesn’t play again on refresh
+    localStorage.removeItem("playMusic");
+  }
+});
+
   </script>
 </body>
 </html>
