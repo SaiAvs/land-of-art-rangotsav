@@ -953,6 +953,125 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
   </div>
 </div>
 
+<!-- ===== Bumper Cash Prize Section ===== -->
+<section class="cash-prize">
+  <div class="cash-container">
+    <div class="icons">
+      <span class="trophy">🏆</span>
+      <span class="medal">🥇</span>
+    </div>
+    <h2>💥 Bumper Cash Prize 💥</h2>
+    <p>Win exciting rewards and recognition at <b>Rangotsav 2025</b>!</p>
+    <p class="highlight-text">Get ready to grab the glory ✨</p>
+  </div>
+</section>
+
+<style>
+/* ===== Cash Prize Section (matching existing card styling) ===== */
+.cash-prize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  background: var(--sand); /* same as event section bg */
+}
+
+.cash-container {
+  text-align: center;
+  max-width: 700px;
+  background: gold; /* same as cards */
+  border-radius: 16px; /* match existing rounded corners */
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* soft shadow like cards */
+  animation: popIn 0.8s ease;
+}
+
+/* ===== Icons ===== */
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.icons .trophy {
+  font-size: 3rem;
+  animation: bounce 1.5s infinite;
+}
+
+.icons .medal {
+  font-size: 3rem;
+  animation: swing 2s infinite ease-in-out;
+}
+
+/* ===== Heading ===== */
+.cash-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #d6336c; /* match your accent color */
+  text-shadow: 1px 1px 4px rgba(214,51,108,0.2);
+  animation: pulse 2s infinite;
+}
+
+.cash-container p {
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+  color: #333; /* consistent text color */
+}
+
+/* ===== Highlight Text ===== */
+.cash-container .highlight-text {
+  font-size: 1rem;
+  color: #28a745; /* green accent */
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  animation: glow 1.5s infinite alternate;
+}
+
+/* ===== Animations ===== */
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 6px #28a745; }
+  to { text-shadow: 0 0 16px #34d058; }
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes swing {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(8deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-8deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .cash-container {
+    padding: 1.5rem;
+  }
+  .icons .trophy,
+  .icons .medal {
+    font-size: 2.4rem;
+  }
+  .cash-container h2 {
+    font-size: 1.6rem;
+  }
+}
+</style>
+
 <!-- ABOUT RANGOTSAV -->
 <section id="focus" class="focus-section slide-up">
   <div class="section-container">
@@ -1325,4 +1444,3 @@ const timer = setInterval(function() {
 
 
   
-
