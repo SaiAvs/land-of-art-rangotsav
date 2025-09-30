@@ -1091,37 +1091,37 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
     <div class="events-grid">
        <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bottle.jpg') center/cover no-repeat; color:#fff;">
         <h3>BOTTLE PAINTING</h3>
-        <p class="time"> DAY 1<br>10:00 AM </p>
+        <p class="time"> DAY 1<br>10:30 AM </p>
         <p class="desc">Unleash creativity by turning simple glass bottles into vibrant art pieces</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSc146G3ip3w11Kw8ug5BuSVNf2QXev67XChiOWDcWv0eVKYsg/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('chalk\ art.jpg') center/cover no-repeat; color:#fff;">
         <h3>CHALK ART</h3>
-        <p class="time"> DAY 1<br>11:00 AM</p>
+        <p class="time"> DAY 1<br>11:30 AM</p>
         <p class="desc">Bring streets and boards alive with colorful chalk-based drawings</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScTuh_5rOdtru2Uuaog3IpleDUvywyfYKBXo4CkF2VoJbADKA/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('tattoo.jpg') center/cover no-repeat; color:#fff;">
         <h3>TATTOO MAKING</h3>
-        <p class="time"> DAY 1<br>12:00 NOON</p>
+        <p class="time"> DAY 1<br>12:30 PM</p>
         <p class="desc">Express yourself with artistic temporary tattoos designed by skilled creators</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSenD4SR9bffO9kLpdHGUyzjayguycv8ggLzykBRyTHLM4modQ/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('calligraphy.jpg') center/cover no-repeat; color:#fff; background-attachment: fixed;">
         <h3>CALLIGRAPHY</h3>
-        <p class="time"> DAY 1<br>1:30 PM</p>
+        <p class="time"> DAY 1<br>2:00 PM</p>
         <p class="desc">Discover the beauty of artistic handwriting and lettering styles</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfY11UJ8hCXM8-j_0YdEFmcRysGQhZzixQOuDs4rPNdpyKVGQ/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('mehendi\ art.jpg') center/cover no-repeat; color:#fff;">
         <h3>MEHENDI ART</h3>
-        <p class="time"> DAY 1<br>02:30 PM</p>
+        <p class="time"> DAY 1<br>03:00 PM</p>
         <p class="desc">Decorate hands with intricate mehendi designs full of tradition and elegance</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6xv06Zvm2gph5EEve5kUrPTAeNakIwVpeqZoAwFqdEbnhOA/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
       <div class="card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('blindfold.jpg') center/cover no-repeat; color:#fff;">
         <h3>BLIND ART</h3>
-        <p class="time">DAY 1<br> 03:30 PM</p>
+        <p class="time">DAY 1<br> 04:00 PM</p>
         <p class="desc">A fun challenge where participants create art while blindfolded</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfPoaZ5KoTITLK7ymB8-Vsz1CoNMioqdnVsuVbgrF_JTpy_ew/viewform?usp=header" target="_blank" class="register-btn">Register Here</a>
       </div>
@@ -1243,11 +1243,7 @@ footer a { color: #caa64d; text-decoration: none; margin: 0 5px; }
     <p>Not your ordinary dance performances — this battle brings something special: direct face-offs 
       with your competitors and loads of fun!
 Register now for the auditions.<br><br>
- <!-- Countdown timer (single ID only) -->
-    <div id="timer" class="countdown-timer"></div>
-      <h2>!! DANCE AUDITION REGISTRATION IS LIVE NOW !!</h2>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRqvykJTw4QERrvAz-bKtREmDtGyg6wKJzBn5ZLWNI3myJfQ/viewform?usp=header" target="_blank" class="registeract-btn">Register Here</a>
-<br><br>
+    <br><br>
   </p>
 <br>
 </div>
@@ -1361,31 +1357,6 @@ document.addEventListener('DOMContentLoaded', () => {
   revealOnScroll();
 });
 </script>
-<script>
-// Set the date of Dance Audition
-const eventDate = new Date("Sep 08, 2025 00:00:00").getTime();
-
-const timer = setInterval(function() {
-  const now = new Date().getTime();
-  const distance = eventDate - now;
-
-  // Time calculations
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  // Display result
-  document.getElementById("timer").innerHTML =
-      days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-  // If the countdown is finished
-  if (distance < 0) {
-    clearInterval(timer);
-    document.getElementById("timer").innerHTML = "🎉 Dance Battle Audition has begun!";
-  }
-}, 1000);
-</script>
   <script>
     const doorOverlay = document.getElementById("doorOverlay");
     const leftDoor = document.querySelector(".door.left");
@@ -1444,6 +1415,7 @@ const timer = setInterval(function() {
 
 
   
+
 
 
 
