@@ -1039,6 +1039,7 @@ img {
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#about" class="active">About</a></li>
+      <li><a href="#rangotsav">Upcoming Events</a></li>
       <li><a href="#past-event">Past Events</a></li>
       <li><a href="#members">Team</a></li>
       <li><a href="#contact-info">Contact</a></li>
@@ -1058,6 +1059,29 @@ img {
     </section>
   </header>
 
+<!-- Straight Tagline Banner -->
+<div class="live-banner">
+  <div class="live-track">
+    <span> Unleash Your Creativity — Registrations Open  </span>
+    <span> Unleash Your Creativity — Registrations Open  </span>
+    <span> Unleash Your Creativity — Registrations Open  </span>
+  </div>
+</div>
+
+<!--Register Now-->
+<section id="register">
+  <div class="section-box animate">
+    <h2>JOIN THE MOVEMENT</h2>
+    <p><i>Be a part of creativity, colors, and celebration. Register now and showcase your talent!</i></p>
+    
+    <br>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdQoioTYQAc4gQ6XL_GKWTtVBW62zdSPa1qNMipJTS2cK2hsg/viewform" target="_blank" class="btn-primary">
+      Register Now
+    </a>
+  </div>
+</section>
+
   <!-- ABOUT -->
   <section id="about">
     <div class="section-box animate">
@@ -1066,6 +1090,21 @@ img {
          inspiring everyone to explore their imagination and bring it to life.</i></p>
     </div>
   </section> 
+
+  <!-- RANGOTSAV -->
+  <section id="rangotsav">
+  <div class="upcoming-box">
+    <h2> UPCOMING EVENTS </h2>
+    <h2> Rangotsav 2025</h2>
+    <p><i>Countdown to our biggest celebration of art & colors!</i></p>
+
+    <!-- Countdown timer (single ID only) -->
+    <div id="timer" class="countdown-timer"></div><br>
+    <a href="rangotsav.html" class="explore-btn" onclick="localStorage.setItem('playMusic','true')">
+  Explore Rangotsav
+</a>
+  </div>
+</section>
 
 <!-- PAST EVENTS -->
 <section id="past-event" class="past-section">
@@ -1239,7 +1278,6 @@ img {
       <div class="member-profile"><img src="tanuraj-3.jpg"><p>TANURAJ SIROHI</p></div>
       <div class="member-profile"><img src="anubhav-3.jpg"><p>ANUBHAV KUMAR SINGH</p></div>
       <div class="member-profile"><img src="anshika b-3.jpg"><p>ANSHIKA BHARDWAJ</p></div>
-      <div class="member-profile"><img src="deepak-3.jpg"><p>DEEPAK YADAV</p></div>
       <div class="member-profile"><img src="anshika v-3.jpg"><p>ANSHIKA VERMA</p></div>
       <div class="member-profile"><img src="arnav-3.jpg"><p>ARNAV CHAUDHARY</p></div>
       <div class="member-profile"><img src="suhani-3.jpg"><p>SUHANI VERMA</p></div>
@@ -1324,6 +1362,7 @@ img {
         <li><a href="#about">About</a></li>
         <li><a href="#past-event">Past Events</a></li>
         <li><a href="#members">Team</a></li>
+        <li><a href="#rangotsav">Rangotsav</a></li>
         <li><a href="#contact-info">Contact</a></li>
       </ul>
     </div>
@@ -1387,7 +1426,7 @@ img {
 
   <script>
 // Set the date of Rangotsav
-const eventDate = new Date("Oct 03, 2025 09:00:00").getTime();
+const eventDate = new Date("Sep 12, 2025 00:00:00").getTime();
 
 const timer = setInterval(function() {
   const now = new Date().getTime();
@@ -1406,7 +1445,7 @@ const timer = setInterval(function() {
   // If the countdown is finished
   if (distance < 0) {
     clearInterval(timer);
-    document.getElementById("timer").innerHTML = "🎉 Rangotsav 2025 is live!";
+    document.getElementById("timer").innerHTML = "🎉 Rangotsav 2025 has begun!";
   }
 }, 1000);
 </script>
@@ -1564,11 +1603,6 @@ document.querySelectorAll('.carousel').forEach((carousel, index) => {
 
 </body>
 </html>
-
-
-
-
-
 
 
 
