@@ -557,13 +557,6 @@ function LandingPage(){
   const [showIntro, setShowIntro] = React.useState(
     sessionStorage.getItem("seenIntro") !== "true"
   );
-React.useEffect(() => {
-  if (showIntro) {
-    document.body.classList.add("no-scroll");
-  } else {
-    document.body.classList.remove("no-scroll");
-  }
-}, [showIntro]);
   /* ================= REVEAL ANIMATION ================= */
   React.useEffect(() => {
 
