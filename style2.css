@@ -9,34 +9,23 @@
   --text-light: #F5F1E6;
   --border: rgba(15, 42, 29, 0.15);
 }
-/* 🎬 INTRO SCREEN */
+/* INTRO SCREEN */
 .intro-root{
   position: fixed;
   inset: 0;
   background: black;
   z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
-  transition: opacity 1s ease;
 }
 
-/* 🎥 VIDEO FIT */
+/*  VIDEO FULL COVER FIX */
 .intro-video {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 100vw;
-  height: 100vh;
-
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
-
-  min-width: 100%;
-  min-height: 100%;
 }
 @keyframes fadeOut {
   to {
@@ -62,7 +51,7 @@
 }
 
 body {
-  padding: 0 10px;
+  padding: 0;
   font-family: 'Playfair Display', serif;
   background: var(--cream-bg);
   color: var(--text-main);
