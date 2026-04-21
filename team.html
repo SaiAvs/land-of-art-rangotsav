@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team | Land of Art</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --primary:#0F2A1D;
+  --cream-bg:#E8DFC8;
+  --accent:#C2A96A;
+  --text-main:#0F2A1D;
+  --text-light:#F5F1E6;
+  --border:rgba(15,42,29,0.15);
+}
+
+body{
+  font-family:'Playfair Display',serif;
+  background:var(--cream-bg);
+  color:var(--text-main);
+}
+
+/* FORCE SAME FONT EVERYWHERE */
+h1,h2,h3,p,button,a{
+  font-family:'Playfair Display',serif;
+}
+
+/* NAV */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 18px;
+  background:rgba(255,255,255,0.9);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav-links a{
+  margin-left:14px;
+  text-decoration:none;
+  color:var(--text-main);
+  font-size:0.95rem;
+  transition:0.2s;
+}
+.nav-links a:hover{
+  opacity:0.7;
+}
+
+/* HERO */
+.te-hero{
+  text-align:center;
+  padding:60px 15px;
+  background:var(--primary);
+  color:var(--text-light);
+}
+
+/* TABS */
+.te-tabs{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin:25px 0;
+}
+.te-tab-btn{
+  padding:8px 18px;
+  border-radius:20px;
+  border:2px solid var(--primary);
+  cursor:pointer;
+  transition:0.3s;
+}
+.te-tab-btn.active{
+  background:var(--primary);
+  color:#fff;
+  box-shadow:0 6px 18px rgba(15,42,29,0.25);
+}
+.te-tab-btn:hover{
+  transform:translateY(-2px);
+}
+
+/* SECTION */
+.te-section-title{
+  text-align:center;
+  margin:35px 0 10px;
+}
+
+/* GRID */
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
+  gap:16px;
+  padding:20px;
+  max-width:1100px;
+  margin:auto;
+}
+@media(max-width:600px){
+  .team-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:400px){
+  .team-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* CARD */
+.team-card{
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+  transition:0.3s;
+}
+.team-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* IMAGE */
+.team-img{
+  aspect-ratio:1/1;
+}
+.team-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* INFO */
+.team-info{
+  text-align:center;
+  padding:10px;
+}
+.team-info h3{
+  font-size:0.9rem;
+}
+
+/* ROLE */
+.role-badge{
+  display:inline-block;
+  margin-top:6px;
+  padding:4px 10px;
+  border-radius:20px;
+  background:var(--accent);
+  font-size:0.75rem;
+}
+
+/* PAST FILTER */
+.batch-tabs{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:20px;
+}
+.batch-btn{
+  padding:6px 14px;
+  border-radius:20px;
+  border:1px solid var(--primary);
+  cursor:pointer;
+}
+.batch-btn.active{
+  background:var(--primary);
+  color:#fff;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .team-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    padding:12px;
+  }
+
+  .team-info h3{
+    font-size:0.8rem;
+  }
+}
+</style>
+</head>
+
+<body>
+<div id="root"></div>
+
+<script>
+
+function Header(){
+return React.createElement("div",{className:"navbar"},
+  React.createElement("div",null,"The Land of Art"),
+  React.createElement("div",{className:"nav-links"},
+    React.createElement("a",{href:"index.html"},"Home"),
+    React.createElement("a",{href:"events.html"},"Events")
+  )
+);
+}
+
+function TeamPage(){
+
+const [tab,setTab]=React.useState("current");
+const [batch,setBatch]=React.useState("2017-2021");
+
+/* CURRENT TEAM */
+const currentTeam={
+"2022-26":[
+{name:"Atharv Gupta",role:"PRESIDENT",img:"atharv-4.jpg"},
+{name:"Rajshree Mishra",role:"SECRETARY",img:"rajshree-4.jpg"},
+{name:"Abhishek Kumar Singh",role:"TREASURER",img:"abhishek-4.jpg"},
+{name:"Vashika Tyagi",img:"vashika-4.jpg"},
+{name:"Janvi Chauhan",img:"janvi-4.jpg"},
+{name:"Ujjawal Kumar",img:"ujjawal-4.jpg"},
+{name:"Kavita Kumari",img:"kavita-4.jpg"},
+{name:"Saniya",img:"saniya-4.jpg"},
+{name:"Sunidhi Rani",img:"sunidhi-4.jpg"}
+],
+
+"2023-27":[
+{name:"Tapan Mishra",img:"tapan-3.jpg"},
+{name:"Suhani Verma",img:"suhani-3.jpg"},
+{name:"Tanuraj Sirohi",img:"tanuraj-3.jpg"},
+{name:"Sonakshi",img:"sonakshi-3.jpg"},
+{name:"Anubhav Kumar Singh",img:"anubhav-3.jpg"},
+{name:"Anshika Verma",img:"anshika v-3.jpg"},
+{name:"Arnav Chaudhary",img:"arnav-3.jpg"},
+{name:"Vansh Mittal",img:"vansh-3.jpg"},
+{name:"Avinash Kumar Karnal",img:"avinash-3.jpg"}
+],
+
+"2024-28":[
+{name:"Vasu Upadhyay",img:"vasu-2.jpg"},
+{name:"Sarthak Rana",img:"sarthak-2.jpg"},
+{name:"Saianshi Saxena",img:"saianshi-2.jpg"},
+{name:"Aditya Sharma",img:"aditya-2.jpg"},
+{name:"Aditi Choudhary",img:"aditi-2.jpg"},
+{name:"Anushka Agarwal",img:"anushka-2.jpg"},
+{name:"Priyanshi Chauhan",img:"priyanshi-2.jpg"},
+{name:"Jagrati Gupta",img:"jagriti-2.jpg"},
+{name:"Vansh Kumar",img:"vanshnew-2.jpg"},
+{name:"Areeb Siddiqui",img:"areeb-2.jpg"}
+]
+};
+
+/* PAST TEAM */
+const pastTeams={
+"2017-2021":[{name:"KUNAL KAPOOR",img:"co-founder.jpg"}],
+"2018-2022":[{name:"SHUBHAM SHUKLA",img:"founder.jpg"}],
+"2019-2023":[
+{name:"RIYA",img:"riya19-23.jpeg"},
+{name:"SAGAR VERMA",img:"sagar 19-23.jpeg"},
+{name:"SURYANSH MISHRA",img:"suryansh 19-23.jpeg"}
+],
+"2020-2024":[
+{name:"SUKRITI GUPTA",img:"sukriti 20-24.jpeg"},
+{name:"DRISHTI DHALL",img:"drishti 20-24.jpeg"},
+{name:"ABHINAV TYAGI",img:"abhinav 20-24.jpeg"}
+],
+"2021-2025":[
+{name:"RADHIKA GUPTA",img:"radhika 21-25.jpeg"},
+{name:"JHALAK BANSAL",img:"jhalak 21-25.jpeg"},
+{name:"KHUSHBU KASHYAP",img:"khushbu 21-25.jpeg"},
+{name:"PRERNA CHAUHAN",img:"prerna 21-25.jpeg"},
+{name:"SRISHTI",img:"srishti 21-25.jpeg"},
+{name:"VINEET KUMAR SINGH",img:"vineet 21-25.jpeg"},
+{name:"ABHISHEK CHAUDHARY",img:"abhishek 21-25.jpeg"},
+{name:"MOHD. ARHAM",img:"arham 21-25.jpeg"}
+]
+};
+const batches=Object.keys(pastTeams);
+
+return React.createElement(React.Fragment,null,
+
+React.createElement(Header),
+
+React.createElement("div",{className:"te-hero"},
+  React.createElement("h1",null,"THE VISIONARY CREW OF THE LAND OF ART"),
+  React.createElement("p",null,"Creative minds behind Land of Art")
+),
+
+React.createElement("div",{className:"te-tabs"},
+  React.createElement("button",{className:"te-tab-btn "+(tab==="current"?"active":""),onClick:()=>setTab("current")},"THE PRESENT COLLECTIVE"),
+  React.createElement("button",{className:"te-tab-btn "+(tab==="past"?"active":""),onClick:()=>setTab("past")},"THE PILLARS OF LOA")
+),
+
+/* CURRENT */
+tab==="current" && React.createElement("div",null,
+Object.keys(currentTeam).map(year=>
+React.createElement("div",{key:year},
+
+React.createElement("h2",{className:"te-section-title"},year),
+
+React.createElement("div",{className:"team-grid"},
+currentTeam[year].map((m,i)=>
+React.createElement("div",{className:"team-card",key:i},
+
+React.createElement("div",{className:"team-img"},
+React.createElement("img",{src:m.img})
+),
+
+React.createElement("div",{className:"team-info"},
+React.createElement("h3",null,m.name),
+m.role && React.createElement("div",{className:"role-badge"},m.role)
+)
+)
+)
+)
+)
+)
+),
+
+/* PAST */
+tab==="past" && React.createElement("div",null,
+
+React.createElement("h2",{className:"te-section-title"},"Past Teams"),
+
+React.createElement("div",{className:"batch-tabs"},
+batches.map(b=>
+React.createElement("button",{
+className:"batch-btn "+(batch===b?"active":""),onClick:()=>setBatch(b)
+},b)
+)
+),
+
+React.createElement("div",{className:"team-grid"},
+(pastTeams[batch]||[]).map((m,i)=>
+React.createElement("div",{className:"team-card",key:i},
+
+React.createElement("div",{className:"team-img"},
+React.createElement("img",{src:m.img})
+),
+
+React.createElement("div",{className:"team-info"},
+React.createElement("h3",null,m.name)
+)
+)
+)
+)
+)
+
+);
+}
+
+ReactDOM.createRoot(document.getElementById("root"))
+.render(React.createElement(TeamPage));
+
+</script>
+</body>
+</html>
