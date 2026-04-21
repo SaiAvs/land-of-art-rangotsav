@@ -1,1 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE LAND OF ART 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+<link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+<div id="root"></div>
+
+<script>
+/* ================= INTRO VIDEO ================= */
+/* ================= INTRO VIDEO ================= */
+function Intro({ onFinish }) {
+  const [fade, setFade] = React.useState(false);
+
+  return React.createElement("div", {
+    className: "intro-root",
+    style: {
+      opacity: fade ? 0 : 1,
+      transition: "opacity 1s ease"
+    }
+  },
+
+    React.createElement("video", {
+      className: "intro-video",
+      autoPlay: true,
+      muted: true,
+      playsInline: true,
+      preload: "auto",
+      onEnded: () => {
+        setFade(true);
+        setTimeout(onFinish, 1000); // wait for fade
+      }
+    },
+      React.createElement("source", {
+        src: "intro.mp4",
+        type: "video/mp4"
+      })
+    )
+  );
+}
+
+/* ================= HEADER ================= */
+function Header(){
+  const [open, setOpen] = React.useState(false);
+
+  return React.createElement("header",{className:"hd-root"},
+    React.createElement("div",{className:"hd-inner"},
+
+      React.createElement("a",{href:"index.html",className:"hd-logo"},"THE LAND OF ART"),
+
+      React.createElement("nav",{className:"hd-nav"},
+        React.createElement("a",{href:"#about"},"About"),
+        React.createElement("a",{href:"events.html"},"Events"),
+        React.createElement("a",{href:"team.html"},"Team")
+      ),
+
+      React.createElement("div",{
+        className:"hd-ham",
+        onClick:()=>setOpen(!open)
+      },"☰")
+    ),
+
+open && React.createElement("div",{className:"hd-mobile"},
+  ["About","Events","Team","Founders"].map((t,i)=>
+    React.createElement("a",{
+      key:i,
+      href: t==="About" ? "#about" : t.toLowerCase()+".html"
+    },t)
+  )
+)
+  );
+} 
+
+/* ================= HERO ================= */
+function Hero(){
+  const [ripples,setRipples] = React.useState([]);
+
+  function handleClick(e){
+    const id = Date.now();
+    const rect = e.currentTarget.getBoundingClientRect();
+
+    setRipples(r=>[
+      ...r,
+      {id,x:e.clientX-rect.left,y:e.clientY-rect.top}
+    ]);
+
+    setTimeout(()=>{
+      setRipples(r=>r.filter(x=>x.id!==id));
+    },1000);
+  }
+
+  return React.createElement("section",
+    {className:"hr-root reveal reveal-scale",onClick:handleClick},
+
+    React.createElement("div",{className:"hr-bg"}),
+
+    ripples.map(r =>
+      React.createElement("span",{
+        key:r.id,
+        className:"ripple",
+        style:{left:r.x,top:r.y}
+      })
+    ),
+
+    React.createElement("h1",{className:"hr-title"},"THE LAND OF ART"),
+    React.createElement("p",{className:"hr-sub"},
+      "Where creativity meets legacy and every moment becomes art."
+    ),
+    React.createElement("p",{className:"hr-sub"},
+      "Where Ideas bloom into masterpieces."
+    ),
+    React.createElement("div",{className:"hr-btns"},
+      React.createElement("a",{href:"events.html",className:"btn-primary"},"Explore Events"),
+      React.createElement("a",{href:"team.html",className:"btn-secondary"},"Meet Team")
+    )
+  );
+}
+
+/* ================= ABOUT ================= */
+function AboutUs(){
+  return React.createElement("section",{id:"about",className:"au-root reveal"},
+
+    React.createElement("div",{className:"au-card"},
+
+      React.createElement("div",{className:"au-grid"},
+
+        React.createElement("div",null,
+        React.createElement("h2",null,"OUR CREATIVE IDENTITY"),
+          React.createElement("p",null,
+            "We are a passionate collective of artists, designers, and creators united by storytelling and culture."
+          ),
+          React.createElement("p",null,
+            "Through Rangotsav and Kolaahal, we create immersive artistic experiences that connect people."
+          )
+        ),
+
+        React.createElement("div",null,
+          React.createElement("p",null,
+            "Our team is guided by faculty coordinators and inspired by visionary founders."
+          ),
+          React.createElement("p",null,
+            "We build a creative ecosystem where talent thrives beyond boundaries."
+          )
+        )
+
+      ),
+
+      React.createElement("div",{className:"au-stats"},
+
+        React.createElement("div",null,
+          React.createElement("h3",null,"7+"),
+          React.createElement("span",null,"Years")
+        ),
+
+        React.createElement("div",null,
+          React.createElement("h3",null,"20+"),
+          React.createElement("span",null,"Events")
+        ),
+
+        React.createElement("div",null,
+          React.createElement("h3",null,"50+"),
+          React.createElement("span",null,"Artists")
+        ),
+
+        React.createElement("div",null,
+          React.createElement("h3",null,"100+"),
+          React.createElement("span",null,"Members")
+        )
+
+      )
+
+    )
+  );
+}
+
+/* ================= EXPLORE CARDS ================= */
+function ExploreCards(){
+  return React.createElement("section",{className:"ex-root reveal"},
+
+    React.createElement("h2",null,"EXPLORE THE EXPERIENCE"),
+
+    React.createElement("div",{className:"ex-grid"},
+
+      React.createElement("div",{className:"ex-card reveal"},
+        React.createElement("h3",null,"EXPLORE THE SHOWCASE"),
+        React.createElement("p",null,"Explore Rangotsav & Kolaahal collections."),
+        React.createElement("a",{
+          href:"events.html",
+          className:"btn-primary"
+        },"View Events")
+      ),
+
+      React.createElement("div",{className:"ex-card reveal"},
+        React.createElement("h3",null,"CREATORS UNVEILED"),
+        React.createElement("p",null,"Meet the creative minds behind everything."),
+        React.createElement("a",{
+          href:"team.html",
+          className:"btn-primary"
+        },"Meet the Team")
+      ),
+
+      React.createElement("div",{className:"ex-card reveal"},
+        React.createElement("h3",null,"OUR LEGACY"),
+        React.createElement("p",null,"Discover the spirit of THE LAND OF ART."),
+        React.createElement("a",{
+          href:"#squad",
+          className:"btn-primary"
+        },"Life at the Squad")
+      )
+
+    )
+  );
+}
+/* ================= TEAM PREVIEW ================= */
+function TeamPreview(){
+
+  const batches = [
+    {
+      title: "BATCH 2022-26",
+      members: [
+        {name:"Atharv Gupta", img:"atharv-4.jpg"},
+        {name:"Rajshree Mishra", img:"rajshree-4.jpg"},
+        {name:"Abhishek Kumar Singh", img:"abhishek-4.jpg"},
+        {name:"Vashika Tyagi", img:"vashika-4.jpg"},
+        {name:"Janvi Chauhan", img:"janvi-4.jpg"},
+        {name:"Ujjawal Kumar", img:"ujjawal-4.jpg"},
+        {name:"Kavita Kumari", img:"kavita-4.jpg"},
+        {name:"Saniya", img:"saniya-4.jpg"},
+        {name:"Sunidhi Rani", img:"sunidhi-4.jpg"}
+      ]
+    },
+    {
+      title: "BATCH 2023-27",
+      members: [
+        {name:"Tapan Mishra", img:"tapan-3.jpg"},
+        {name:"Suhani Verma", img:"suhani-3.jpg"},
+        {name:"Tanuraj Sirohi", img:"tanuraj-3.jpg"},
+        {name:"Sonakshi", img:"sonakshi-3.jpg"},
+        {name:"Anubhav Kumar Singh", img:"anubhav-3.jpg"},
+        {name:"Anshika Verma", img:"anshika v-3.jpg"},
+        {name:"Arnav Chaudhary", img:"arnav-3.jpg"},
+        {name:"Vansh Mittal", img:"vansh-3.jpg"},
+        {name:"Avinash Kumar Karnal", img:"avinash-3.jpg"}
+      ]
+    },
+    {
+      title: "BATCH 2024-28",
+      members: [
+        {name:"Vasu Upadhyay", img:"vasu-2.jpg"},
+        {name:"Sarthak Rana", img:"sarthak-2.jpg"},
+        {name:"Saianshi Saxena", img:"saianshi-2.jpg"},
+        {name:"Aditya Sharma", img:"aditya-2.jpg"},
+        {name:"Aditi Choudhary", img:"aditi-2.jpg"},
+        {name:"Anushka Agarwal", img:"anushka-2.jpg"},
+        {name:"Priyanshi Chauhan", img:"priyanshi-2.jpg"},
+        {name:"Jagrati Gupta", img:"jagriti-2.jpg"},
+        {name:"Vansh Kumar", img:"vanshnew-2.jpg"},
+        {name:"Areeb Siddiqui", img:"areeb-2.jpg"}
+      ]
+    }
+  ];
+
+  return React.createElement("section",{className:"tp-root reveal"},
+
+    React.createElement("h2",null,"THE MINDS THAT CREATE"),
+
+    batches.map((batch, idx)=>{
+
+      const scrollRef = React.createRef();
+
+      const scrollLeft = () => {
+        scrollRef.current.scrollBy({left:-300, behavior:"smooth"});
+      };
+
+      const scrollRight = () => {
+        scrollRef.current.scrollBy({left:300, behavior:"smooth"});
+      };
+
+      return React.createElement("div",{key:idx,className:"tp-batch"},
+
+        React.createElement("h3",{className:"tp-batch-title"},batch.title),
+
+        React.createElement("div",{className:"tp-wrapper"},
+
+          React.createElement("button",{className:"tp-btn left",onClick:scrollLeft},"‹"),
+
+          React.createElement("div",{className:"tp-scroll",ref:scrollRef},
+
+            batch.members.map((m,i)=>
+              React.createElement("div",{className:"tp-card",key:i},
+
+                React.createElement("img",{src:m.img,className:"tp-img"}),
+
+                React.createElement("p",{className:"tp-name"},m.name)
+              )
+            )
+
+          ),
+
+          React.createElement("button",{className:"tp-btn right",onClick:scrollRight},"›")
+        )
+      );
+    }),
+
+    React.createElement("a",{href:"team.html",className:"btn-primary"},"View Full Team")
+  );
+}      
+
+/* ================= FACULTY ================= */
+function FacultySection(){
+  const faculty = [
+    {
+      name: "MRS.VISHI KHATTRI",
+      role: "Faculty Coordinator",
+      desc: "Guiding the artistic vision and nurturing creativity across all events.",
+      img: "incharge.jpg"
+    },
+    {
+      name: "MRS. PRIYANKA SHARMA",
+      role: "Co-Coordinator",
+      desc: "Supporting innovation and ensuring smooth execution of all initiatives.",
+      img: "coordinator.jpg"
+    }
+  ];
+
+  return React.createElement("section",{className:"fc-root reveal"},
+    React.createElement("h2",null,"THE MINDS THAT INSPIRE"),
+
+    React.createElement("div",{className:"fc-grid"},
+      faculty.map((f,i)=>
+        React.createElement("div",{className:"fc-card reveal",key:i},
+
+          React.createElement("img",{src:f.img,className:"fc-img"}),
+
+          React.createElement("h3",null,f.name),
+          React.createElement("h4",null,f.role),
+          React.createElement("p",null,f.desc)
+
+        )
+      )
+    )
+  );
+}
+
+/* ================= FOUNDERS ================= */
+function FoundersSection(){
+  const founders = [
+    {
+      name: "MR. SHUBHAM SHUKLA",
+      role: "Founder",
+      desc: "The visionary who laid the foundation of Land of Art.",
+      img: "founder.jpg"
+    },
+    {
+      name: "MR. KUNAL KAPOOR",
+      role: "Co-Founder",
+      desc: "The driving force behind execution and expansion.",
+      img: "co-founder.jpg"
+    }
+  ];
+
+  return React.createElement("section",{className:"fd-root reveal"},
+    React.createElement("h2",null,"THE MINDS THAT ARCHITECTS"),
+
+    React.createElement("div",{className:"fd-grid"},
+      founders.map((f,i)=>
+        React.createElement("div",{className:"fd-card reveal",key:i},
+
+          React.createElement("img",{src:f.img,className:"fd-img"}),
+
+          React.createElement("h3",null,f.name),
+          React.createElement("h4",null,f.role),
+          React.createElement("p",null,f.desc)
+
+        )
+      )
+    )
+  );
+}
+/* ================= SQUAD ================= */
+function SquadSection(){
+
+  const images = [
+    "RANG1-2025.jpeg",
+    "RANG2-2025.jpeg",
+    "RANG3-2025.jpeg"
+  ];
+
+  return React.createElement("section",{id: "squad", className:"sq-root reveal reveal-scale"},
+
+    React.createElement("h2",null,"CAPTURED CREATIVITY"),
+
+    React.createElement("p",null,
+      "Not just a team, but a canvas of creators shaping every masterpiece together."
+    ),
+
+    React.createElement("div",{className:"sq-grid"},
+
+      images.map((img,i)=>
+        React.createElement("div",{className:"sq-item", key:i},
+
+          React.createElement("img",{
+            src: img,
+            className:"sq-image"
+          })
+
+        )
+      )
+
+    )
+  );
+}
+
+/* ================= CTA ================= */
+function CallToAction(){
+  return React.createElement("section",{className:"cta-root reveal"},
+    React.createElement("h2",null,"Be Part of the Journey"),
+    React.createElement("a",{href:"events.html",className:"btn-primary"},"Explore Now")
+  );
+}
+
+function Footer(){
+  return React.createElement("footer",{className:"ftr-root reveal"},
+
+    React.createElement("div",{className:"ftr-container"},
+
+      /* LEFT - BRAND */
+      React.createElement("div",null,
+        React.createElement("h4",null,"Land of Art"),
+        React.createElement("p",null,"Celebrating creativity & culture.")
+      ),
+
+      /* MIDDLE - QUICK LINKS */
+      React.createElement("div",null,
+        React.createElement("h4",null,"Quick Links"),
+        React.createElement("a",{href:"index.html", className:"ftr-link"},"Home"),
+        React.createElement("a",{href:"events.html", className:"ftr-link"},"Events"),
+        React.createElement("a",{href:"team.html", className:"ftr-link"},"Team")
+      ),
+
+      /* RIGHT - CONTACT */
+      React.createElement("div",null,
+        React.createElement("h4", null, "Contact"),
+
+        React.createElement("p", null,
+          React.createElement("a", {
+            href: "tel:+919719832901",
+            className: "ftr-link"
+          }, "📞 +91 9719832901")
+        ),
+
+        React.createElement("p", null,
+          React.createElement("a", {
+            href: "mailto:thelandofart14@gmail.com",
+            className: "ftr-link"
+          }, "📧 thelandofart14@gmail.com")
+        ),
+
+        React.createElement("p", null,
+          React.createElement("a", {
+            href: "https://maps.app.goo.gl/87WY7ujz8qZ79NPZA",
+            target: "_blank",
+            rel: "noopener noreferrer",
+            className: "ftr-link"
+          }, "📍 Art Room, MIET, Meerut, Uttar Pradesh, India")
+        )
+      )
+    ),
+
+    /* SOCIAL ICONS (CENTERED BELOW) */
+    React.createElement("div",{className:"ftr-social"},
+
+      React.createElement("a", {
+        href: "https://www.instagram.com/the_land_of_art__",
+        target: "_blank",
+        rel: "noopener noreferrer"
+      },
+        React.createElement("svg", {
+          xmlns: "http://www.w3.org/2000/svg",
+          width: "28",
+          height: "28",
+          fill: "currentColor",
+          viewBox: "0 0 24 24"
+        },
+          React.createElement("path", {
+            d: "M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 5.2A4.8 4.8 0 1 1 7.2 12 4.8 4.8 0 0 1 12 7.2zm6.5-.9a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1zM12 9a3 3 0 1 0 3 3 3 3 0 0 0-3-3z"
+          })
+        )
+      )
+    ),
+
+    /* BOTTOM */
+    React.createElement("div",{className:"ftr-bottom"},
+      "© 2026 Land of Art"
+    )
+
+  );
+}
+
+window.onerror = function(message, source, lineno) {
+  alert("Error: " + message + " at line " + lineno);
+};
+
+/* ================= INTRO ================= */
+function Intro({ onFinish }) {
+  const [fade, setFade] = React.useState(false);
+
+  React.useEffect(() => {
+    // fallback in case video doesn't end
+    const timer = setTimeout(() => {
+      setFade(true);
+      setTimeout(onFinish, 1000);
+    }, 6000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return React.createElement("div", {
+    className: "intro-root",
+    style: {
+      opacity: fade ? 0 : 1,
+      transition: "opacity 1s ease"
+    }
+  },
+
+    React.createElement("video", {
+      className: "intro-video",
+      autoPlay: true,
+      muted: true,
+      playsInline: true,
+      preload: "auto",
+      onEnded: () => {
+        setFade(true);
+        setTimeout(onFinish, 1000);
+      }
+    },
+      React.createElement("source", {
+        src: "intro.mp4",
+        type: "video/mp4"
+      })
+    )
+  );
+}
+
+/* ================= LANDING PAGE ================= */
+function LandingPage(){
+
+  // ✅ show intro once per session
+  const [showIntro, setShowIntro] = React.useState(
+    sessionStorage.getItem("seenIntro") !== "true"
+  );
+
+  /* ================= REVEAL ANIMATION ================= */
+  React.useEffect(() => {
+
+    if (showIntro) return; // wait until intro ends
+
+    const elements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+
+        if (entry.isIntersecting) {
+          entry.target.style.transitionDelay = (index % 3) * 0.12 + "s";
+          entry.target.classList.add("active");
+          observer.unobserve(entry.target);
+        }
+
+      });
+    }, { threshold: 0.15 });
+
+    elements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+
+  }, [showIntro]);
+
+
+  return React.createElement("div",{className:"la-root"},
+
+    /* INTRO */
+    showIntro && React.createElement(Intro,{
+      onFinish: () => {
+        sessionStorage.setItem("seenIntro", "true");
+        setShowIntro(false);
+      }
+    }),
+    
+    /* MAIN PAGE */
+    React.createElement("div",{
+      className: showIntro ? "page-hidden" : "page-visible"
+    },
+
+      React.createElement(Header),
+      React.createElement(Hero),
+      React.createElement(AboutUs),
+      React.createElement(ExploreCards),
+      React.createElement(TeamPreview),
+      React.createElement(FacultySection),
+      React.createElement(FoundersSection),
+      React.createElement(SquadSection),
+      React.createElement(CallToAction),
+      React.createElement(Footer)
+    )
+  );
+}
+
+
+/* ================= RENDER ================= */
+ReactDOM.createRoot(document.getElementById("root"))
+.render(React.createElement(LandingPage));
+
+</script>
+</script>
+</body>
+</html>
 
