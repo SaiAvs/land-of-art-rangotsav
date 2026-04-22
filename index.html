@@ -511,13 +511,14 @@ window.onerror = function(message, source, lineno) {
 
 /* ================= INTRO ================= */
 function Intro({ onFinish }) {
-  const [videoSrc, setVideoSrc] = React.useState("intro.mp4");
+  const [videoSrc, setVideoSrc] = React.useState("");
   const [fade, setFade] = React.useState(false);
 
   React.useEffect(() => {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-    setVideoSrc(isMobile ? "intro2.mp4" : "intro.mp4");
+    const src = isMobile ? "intro2.mp4" : "intro.mp4";
+    setVideoSrc(src);
 
     const timer = setTimeout(() => {
       setFade(true);
@@ -537,28 +538,29 @@ function Intro({ onFinish }) {
       },
     },
 
-    React.createElement(
-      "video",
-      {
-        className: "intro-video",
-        autoPlay: true,
-        muted: true,
-        playsInline: true,
-        preload: "auto",
-        onEnded: () => {
-          setFade(true);
-          setTimeout(onFinish, 1000);
+    videoSrc &&
+      React.createElement(
+        "video",
+        {
+          key: videoSrc, // 🔥 FORCE RELOAD (VERY IMPORTANT)
+          className: "intro-video",
+          autoPlay: true,
+          muted: true,
+          playsInline: true,
+          preload: "auto",
+          onEnded: () => {
+            setFade(true);
+            setTimeout(onFinish, 1000);
+          },
         },
-      },
 
-      React.createElement("source", {
-        src: videoSrc,   // ✅FIXED HERE
-        type: "video/mp4",
-      })
-    )
+        React.createElement("source", {
+          src: videoSrc,
+          type: "video/mp4",
+        })
+      )
   );
 }
-
 /* ================= LANDING PAGE ================= */
 function LandingPage(){
 
