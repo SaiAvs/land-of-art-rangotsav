@@ -511,40 +511,49 @@ window.onerror = function(message, source, lineno) {
 
 /* ================= INTRO ================= */
 function Intro({ onFinish }) {
+  const [videoSrc, setVideoSrc] = React.useState("intro.mp4");
   const [fade, setFade] = React.useState(false);
 
   React.useEffect(() => {
-    // fallback in case video doesn't end
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    setVideoSrc(isMobile ? "intro2.mp4" : "intro.mp4");
+
     const timer = setTimeout(() => {
       setFade(true);
       setTimeout(onFinish, 1000);
     }, 6000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [onFinish]);
 
-  return React.createElement("div", {
-    className: "intro-root",
-    style: {
-      opacity: fade ? 0 : 1,
-      transition: "opacity 1s ease"
-    }
-  },
-
-    React.createElement("video", {
-      className: "intro-video",
-      autoPlay: true,
-      muted: true,
-      playsInline: true,
-      preload: "auto",
-      onEnded: () => {
-        setFade(true);
-        setTimeout(onFinish, 1000);
-      }
+  return React.createElement(
+    "div",
+    {
+      className: "intro-root",
+      style: {
+        opacity: fade ? 0 : 1,
+        transition: "opacity 1s ease",
+      },
     },
+
+    React.createElement(
+      "video",
+      {
+        className: "intro-video",
+        autoPlay: true,
+        muted: true,
+        playsInline: true,
+        preload: "auto",
+        onEnded: () => {
+          setFade(true);
+          setTimeout(onFinish, 1000);
+        },
+      },
+
       React.createElement("source", {
-        src: "intro.mp4",
-        type: "video/mp4"
+        src: videoSrc,   // ✅FIXED HERE
+        type: "video/mp4",
       })
     )
   );
