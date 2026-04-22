@@ -47,7 +47,6 @@
     object-position: center;
     width: 100vw;
     height: 100vh;
-    transform: scale(1); /* 🔥 remove extra zoom for mobile video */
   }
 }
 @keyframes fadeOut {
