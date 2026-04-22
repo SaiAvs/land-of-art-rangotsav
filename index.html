@@ -511,14 +511,14 @@ window.onerror = function(message, source, lineno) {
 
 /* ================= INTRO ================= */
 function Intro({ onFinish }) {
-  const [videoSrc, setVideoSrc] = React.useState("");
   const [fade, setFade] = React.useState(false);
+  const [videoSrc, setVideoSrc] = React.useState(null);
 
   React.useEffect(() => {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-    const src = isMobile ? "intro2.mp4" : "intro.mp4";
-    setVideoSrc(src);
+    // decide video once
+    setVideoSrc(isMobile ? "intro2.mp4" : "intro.mp4");
 
     const timer = setTimeout(() => {
       setFade(true);
@@ -542,7 +542,7 @@ function Intro({ onFinish }) {
       React.createElement(
         "video",
         {
-          key: videoSrc, // 🔥 FORCE RELOAD (VERY IMPORTANT)
+          key: videoSrc,
           className: "intro-video",
           autoPlay: true,
           muted: true,
@@ -553,7 +553,6 @@ function Intro({ onFinish }) {
             setTimeout(onFinish, 1000);
           },
         },
-
         React.createElement("source", {
           src: videoSrc,
           type: "video/mp4",
@@ -629,7 +628,6 @@ function LandingPage(){
 ReactDOM.createRoot(document.getElementById("root"))
 .render(React.createElement(LandingPage));
 
-</script>
 </script>
 </body>
 </html>
