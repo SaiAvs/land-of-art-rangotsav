@@ -43,10 +43,10 @@
 }
 @media (max-width: 768px) {
   .intro-video {
-    object-fit: cover;
-    object-position: center;
     width: 100vw;
     height: 100vh;
+    object-fit: cover;
+    object-position: center;
   }
 }
 @keyframes fadeOut {
